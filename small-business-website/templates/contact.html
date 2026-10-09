@@ -1,0 +1,71 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p class="lead">Call, email, or send a message. We usually reply the same business day.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div class="contact-form-wrap">
+      <h2>Request an estimate</h2>
+      <form id="contact-form" class="contact-form" action="$form_action" method="post" novalidate>
+        <div class="field">
+          <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+          <p class="error" id="name-error" role="alert" hidden></p>
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+          <p class="error" id="email-error" role="alert" hidden></p>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" aria-describedby="phone-error">
+          <p class="error" id="phone-error" role="alert" hidden></p>
+        </div>
+        <div class="field">
+          <label for="preferred">Preferred contact method</label>
+          <select id="preferred" name="preferred">
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+            <option value="text">Text message</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">How can we help? <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+          <p class="error" id="message-error" role="alert" hidden></p>
+        </div>
+        <button class="btn btn-primary" type="submit">Send message</button>
+        <p class="form-success" id="form-success" role="status" hidden></p>
+      </form>
+    </div>
+
+    <aside class="contact-info">
+      <h2>Visit or call</h2>
+      <address class="nap">
+        <strong>$site_name</strong><br>
+        $address_street<br>
+        $address_city, $address_region $address_postal<br>
+        <a href="tel:$phone">$phone</a><br>
+        <a href="mailto:$email">$email</a>
+      </address>
+      <h3>Hours</h3>
+      <p>$hours</p>
+
+      <div class="map-placeholder" role="img" aria-label="Map placeholder showing our location in $address_city">
+        <svg viewBox="0 0 400 240" aria-hidden="true">
+          <rect width="400" height="240" fill="#eef2f7"/>
+          <path d="M0 60 H400 M0 140 H400 M80 0 V240 M240 0 V240" stroke="#cbd5e1" stroke-width="6"/>
+          <path d="M0 100 H400" stroke="#cbd5e1" stroke-width="3"/>
+          <circle cx="200" cy="120" r="14" fill="var(--primary)"/>
+          <circle cx="200" cy="120" r="26" fill="var(--primary)" opacity="0.25"/>
+        </svg>
+        <p class="map-caption">Map placeholder — replace with an embedded map if you like.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+

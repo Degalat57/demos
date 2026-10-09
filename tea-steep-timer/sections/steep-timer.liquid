@@ -1,0 +1,293 @@
+{%- liquid
+  assign s = section.settings
+  assign product = product
+  assign teas = ''
+  assign matched = false
+  assign first_block = nil
+  assign product_type_down = product.type | default: '' | downcase
+
+  for block in section.blocks
+    if first_block == nil
+      assign first_block = block
+    endif
+  endfor
+
+  assign chosen = nil
+
+  if product != blank
+    assign mf_temp = product.metafields.tea.steep_temp_c
+    assign mf_seconds = product.metafields.tea.steep_seconds
+    assign mf_grams = product.metafields.tea.grams_per_cup
+    assign mf_infusions = product.metafields.tea.infusions
+    assign mf_increment = product.metafields.tea.infusion_increment_seconds
+    assign mf_type = product.metafields.tea.tea_type
+
+    if mf_temp != blank or mf_seconds != blank or mf_grams != blank or mf_infusions != blank or mf_type != blank
+      assign chosen = 'metafield'
+    endif
+  endif
+
+  if chosen == nil
+    for block in section.blocks
+      assign bt = block.settings.tea_type | default: '' | downcase
+      if bt != blank and bt == product_type_down
+        assign chosen = block
+        break
+      endif
+    endfor
+  endif
+
+  if chosen == nil
+    assign chosen = first_block
+  endif
+-%}
+
+{%- capture teas_json -%}
+[
+{%- if chosen == 'metafield' -%}
+  {
+    "type": {{ mf_type | default: product.type | default: 'tea' | json }},
+    "label": {{ mf_type | default: product.type | default: 'Tea' | json }},
+    "tempC": {{ mf_temp | default: 90 | plus: 0 }},
+    "seconds": {{ mf_seconds | default: 180 | plus: 0 }},
+    "gramsPerCup": {{ mf_grams | default: 2.5 | plus: 0 }},
+    "infusions": {{ mf_infusions | default: 1 | plus: 0 }},
+    "incrementSeconds": {{ mf_increment | default: 0 | plus: 0 }},
+    "note": {{ product.description | strip_html | truncate: 140 | json }}
+  }
+{%- else -%}
+  {%- for block in section.blocks -%}
+    {%- assign bt = block.settings.tea_type | default: 'tea' -%}
+    {
+      "type": {{ bt | downcase | json }},
+      "label": {{ block.settings.label | default: bt | json }},
+      "tempC": {{ block.settings.temp_c | plus: 0 }},
+      "seconds": {{ block.settings.seconds | plus: 0 }},
+      "gramsPerCup": {{ block.settings.grams_per_cup | plus: 0 }},
+      "infusions": {{ block.settings.infusions | plus: 0 }},
+      "incrementSeconds": {{ block.settings.increment_seconds | plus: 0 }},
+      "note": {{ block.settings.note | default: '' | json }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endif -%}
+]
+{%- endcapture -%}
+
+{%- assign teas_json = teas_json | strip -%}
+
+<div
+  class="steep-timer"
+  data-steep-timer
+  id="SteepTimer-{{ section.id }}"
+  style="--steep-accent: {{ s.accent | default: '#c8812a' }};"
+  data-state="idle"
+>
+  <script type="application/json" data-steep-config>
+    {
+      "teas": {{ teas_json }},
+      "showFahrenheit": {{ s.show_fahrenheit | default: true | json }},
+      "chime": {{ s.chime | default: true | json }},
+      "heading": {{ s.heading | default: 'Brew it perfectly' | json }},
+      "subheading": {{ s.subheading | default: 'Your ideal steep, timed to the second.' | json }}
+    }
+  </script>
+
+  <div class="steep-timer__inner">
+    <header class="steep-timer__head">
+      <h2 class="steep-timer__heading">{{ s.heading | default: 'Brew it perfectly' }}</h2>
+      {%- if s.subheading != blank -%}
+        <p class="steep-timer__subheading">{{ s.subheading }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="steep-timer__body" data-steep-body></div>
+
+    <p class="steep-timer__status" data-testid="status" aria-live="polite" role="status"></p>
+  </div>
+</div>
+
+{{ 'steep-timer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'steep-timer.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Steep timer",
+  "tag": "section",
+  "class": "section-steep-timer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Brew it perfectly"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Your ideal steep, timed to the second."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_fahrenheit",
+      "label": "Show Fahrenheit",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "chime",
+      "label": "Play chime when ready",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Accent colour",
+      "default": "#c8812a"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tea",
+      "name": "Tea",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tea_type",
+          "label": "Tea type (matches product type)",
+          "default": "green"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Green tea"
+        },
+        {
+          "type": "range",
+          "id": "temp_c",
+          "label": "Water temperature (C)",
+          "min": 60,
+          "max": 100,
+          "step": 1,
+          "unit": "C",
+          "default": 80
+        },
+        {
+          "type": "range",
+          "id": "seconds",
+          "label": "Steep time (seconds)",
+          "min": 30,
+          "max": 600,
+          "step": 10,
+          "unit": "s",
+          "default": 120
+        },
+        {
+          "type": "number",
+          "id": "grams_per_cup",
+          "label": "Leaf per cup (grams)",
+          "default": 2.5
+        },
+        {
+          "type": "range",
+          "id": "infusions",
+          "label": "Infusions",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "increment_seconds",
+          "label": "Extra seconds per infusion",
+          "min": 0,
+          "max": 120,
+          "step": 5,
+          "unit": "s",
+          "default": 30
+        },
+        {
+          "type": "textarea",
+          "id": "note",
+          "label": "Brewing note",
+          "default": "Soft water, gentle pour."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Steep timer",
+      "blocks": [
+        {
+          "type": "tea",
+          "settings": {
+            "tea_type": "green",
+            "label": "Green tea",
+            "temp_c": 80,
+            "seconds": 120,
+            "grams_per_cup": 2.5,
+            "infusions": 3,
+            "increment_seconds": 30,
+            "note": "Soft water, gentle pour. Leaves unfurl slowly."
+          }
+        },
+        {
+          "type": "tea",
+          "settings": {
+            "tea_type": "black",
+            "label": "Black tea",
+            "temp_c": 95,
+            "seconds": 240,
+            "grams_per_cup": 2.5,
+            "infusions": 1,
+            "increment_seconds": 0,
+            "note": "Full boil, brisk and bright."
+          }
+        },
+        {
+          "type": "tea",
+          "settings": {
+            "tea_type": "oolong",
+            "label": "Oolong tea",
+            "temp_c": 90,
+            "seconds": 60,
+            "grams_per_cup": 5,
+            "infusions": 5,
+            "increment_seconds": 15,
+            "note": "Many short infusions reward patience."
+          }
+        },
+        {
+          "type": "tea",
+          "settings": {
+            "tea_type": "herbal",
+            "label": "Herbal / Chamomile",
+            "temp_c": 100,
+            "seconds": 300,
+            "grams_per_cup": 2,
+            "infusions": 1,
+            "increment_seconds": 0,
+            "note": "Cover the cup to keep the aromatics in."
+          }
+        },
+        {
+          "type": "tea",
+          "settings": {
+            "tea_type": "white",
+            "label": "White tea",
+            "temp_c": 85,
+            "seconds": 180,
+            "grams_per_cup": 3,
+            "infusions": 2,
+            "increment_seconds": 60,
+            "note": "Delicate: cooler water, longer wait."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

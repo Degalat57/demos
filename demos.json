@@ -1,0 +1,22 @@
+{
+ "burial-records-archive": {
+  "slug": "burial-records-archive",
+  "summary": "Searchable archive of historic ledger records: fuzzy name search, county/year filters, scan viewer, staff CSV import with validation.",
+  "title": "Historic Burial Records Archive"
+ },
+ "small-business-website": {
+  "slug": "small-business-website",
+  "summary": "Fast, accessible, SEO-ready static site (home, about, services, contact, blog) rebranded from one JSON file.",
+  "title": "5-Page Small-Business Website Template"
+ },
+ "tea-steep-timer": {
+  "slug": "tea-steep-timer",
+  "summary": "Shopify OS 2.0 product-page section: water temperature, leaf amount and a calm countdown ring with re-steeps and a chime.",
+  "title": "Tea Steep Timer (Shopify section)"
+ },
+ "tire-inspection-app": {
+  "slug": "tire-inspection-app",
+  "summary": "Phone/tablet web app for a tire and auto shop: jobs board, work orders, tire/brake/TPMS inspection with photos, and a customer report link.",
+  "title": "Tire Shop Digital Vehicle Inspection"
+ }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo Tire &amp; Auto — Digital Vehicle Inspection</title>
+<meta name="description" content="Digital vehicle inspection demo for tire &amp; auto repair shops. Synthetic demo data only.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b4aa2">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="demo-banner" data-testid="demo-banner">Demo — synthetic data only</div>
+<div id="app-root">
+  <header id="shop-header" role="banner"></header>
+  <nav id="main-nav" aria-label="Main navigation"></nav>
+  <main id="view" tabindex="-1"></main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="modal-root"></div>
+<script src="config.js"></script>
+<script src="seed.js"></script>
+<script src="app.js" defer></script>
+</body>
+</html>

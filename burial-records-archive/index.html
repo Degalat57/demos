@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search - Historic Burial Records Archive (demo)</title>
+  <meta name="description" content="Search transcribed historic burial records by name, county and date (demo with synthetic sample records).">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<header class="site-header">
+  <p class="banner" data-testid="synthetic-banner">Demo with synthetic sample records — every record and scan is marked “SYNTHETIC SAMPLE - not a real record”.</p>
+  <div class="header-inner">
+    <a class="site-name" href="index.html">Historic Burial Records Archive (demo)</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Search</a>
+      <a href="import.html">Import (staff)</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Search the records</h1>
+  <p class="lede">Transcribed burial-company ledger records from a fictional river-valley region, 1900–1965. All records in this demo are synthetic samples.</p>
+
+  <form id="search-form" class="search-form" role="search">
+    <div class="field field-wide">
+      <label for="q">Name</label>
+      <input type="search" id="q" name="q" placeholder="Surname or full name" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="county">County</label>
+      <select id="county" name="county"><option value="">All counties</option></select>
+    </div>
+    <div class="field">
+      <label for="year-from">Death year from</label>
+      <input type="number" id="year-from" name="year-from" min="1900" max="1965" placeholder="1900">
+    </div>
+    <div class="field">
+      <label for="year-to">Death year to</label>
+      <input type="number" id="year-to" name="year-to" min="1900" max="1965" placeholder="1965">
+    </div>
+    <div class="field field-check">
+      <input type="checkbox" id="fuzzy" checked>
+      <label for="fuzzy">Include similar spellings</label>
+    </div>
+    <div class="field">
+      <label for="sort">Sort by</label>
+      <select id="sort">
+        <option value="relevance">Relevance</option>
+        <option value="death-asc">Death date (oldest first)</option>
+        <option value="death-desc">Death date (newest first)</option>
+        <option value="surname">Surname (A–Z)</option>
+      </select>
+    </div>
+    <div class="field field-button">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+
+  <div class="results-bar">
+    <p class="result-count" data-testid="result-count"></p>
+    <button type="button" class="btn" data-testid="export-csv" id="export-csv">Export results to CSV</button>
+  </div>
+
+  <div id="results" class="results"></div>
+
+  <div id="empty-state" class="empty-state" hidden>
+    <h2>No records found</h2>
+    <ul>
+      <li>Try a different spelling of the surname, or leave the name blank and browse by county.</li>
+      <li>Check “Include similar spellings” to catch handwriting variants such as Johnson/Johnston.</li>
+      <li>Widen or clear the year range.</li>
+    </ul>
+  </div>
+
+  <nav class="pagination" id="pagination" aria-label="Results pages" hidden>
+    <button type="button" class="btn" id="prev-page">Previous page</button>
+    <span id="page-info"></span>
+    <button type="button" class="btn" data-testid="next-page" id="next-page">Next page</button>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <p>Demo archive. All records and scans are <strong>SYNTHETIC SAMPLES</strong> — not real records. <a href="about.html">About this collection</a>.</p>
+</footer>
+
+<script src="assets/lib.js"></script>
+<script src="assets/search.js"></script>
+</body>
+</html>

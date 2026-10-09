@@ -1,0 +1,11 @@
+record_id,surname,given_names,maiden_name,sex,age_at_death,birth_date,death_date,burial_date,county,place_of_death,cemetery,funeral_cost,informant,ledger_book,ledger_page,notes,transcriber,scan
+HBR-1942-9501,Martin,Thomas,,M,,,1942-10-14,1942-10-17,Ashford,Millbrook,Fairview Cemetery (fictional),$110.93,Leroy Barnes,Book 2,248,Moved from another county shortly before death.,Volunteer A,scans/HBR-1942-9501.svg
+HBR-1941-9502,Green,Robert,,M,40,,1941-01-19,1941-01-21,Hollis,Easton,Shady Grove Cemetery (fictional),$112.38,Louis Brown,Book 8,91,Grave location unmarked in ledger.,Volunteer A,scans/HBR-1941-9502.svg
+HBR-1962-9503,Perry,Sallie,,F,69,1893,1962-10-28,1962-10-29,Elmhurst,Hartwell,Evergreen Rest Cemetery (fictional),$97.78,Elizabeth Powell,Book 2,394,,Volunteer A,scans/HBR-1962-9503.svg
+HBR-1900-9504,Davis,Elnora,,F,93,1807,1900-11-25,1900-11-26,Briarwood,Lakeview,Evergreen Rest Cemetery (fictional),$78.96,Beulah Morgan,Book 9,88,,Volunteer A,scans/HBR-1900-9504.svg
+HBR-1925-9505,Rogers,Frank,,M,3,1922,1925-01-11,1925-01-16,Calder,Marlow,New Hope Cemetery (fictional),$54.57,Elizabeth Bennett,Book 12,72,Informant was a neighbor.,Volunteer B,scans/HBR-1925-9505.svg
+HBR-1905-9506,Stuart,Hattie,Bennett,F,74,1831-10-20,1905-08-23,1905-08-27,Briarwood,Heron Point,Rose Hill Cemetery (fictional),,Hattie Thompson,Book 8,381,Record partially water-damaged.,Volunteer A,scans/HBR-1905-9506.svg
+HBR-1947-9507,Jackson,Rubin,,M,40,1907-02-28,1947-09-01,1947-09-03,Fairhaven,Corbin,Mt. Zion Cemetery (fictional),$120.31,Isabella Baker,Book 1,218,,Volunteer B,scans/HBR-1947-9507.svg
+HBR-1917-9508,Bennett,John,,M,90,1827-11-13,1917-04-07,1917-04-11,Kestrel,White Ash,Shady Grove Cemetery (fictional),,Moses Turner,Book 9,119,,Volunteer A,scans/HBR-1917-9508.svg
+HBR-1911-9509,Evans,Rebecca,,F,48,1863-04-14,1911-11-17,1911-11-22,Lowell,Holloway,Rose Hill Cemetery (fictional),$81.01,Irene Lewis,Book 2,316,Payment recorded as received in full.,Volunteer A,scans/HBR-1911-9509.svg
+HBR-1960-9510,Patterson,Nathaniel,,M,12,1948-11-17,1960-07-12,1960-07-15,Juniper,Linden,New Hope Cemetery (fictional),$100.70,Pearlie Brooks,Book 4,76,,Volunteer A,scans/HBR-1960-9510.svg

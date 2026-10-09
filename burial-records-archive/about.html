@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About - Historic Burial Records Archive (demo)</title>
+  <meta name="description" content="About the historic burial records archive demo and how to cite records.">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<header class="site-header">
+  <p class="banner" data-testid="synthetic-banner">Demo with synthetic sample records — every record and scan is marked “SYNTHETIC SAMPLE - not a real record”.</p>
+  <div class="header-inner">
+    <a class="site-name" href="index.html">Historic Burial Records Archive (demo)</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Search</a>
+      <a href="import.html">Import (staff)</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>About the collection</h1>
+  <p class="lede">A public archive of historic burial-company records from a fictional river-valley region, 1900–1965.</p>
+
+  <section class="card">
+    <h2>The records</h2>
+    <p>Between 1900 and 1965, local burial companies kept ledger books recording each funeral they handled: the name of the deceased, dates of death and burial, the county and town, the cemetery, the funeral cost, and the informant who supplied the information. These ledgers are a valuable source for family historians and local history research, especially for communities underrepresented in official vital records.</p>
+    <p>This site presents transcriptions of those ledger entries alongside a scan of the original ledger page, so researchers can check the transcription against the handwriting.</p>
+    <p>The archive covers eleven fictional counties: Ashford, Briarwood, Calder, Elmhurst, Fairhaven, Glenmoor, Hollis, Ivydale, Juniper, Kestrel, and Lowell.</p>
+  </section>
+
+  <section class="card">
+    <h2>How to cite a record</h2>
+    <p>Use the citation shown on each record page, for example:</p>
+    <blockquote class="citation">Historic Burial Records, Ledger Book 7, page 112, record HBR-1934-0172 (synthetic sample), accessed 1 January 2025.</blockquote>
+    <p>Each record page has a “Copy citation” button that produces the citation with today’s date filled in.</p>
+  </section>
+
+  <section class="card">
+    <h2>“SYNTHETIC SAMPLE” — what it means</h2>
+    <p><strong>Every record and every scan in this demo is a synthetic sample.</strong> The names, dates, cemeteries, informants, and ledger scans were generated for demonstration and testing purposes. They do not refer to real people, real burials, or real ledger books, and they must not be used as historical evidence or genealogical sources.</p>
+    <p>Each record page carries a “SYNTHETIC SAMPLE — not a real record” badge, every scan is watermarked “SYNTHETIC SAMPLE”, and the site banner repeats the warning on every page. In a production deployment, real transcriptions would replace the sample data, and the synthetic marking would be removed only after review.</p>
+  </section>
+
+  <section class="card">
+    <h2>Searching tips</h2>
+    <ul>
+      <li>Handwriting in the ledgers leads to spelling variants (Johnson/Johnston, Mattie/Matty). Leave “Include similar spellings” checked to catch these.</li>
+      <li>You can search by surname, given name, or full name; maiden names are searched too.</li>
+      <li>Narrow by county and death-year range for large result sets.</li>
+      <li>Search results can be shared by copying the page URL, and exported to CSV.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Staff: adding records</h2>
+    <p>Staff transcribe rows in a spreadsheet, export to CSV, and use the <a href="import.html">import page</a>: the file is validated (dates, counties, duplicate IDs), previewed, and the valid rows are added. In this demo imported rows stay in your browser; see the production plan in the project README.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Demo archive. All records and scans are <strong>SYNTHETIC SAMPLES</strong> — not real records.</p>
+</footer>
+</body>
+</html>

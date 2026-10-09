@@ -1,0 +1,42 @@
+{%- liquid
+  assign product = product
+  assign teas = ''
+  assign mf_temp = product.metafields.tea.steep_temp_c
+  assign mf_seconds = product.metafields.tea.steep_seconds
+  assign mf_grams = product.metafields.tea.grams_per_cup
+  assign mf_infusions = product.metafields.tea.infusions
+  assign mf_increment = product.metafields.tea.infusion_increment_seconds
+  assign mf_type = product.metafields.tea.tea_type
+-%}
+<div class="steep-timer" data-steep-timer id="SteepTimer-{{ product.id | default: 'snippet' }}" data-state="idle">
+  <script type="application/json" data-steep-config>
+    {
+      "teas": [
+        {
+          "type": {{ mf_type | default: product.type | default: 'tea' | json }},
+          "label": {{ mf_type | default: product.type | default: 'Tea' | json }},
+          "tempC": {{ mf_temp | default: 90 | plus: 0 }},
+          "seconds": {{ mf_seconds | default: 180 | plus: 0 }},
+          "gramsPerCup": {{ mf_grams | default: 2.5 | plus: 0 }},
+          "infusions": {{ mf_infusions | default: 1 | plus: 0 }},
+          "incrementSeconds": {{ mf_increment | default: 0 | plus: 0 }},
+          "note": {{ product.description | strip_html | truncate: 140 | json }}
+        }
+      ],
+      "showFahrenheit": true,
+      "chime": true,
+      "heading": "Brew it perfectly",
+      "subheading": "Your ideal steep, timed to the second."
+    }
+  </script>
+  <div class="steep-timer__inner">
+    <header class="steep-timer__head">
+      <h2 class="steep-timer__heading">Brew it perfectly</h2>
+      <p class="steep-timer__subheading">Your ideal steep, timed to the second.</p>
+    </header>
+    <div class="steep-timer__body" data-steep-body></div>
+    <p class="steep-timer__status" data-testid="status" aria-live="polite" role="status"></p>
+  </div>
+</div>
+{{ 'steep-timer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'steep-timer.js' | asset_url }}" defer></script>

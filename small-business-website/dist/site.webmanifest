@@ -1,0 +1,16 @@
+{
+  "name": "Brightline Home Services",
+  "short_name": "Brightline H",
+  "description": "Brightline Home Services is a local home repair and renovation company in Springfield offering plumbing, electrical, painting, roofing, carpentry, and landscaping. Licensed, insured, and trusted by neighbors.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

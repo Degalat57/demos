@@ -1,0 +1,113 @@
+{
+  "name": "Brightline Home Services",
+  "tagline": "Reliable home repair & renovation in Springfield",
+  "description": "Brightline Home Services is a local home repair and renovation company in Springfield offering plumbing, electrical, painting, roofing, carpentry, and landscaping. Licensed, insured, and trusted by neighbors.",
+  "url": "https://www.example.com",
+  "phone": "(555) 123-4567",
+  "email": "hello@example.com",
+  "address": {
+    "street": "1420 Maple Street",
+    "city": "Springfield",
+    "region": "IL",
+    "postal": "62704",
+    "country": "US"
+  },
+  "hours": "Mon–Fri 7am–6pm · Sat 8am–2pm · Sun closed",
+  "primaryColor": "#1d4ed8",
+  "accentColor": "#f59e0b",
+  "formAction": "",
+  "social": {
+    "facebook": "https://facebook.com/example",
+    "instagram": "https://instagram.com/example",
+    "linkedin": "https://linkedin.com/company/example"
+  },
+  "services": [
+    {
+      "title": "Plumbing Repair",
+      "summary": "Leaky faucets, running toilets, clogged drains, and water heater service — done right the first time.",
+      "icon": "drop"
+    },
+    {
+      "title": "Electrical Work",
+      "summary": "Outlets, lighting, ceiling fans, and panel upgrades installed safely by a licensed electrician.",
+      "icon": "bolt"
+    },
+    {
+      "title": "Interior Painting",
+      "summary": "Crisp walls and trim with careful prep, quality paint, and a tidy workspace every day.",
+      "icon": "paint"
+    },
+    {
+      "title": "Roofing & Gutters",
+      "summary": "Repairs, replacements, and seasonal gutter cleaning that protect your home from the weather.",
+      "icon": "home"
+    },
+    {
+      "title": "Carpentry & Repairs",
+      "summary": "Trim, doors, decks, and the small fixes that keep your home safe and looking its best.",
+      "icon": "wrench"
+    },
+    {
+      "title": "Landscaping & Yard",
+      "summary": "Lawn care, planting, and seasonal cleanups that make your outdoor space welcoming.",
+      "icon": "leaf"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "They showed up on time, explained everything clearly, and left the kitchen cleaner than they found it. I've already recommended them to two neighbors.",
+      "name": "Sample Customer",
+      "role": "Homeowner, Springfield"
+    },
+    {
+      "quote": "We had a burst pipe on a Sunday and they were at our door within the hour. Fair pricing and no surprises on the invoice.",
+      "name": "Sample Customer",
+      "role": "Homeowner, Springfield"
+    },
+    {
+      "quote": "The team repainted our whole first floor and fixed a sagging door while they were at it. Professional from start to finish.",
+      "name": "Sample Customer",
+      "role": "Homeowner, Springfield"
+    }
+  ],
+  "team": [
+    {
+      "name": "Sample Owner",
+      "role": "Founder & Lead Technician",
+      "bio": "Twenty years in the trades and a belief that a handshake still means something. Oversees every project personally."
+    },
+    {
+      "name": "Sample Manager",
+      "role": "Operations Manager",
+      "bio": "Keeps schedules tight and customers informed. Your first call when you book a visit and your last when the job is done."
+    },
+    {
+      "name": "Sample Specialist",
+      "role": "Master Electrician",
+      "bio": "Licensed and endlessly patient with old wiring. Explains the work in plain language so you can make confident decisions."
+    }
+  ],
+  "posts": [
+    {
+      "slug": "5-signs-your-gutters-need-attention",
+      "title": "5 Signs Your Gutters Need Attention",
+      "date": "2024-09-12",
+      "excerpt": "Clogged or failing gutters are one of the most common causes of expensive water damage. Here are five warning signs to check this weekend.",
+      "body_html": "<p>Gutters are easy to ignore until something goes wrong. Because they quietly move thousands of gallons of water away from your foundation every year, small problems can turn into costly repairs fast. Here are five signs worth checking before the next heavy rain.</p>\n<h2>1. Water spilling over the edges</h2>\n<p>If you see water cascading over the front of the gutter during a storm, it is almost always a clog. Leaves, shingle grit, and even bird nests block the channel and force water to run down the siding instead.</p>\n<h2>2. Sagging or pulling away from the house</h2>\n<p>Gutters should run in a straight, gentle line. Sagging usually means the hangers have loosened or the gutter is holding standing water and debris. Left alone, a full gutter can pull free entirely.</p>\n<h2>3. Stains on the siding or foundation</h2>\n<p>Streaks of dirt or mildew below the gutter line point to overflow. Over time that same water seeps into the foundation, which is where repair bills get serious.</p>\n<h2>4. Rust, cracks, or peeling paint</h2>\n<p>Small cracks and rust spots grow quickly. A patch now is far cheaper than replacing a full run of gutter later.</p>\n<h2>5. Birds, squirrels, or plants</h2>\n<p>If you can see seedlings sprouting from your gutter, it has not been cleaned in a while. Nests and growth also block the downspouts that carry water away.</p>\n<h2>What to do next</h2>\n<p>Twice-a-year cleaning — once in late spring and once after the leaves fall — prevents most of these problems. If you would rather not climb a ladder, a professional cleaning is inexpensive insurance. While we are on the roof we also check the downspouts, flashing, and shingle edges, so you get a full picture of your home's water protection in one visit.</p>"
+    },
+    {
+      "slug": "how-to-prepare-your-home-for-winter",
+      "title": "How to Prepare Your Home for Winter",
+      "date": "2024-10-03",
+      "excerpt": "A weekend of simple prep can prevent frozen pipes, drafty rooms, and surprise repair bills. Here is a practical checklist for homeowners.",
+      "body_html": "<p>Cold weather finds every weak spot in a house. The good news is that most winter damage is preventable with a few hours of work in the fall. Work through this checklist before the first hard freeze.</p>\n<h2>Protect your pipes</h2>\n<p>Disconnect garden hoses and shut off outdoor spigots. Insulate pipes in unheated areas like basements, crawl spaces, and garages. On the coldest nights, let a thin stream of water run from the faucet farthest from your water main — moving water freezes far less easily.</p>\n<h2>Seal the drafts</h2>\n<p>Run your hand along exterior doors and windows on a windy day. Weatherstripping and caulk are cheap and pay for themselves in the first month of heating bills. Do not forget the attic hatch and the gap under the garage door.</p>\n<h2>Service the heating system</h2>\n<p>Replace furnace filters and schedule a tune-up if you have not had one. A clean, well-adjusted system runs less and heats better. If you use a wood stove or fireplace, have the chimney inspected before the first fire.</p>\n<h2>Check the roof and gutters</h2>\n<p>Clear leaves so melting snow has somewhere to go. Look for loose or missing shingles and cracked flashing. Ice dams form when warm attic air melts snow that refreezes at the cold eaves — good insulation and ventilation are the real fix.</p>\n<h2>Prepare for outages</h2>\n<p>Test smoke and carbon monoxide detectors, restock batteries, and keep a few days of water on hand. If you have a generator, run it briefly to confirm it starts.</p>\n<h2>When to call a professional</h2>\n<p>Most of this list is doable yourself. Call a pro for anything involving gas lines, electrical panels, or roof work above the first story. A short inspection in the fall is far less expensive than an emergency repair in January.</p>"
+    },
+    {
+      "slug": "small-repairs-that-protect-your-home-value",
+      "title": "Small Repairs That Protect Your Home's Value",
+      "date": "2024-11-08",
+      "excerpt": "You do not need a full renovation to protect your investment. These small, affordable repairs prevent big problems and keep your home in top shape.",
+      "body_html": "<p>Home value is rarely lost in one dramatic event. It erodes slowly through small problems that go unfixed — a drip here, a soft spot there. The good news is that the same small repairs are inexpensive and quick when handled early.</p>\n<h2>Fix water where you find it</h2>\n<p>Water is the number one enemy of a house. A slow leak under the sink, a running toilet, or a stained ceiling can all signal a bigger issue behind the wall. Repairing the source early prevents rot, mold, and structural damage that costs thousands to correct.</p>\n<h2>Stay ahead of exterior maintenance</h2>\n<p>Caulk and paint are your home's raincoat. Re-caulk around windows and doors, touch up peeling trim, and reseal the deck every few years. These jobs take an afternoon and protect the materials underneath from the freeze-thaw cycle.</p>\n<h2>Keep doors and windows working</h2>\n<p>A door that sticks or a window that will not latch is more than an annoyance. It often means the frame has shifted or swollen from moisture. Adjusting hardware and re-hanging a door is a small job that keeps a bigger structural repair off your list.</p>\n<h2>Address the small stuff before it compounds</h2>\n<p>Loose railings, cracked tiles, and squeaky stairs are safety issues and negotiation points at resale. A handyman visit can knock out a dozen of these in a single afternoon.</p>\n<h2>Keep a simple maintenance log</h2>\n<p>Write down what you fixed and when. When you sell, a documented maintenance history reassures buyers and supports your asking price. It also helps you remember when the last gutter cleaning or furnace service happened.</p>\n<h2>The bottom line</h2>\n<p>You do not need a renovation budget to protect your home. A small, regular investment in maintenance keeps your home safe, efficient, and ready for whatever comes next.</p>"
+    }
+  ]
+}

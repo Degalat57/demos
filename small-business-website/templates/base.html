@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="$lang">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title</title>
+<meta name="description" content="$description">
+<link rel="canonical" href="$canonical">
+<meta property="og:title" content="$title">
+<meta property="og:description" content="$description">
+<meta property="og:type" content="$og_type">
+<meta property="og:url" content="$og_url">
+<meta property="og:site_name" content="$site_name">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="$primaryColor">
+<link rel="icon" href="${root}favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="${root}site.webmanifest">
+<link rel="stylesheet" href="${root}assets/css/style.css">
+<style>$theme_css</style>
+$extra_head
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="${root}index.html">
+      <span class="brand-mark">$site_name</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <ul>
+          $nav
+      </ul>
+      <a class="btn btn-primary nav-cta" href="${root}contact.html">Get a quote</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+$content
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h2 class="footer-heading">$site_name</h2>
+      <p class="footer-nap">
+        <span>$address_street</span><br>
+        <span>$address_city, $address_region $address_postal</span><br>
+        <a href="tel:$phone">$phone</a><br>
+        <a href="mailto:$email">$email</a>
+      </p>
+    </div>
+    <div>
+      <h2 class="footer-heading">Hours</h2>
+      <p>$hours</p>
+    </div>
+    <div>
+      <h2 class="footer-heading">Explore</h2>
+      <ul class="footer-links">
+        <li><a href="${root}services.html">Services</a></li>
+        <li><a href="${root}about.html">About</a></li>
+        <li><a href="${root}blog/index.html">Blog</a></li>
+        <li><a href="${root}contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-heading">Follow</h2>
+      <ul class="footer-links">
+        <li><a href="$facebook" rel="noopener">Facebook</a></li>
+        <li><a href="$instagram" rel="noopener">Instagram</a></li>
+        <li><a href="$linkedin" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; <span id="year">$year</span> $site_name. All rights reserved.</p>
+  </div>
+</footer>
+<script src="${root}assets/js/main.js" defer></script>
+</body>
+</html>

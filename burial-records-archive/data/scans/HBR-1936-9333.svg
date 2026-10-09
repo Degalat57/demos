@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1100" viewBox="0 0 800 1100">
+<defs><pattern id="paper" width="8" height="8" patternUnits="userSpaceOnUse">
+<rect width="8" height="8" fill="#f7f3ea"/>
+<circle cx="2" cy="3" r="0.5" fill="#e3dcc8" opacity="0.6"/>
+<circle cx="6" cy="7" r="0.4" fill="#e3dcc8" opacity="0.5"/>
+</pattern></defs>
+<rect width="800" height="1100" fill="url(#paper)"/>
+<rect x="30" y="30" width="740" height="1040" fill="none" stroke="#b9ae95" stroke-width="2"/>
+<text x="400" y="90" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#2b2622">Historic Burial Records</text>
+<text x="400" y="128" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#2f5d50">Book 11, Page 113</text>
+<text x="400" y="160" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#8a2020">SYNTHETIC SAMPLE - not a real record</text>
+<line x1="60" y1="180" x2="740" y2="180" stroke="#8a7a5c" stroke-width="2"/>
+<text x="70" y="232" font-family="Georgia, serif" font-size="15" fill="#6b6357">Record No.</text>
+<line x1="60" y1="250" x2="740" y2="250" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="240" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">HBR-1936-9333</text>
+<text x="70" y="286" font-family="Georgia, serif" font-size="15" fill="#6b6357">Name</text>
+<line x1="60" y1="304" x2="740" y2="304" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="294" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">Wilson, Julia</text>
+<text x="70" y="340" font-family="Georgia, serif" font-size="15" fill="#6b6357">Maiden name</text>
+<line x1="60" y1="358" x2="740" y2="358" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="348" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">-</text>
+<text x="70" y="394" font-family="Georgia, serif" font-size="15" fill="#6b6357">Sex</text>
+<line x1="60" y1="412" x2="740" y2="412" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="402" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">F</text>
+<text x="70" y="448" font-family="Georgia, serif" font-size="15" fill="#6b6357">Age</text>
+<line x1="60" y1="466" x2="740" y2="466" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="456" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">56</text>
+<text x="70" y="502" font-family="Georgia, serif" font-size="15" fill="#6b6357">Born</text>
+<line x1="60" y1="520" x2="740" y2="520" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="510" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">1880-12-27</text>
+<text x="70" y="556" font-family="Georgia, serif" font-size="15" fill="#6b6357">Died</text>
+<line x1="60" y1="574" x2="740" y2="574" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="564" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">1936-02-14</text>
+<text x="70" y="610" font-family="Georgia, serif" font-size="15" fill="#6b6357">Buried</text>
+<line x1="60" y1="628" x2="740" y2="628" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="618" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">1936-02-17</text>
+<text x="70" y="664" font-family="Georgia, serif" font-size="15" fill="#6b6357">County</text>
+<line x1="60" y1="682" x2="740" y2="682" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="672" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">Kestrel</text>
+<text x="70" y="718" font-family="Georgia, serif" font-size="15" fill="#6b6357">Place of death</text>
+<line x1="60" y1="736" x2="740" y2="736" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="726" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">White Ash</text>
+<text x="70" y="772" font-family="Georgia, serif" font-size="15" fill="#6b6357">Cemetery</text>
+<line x1="60" y1="790" x2="740" y2="790" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="780" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">Mt. Zion Cemetery (fictional)</text>
+<text x="70" y="826" font-family="Georgia, serif" font-size="15" fill="#6b6357">Funeral cost</text>
+<line x1="60" y1="844" x2="740" y2="844" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="834" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">$80.22</text>
+<text x="70" y="880" font-family="Georgia, serif" font-size="15" fill="#6b6357">Informant</text>
+<line x1="60" y1="898" x2="740" y2="898" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="888" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">Nathaniel Taylor</text>
+<text x="70" y="934" font-family="Georgia, serif" font-size="15" fill="#6b6357">Notes</text>
+<line x1="60" y1="952" x2="740" y2="952" stroke="#c9bfa4" stroke-width="1"/>
+<text x="250" y="942" font-family="'Segoe Script', 'Bradley Hand', cursive" font-size="19" fill="#2b2622">Funeral handled by local undertaker.</text>
+<text x="400" y="1040" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#6b6357">Transcribed by Volunteer A - SYNTHETIC SAMPLE</text>
+<text transform="translate(400,560) rotate(-30)" text-anchor="middle" font-family="Georgia, serif" font-size="96" font-weight="bold" fill="#c0392b" opacity="0.16">SYNTHETIC SAMPLE</text>
+</svg>

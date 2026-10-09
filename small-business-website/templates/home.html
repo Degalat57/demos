@@ -1,0 +1,112 @@
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Trusted local pros in $city</p>
+      <h1>$tagline</h1>
+      <p class="lead">$description</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="${root}contact.html">Get a free estimate</a>
+        <a class="btn btn-outline" href="${root}services.html">See our services</a>
+      </div>
+      <p class="hero-phone">Call us today: <a href="tel:$phone">$phone</a></p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 320" role="img" aria-label="Illustration of a well-maintained home">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--primary)" stop-opacity="0.18"/>
+            <stop offset="1" stop-color="var(--accent)" stop-opacity="0.12"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="400" height="320" rx="24" fill="url(#sky)"/>
+        <path d="M60 180 L200 70 L340 180 Z" fill="var(--primary)"/>
+        <rect x="90" y="180" width="220" height="110" fill="var(--primary)" opacity="0.85"/>
+        <rect x="120" y="210" width="45" height="45" rx="4" fill="#fff"/>
+        <rect x="235" y="210" width="45" height="45" rx="4" fill="#fff"/>
+        <rect x="180" y="230" width="40" height="60" rx="4" fill="var(--accent)"/>
+        <rect x="300" y="120" width="30" height="70" fill="var(--accent)"/>
+        <circle cx="90" cy="270" r="26" fill="var(--accent)" opacity="0.7"/>
+        <circle cx="330" cy="280" r="20" fill="var(--primary)" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="trust-bar" aria-label="Company highlights">
+  <div class="container trust-grid">
+    <div class="trust-item"><strong>15+</strong><span>Years of experience</span><em>sample</em></div>
+    <div class="trust-item"><strong>2,400+</strong><span>Jobs completed</span><em>sample</em></div>
+    <div class="trust-item"><strong>4.9/5</strong><span>Average rating</span><em>sample</em></div>
+    <div class="trust-item"><strong>100%</strong><span>Licensed &amp; insured</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <header class="section-head">
+      <h2>What we do</h2>
+      <p>From a dripping faucet to a full room refresh, we handle the jobs that keep your home running smoothly.</p>
+    </header>
+    <div class="grid grid-3">
+      $services_cards
+    </div>
+    <p class="center"><a class="btn btn-outline" href="${root}services.html">View all services</a></p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <header class="section-head">
+      <h2>Why homeowners choose us</h2>
+    </header>
+    <div class="grid grid-3">
+      <article class="card">
+        <div class="card-icon">
+          <svg class="icon" viewBox="0 0 24 24" role="img" aria-label="On-time arrival" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3>We show up on time</h3>
+        <p>You get a clear arrival window and a call if anything changes. No waiting around all day.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">
+          <svg class="icon" viewBox="0 0 24 24" role="img" aria-label="Upfront pricing" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Honest, upfront pricing</h3>
+        <p>You approve the estimate before we start. No surprise line items on the final invoice.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">
+          <svg class="icon" viewBox="0 0 24 24" role="img" aria-label="Quality workmanship" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Work we stand behind</h3>
+        <p>Every job is backed by our workmanship guarantee. If something is not right, we make it right.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <header class="section-head">
+      <h2>What our customers say</h2>
+      <p class="muted">Sample testimonials shown for template demonstration.</p>
+    </header>
+    <div class="grid grid-3">
+      $testimonials
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Ready to cross it off your list?</h2>
+      <p>Tell us what needs fixing. We will get back to you with a free estimate.</p>
+    </div>
+    <a class="btn btn-accent" href="${root}contact.html">Request your estimate</a>
+  </div>
+</section>
+
+<script type="application/ld+json">
+$jsonld
+</script>

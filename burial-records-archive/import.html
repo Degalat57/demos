@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Import records (staff) - Historic Burial Records Archive (demo)</title>
+  <meta name="description" content="Staff import of burial records from a spreadsheet (CSV) with validation and preview.">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<header class="site-header">
+  <p class="banner" data-testid="synthetic-banner">Demo with synthetic sample records — every record and scan is marked “SYNTHETIC SAMPLE - not a real record”.</p>
+  <div class="header-inner">
+    <a class="site-name" href="index.html">Historic Burial Records Archive (demo)</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Search</a>
+      <a href="import.html" aria-current="page">Import (staff)</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Import records from CSV (staff)</h1>
+  <p class="lede">Upload a spreadsheet of transcribed records. Rows are validated before anything is saved. <strong>In production these rows are written to the database and scans uploaded to storage; this demo keeps them in your browser only.</strong></p>
+
+  <section class="card">
+    <h2>Step 1: choose a file or paste CSV</h2>
+    <p>
+      <label for="csv-file">CSV file</label>
+      <input type="file" id="csv-file" accept=".csv">
+    </p>
+    <p>…or paste CSV text:</p>
+    <textarea id="csv-text" rows="8" placeholder="record_id,surname,given_names,death_date,county,…"></textarea>
+    <p>
+      <button type="button" class="btn btn-primary" data-testid="parse" id="parse">Parse</button>
+      <a class="btn" id="download-template" download="import-template.csv">Download template</a>
+      <a class="btn" href="data/sample-import.csv" download>Sample CSV (with 4 problem rows)</a>
+      <a class="btn" href="data/sample-import-clean.csv" download>Sample CSV (clean)</a>
+    </p>
+    <p id="parse-error" class="error-text" role="alert" hidden></p>
+  </section>
+
+  <section class="card" id="preview-section" hidden>
+    <h2>Step 2: preview and validation</h2>
+    <p class="import-summary" data-testid="import-summary" id="import-summary"></p>
+    <div class="table-wrap">
+      <table id="preview-table" data-testid="preview-table">
+        <thead><tr id="preview-head"></tr></thead>
+        <tbody id="preview-body"></tbody>
+      </table>
+    </div>
+    <p class="hint">Cells highlighted red have errors (the row will not be imported); amber cells are warnings (the row can still be imported). Hover a highlighted cell for details.</p>
+  </section>
+
+  <section class="card" id="import-section" hidden>
+    <h2>Step 3: import</h2>
+    <p>
+      <button type="button" class="btn btn-primary" data-testid="import-valid" id="import-valid">Import valid rows</button>
+      <button type="button" class="btn btn-danger" data-testid="clear-imports" id="clear-imports">Clear imported records</button>
+    </p>
+    <p id="import-result" role="status" aria-live="polite"></p>
+    <p id="imported-count"></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Demo archive. All records and scans are <strong>SYNTHETIC SAMPLES</strong> — not real records. <a href="about.html">About this collection</a>.</p>
+</footer>
+
+<script src="assets/lib.js"></script>
+<script src="assets/import.js"></script>
+</body>
+</html>

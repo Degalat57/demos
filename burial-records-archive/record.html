@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Record - Historic Burial Records Archive (demo)</title>
+  <meta name="description" content="Historic burial record with ledger scan viewer (synthetic sample).">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<header class="site-header">
+  <p class="banner" data-testid="synthetic-banner">Demo with synthetic sample records — every record and scan is marked “SYNTHETIC SAMPLE - not a real record”.</p>
+  <div class="header-inner">
+    <a class="site-name" href="index.html">Historic Burial Records Archive (demo)</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Search</a>
+      <a href="import.html">Import (staff)</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <p class="back-link"><a href="index.html">&larr; Back to search</a></p>
+
+  <div id="not-found" class="empty-state" data-testid="not-found" hidden>
+    <h2>Record not found</h2>
+    <p>We could not find that record. It may have been removed, or the link may be mistyped.</p>
+    <p><a href="index.html">Return to search</a>.</p>
+  </div>
+
+  <article id="record-view" hidden>
+    <div class="record-head">
+      <h1 id="record-title"></h1>
+      <p>
+        <span class="badge badge-synthetic">SYNTHETIC SAMPLE — not a real record</span>
+        <span class="badge badge-import" id="imported-badge" hidden>added by staff (this browser)</span>
+      </p>
+    </div>
+
+    <nav class="record-nav" id="record-nav" hidden aria-label="Result navigation">
+      <a id="prev-record" href="#">&larr; Previous result</a>
+      <span id="record-nav-pos"></span>
+      <a id="next-record" href="#">Next result &rarr;</a>
+    </nav>
+
+    <section class="card">
+      <h2>Transcribed details</h2>
+      <dl class="record-fields" data-testid="record-fields" id="record-fields"></dl>
+    </section>
+
+    <section class="card">
+      <h2>Citation</h2>
+      <p class="citation" id="citation"></p>
+      <button type="button" class="btn" id="copy-citation">Copy citation</button>
+      <span id="copy-status" role="status" aria-live="polite"></span>
+    </section>
+
+    <section class="card">
+      <h2>Ledger scan</h2>
+      <div class="scan-toolbar">
+        <button type="button" class="btn" data-testid="zoom-in" id="zoom-in" aria-label="Zoom in">Zoom in (+)</button>
+        <button type="button" class="btn" data-testid="zoom-out" id="zoom-out" aria-label="Zoom out">Zoom out (−)</button>
+        <button type="button" class="btn" id="zoom-reset">Reset view</button>
+        <button type="button" class="btn" id="rotate">Rotate 90°</button>
+        <a class="btn" id="open-full" href="#" target="_blank" rel="noopener">Open full-size</a>
+      </div>
+      <div class="scan-frame" id="scan-frame" data-testid="scan-viewer" tabindex="0" role="application"
+           aria-label="Ledger scan viewer. Use plus and minus keys to zoom, drag to pan.">
+        <div class="scan-canvas" id="scan-canvas">
+          <img id="scan-img" alt="" draggable="false">
+        </div>
+      </div>
+      <p class="hint">Drag to pan, scroll or pinch to zoom, +/− keys to zoom, 0 to reset. Every scan is marked <strong>SYNTHETIC SAMPLE</strong>.</p>
+      <p id="scan-missing" class="scan-missing" hidden>No scan is available for this record.</p>
+    </section>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <p>Demo archive. All records and scans are <strong>SYNTHETIC SAMPLES</strong> — not real records. <a href="about.html">About this collection</a>.</p>
+</footer>
+
+<script src="assets/lib.js"></script>
+<script src="assets/record.js"></script>
+</body>
+</html>

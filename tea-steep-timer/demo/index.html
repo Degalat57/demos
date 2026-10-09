@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chamomile Moon - Your Tea Brand</title>
+  <meta name="description" content="Steep timer prototype for a tea product page: water temperature, leaf amount and a calm countdown with re-steeps.">
+<link rel="stylesheet" href="../assets/steep-timer.css">
+<style>
+  :root {
+    --cream: #fbf6ee;
+    --brown: #4a2c1d;
+    --matcha: #7a9a5a;
+    --amber: #c8812a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--brown);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 24px 20px 60px; }
+  header.site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid #efe3d3;
+  }
+  header.site .brand {
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+  header.site nav a {
+    color: var(--brown);
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 0.9rem;
+  }
+  .product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 36px;
+    align-items: start;
+  }
+  .product-media {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74, 44, 29, 0.12);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-media svg { width: 100%; height: auto; max-width: 360px; }
+  .product-info h1 {
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-size: 2rem;
+    margin: 0 0 6px;
+  }
+  .product-info .tagline { color: #7a5a44; margin: 0 0 16px; }
+  .price { font-size: 1.4rem; font-weight: 600; margin: 0 0 18px; }
+  .add-to-cart {
+    background: var(--amber);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .add-to-cart:hover { filter: brightness(1.05); }
+  .demo-note {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #7a5a44;
+  }
+  .description { margin-top: 24px; }
+  .description h2 {
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-size: 1.2rem;
+    margin: 0 0 8px;
+  }
+  .widget-block { margin-top: 32px; }
+  .speed-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin: 18px 0 0;
+    font-size: 0.9rem;
+    color: #7a5a44;
+  }
+  .speed-control button {
+    border: 1px solid #efe3d3;
+    background: #fff;
+    color: var(--brown);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .speed-control button[aria-pressed="true"] {
+    background: var(--matcha);
+    border-color: var(--matcha);
+    color: #fff;
+  }
+  footer.site {
+    text-align: center;
+    padding: 28px 20px;
+    color: #7a5a44;
+    font-size: 0.85rem;
+    border-top: 1px solid #efe3d3;
+    margin-top: 40px;
+  }
+  @media (max-width: 760px) {
+    .product { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="brand">Your Tea Brand</div>
+  <nav>
+    <a href="#">Shop</a>
+    <a href="#">Brew guide</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="product">
+    <div class="product-media">
+      <svg viewBox="0 0 320 320" role="img" aria-label="Illustration of a teacup with steam">
+        <defs>
+          <linearGradient id="cupGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#f3e7d6"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="160" cy="268" rx="110" ry="18" fill="#efe3d3"/>
+        <path d="M70 150 h180 a10 10 0 0 1 10 10 v40 a70 70 0 0 1 -70 70 h-60 a70 70 0 0 1 -70 -70 v-40 a10 10 0 0 1 10 -10 z" fill="url(#cupGrad)" stroke="#4a2c1d" stroke-width="4"/>
+        <path d="M250 168 a34 34 0 0 1 0 68" fill="none" stroke="#4a2c1d" stroke-width="4"/>
+        <ellipse cx="160" cy="150" rx="90" ry="16" fill="#7a9a5a" opacity="0.35"/>
+        <path d="M120 120 c-10 -20 12 -26 4 -46" fill="none" stroke="#7a9a5a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+        <path d="M160 116 c-10 -22 14 -28 6 -50" fill="none" stroke="#7a9a5a" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+        <path d="M200 120 c-10 -20 12 -26 4 -46" fill="none" stroke="#7a9a5a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <div class="product-info">
+      <h1>Chamomile Moon</h1>
+      <p class="tagline">Loose leaf herbal tea - 100 g pouch</p>
+      <p class="price">$14.00</p>
+      <button class="add-to-cart" type="button" onclick="this.textContent='Demo'">Add to cart</button>
+      <p class="demo-note">Demo store - no real checkout.</p>
+
+      <div class="description">
+        <h2>About this tea</h2>
+        <p>A soft, honeyed chamomile blended with a whisper of lemon balm. Grown for slow evenings and long conversations, it steeps into a golden cup that smells like a summer meadow at dusk.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="widget-block">
+    <div
+      class="steep-timer"
+      data-steep-timer
+      id="SteepTimer-demo"
+      data-state="idle"
+      style="--steep-accent: #c8812a;"
+    >
+      <script type="application/json" data-steep-config>
+        {
+          "teas": [
+            {
+              "type": "green",
+              "label": "Green tea",
+              "tempC": 80,
+              "seconds": 120,
+              "gramsPerCup": 2.5,
+              "infusions": 3,
+              "incrementSeconds": 30,
+              "note": "Soft water, gentle pour. Leaves unfurl slowly."
+            },
+            {
+              "type": "black",
+              "label": "Black tea",
+              "tempC": 95,
+              "seconds": 240,
+              "gramsPerCup": 2.5,
+              "infusions": 1,
+              "incrementSeconds": 0,
+              "note": "Full boil, brisk and bright."
+            },
+            {
+              "type": "oolong",
+              "label": "Oolong tea",
+              "tempC": 90,
+              "seconds": 60,
+              "gramsPerCup": 5,
+              "infusions": 5,
+              "incrementSeconds": 15,
+              "note": "Many short infusions reward patience."
+            },
+            {
+              "type": "herbal",
+              "label": "Herbal / Chamomile",
+              "tempC": 100,
+              "seconds": 300,
+              "gramsPerCup": 2,
+              "infusions": 1,
+              "incrementSeconds": 0,
+              "note": "Cover the cup to keep the aromatics in."
+            },
+            {
+              "type": "white",
+              "label": "White tea",
+              "tempC": 85,
+              "seconds": 180,
+              "gramsPerCup": 3,
+              "infusions": 2,
+              "incrementSeconds": 60,
+              "note": "Delicate: cooler water, longer wait."
+            }
+          ],
+          "showFahrenheit": true,
+          "chime": true,
+          "heading": "Brew it perfectly",
+          "subheading": "Your ideal steep, timed to the second."
+        }
+      </script>
+      <div class="steep-timer__inner">
+        <header class="steep-timer__head">
+          <h2 class="steep-timer__heading">Brew it perfectly</h2>
+          <p class="steep-timer__subheading">Your ideal steep, timed to the second.</p>
+        </header>
+        <div class="steep-timer__body" data-steep-body></div>
+        <p class="steep-timer__status" data-testid="status" aria-live="polite" role="status"></p>
+      </div>
+    </div>
+
+    <div class="speed-control" role="group" aria-label="Demo speed">
+      <span>Demo speed:</span>
+      <button type="button" data-speed-btn="1" aria-pressed="true">1x</button>
+      <button type="button" data-speed-btn="10" aria-pressed="false">10x</button>
+      <button type="button" data-speed-btn="60" aria-pressed="false">60x</button>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  Prototype - works in any Shopify 2.0 theme as a section
+</footer>
+
+<script src="../assets/steep-timer.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var root = document.querySelector('[data-steep-timer]');
+    var btns = document.querySelectorAll('[data-speed-btn]');
+    function apply(speed) {
+      if (!root) return;
+      if (root.__steepTimer) {
+        root.__steepTimer.destroy();
+        delete root.__steepTimer;
+      }
+      root.setAttribute('data-speed', String(speed));
+      if (window.SteepTimer) window.SteepTimer.init(root);
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-speed-btn') === String(speed) ? 'true' : 'false');
+      }
+    }
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function () {
+        apply(this.getAttribute('data-speed-btn'));
+      });
+    }
+  });
+</script>
+<div role="note" style="position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#1f2937;color:#fff;font:13px/1.4 system-ui,sans-serif;padding:6px 12px;text-align:center">Demo build &middot; all names and data shown are synthetic sample data</div>
+</body>
+</html>

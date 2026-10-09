@@ -1,0 +1,335 @@
+.steep-timer {
+  --steep-bg: #fbf6ee;
+  --steep-ink: #4a2c1d;
+  --steep-accent: #c8812a;
+  --steep-matcha: #7a9a5a;
+  --steep-soft: #efe3d3;
+  --steep-radius: 18px;
+  --steep-shadow: 0 10px 30px rgba(74, 44, 29, 0.12);
+  --steep-serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --steep-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--steep-bg);
+  color: var(--steep-ink);
+  border-radius: var(--steep-radius);
+  box-shadow: var(--steep-shadow);
+  padding: 24px;
+  font-family: var(--steep-sans);
+  line-height: 1.5;
+  max-width: 560px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.steep-timer *,
+.steep-timer *::before,
+.steep-timer *::after {
+  box-sizing: border-box;
+}
+
+.steep-timer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.steep-timer__head {
+  text-align: center;
+}
+
+.steep-timer__heading {
+  font-family: var(--steep-serif);
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+  color: var(--steep-ink);
+  letter-spacing: 0.01em;
+}
+
+.steep-timer__subheading {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #7a5a44;
+}
+
+.steep-timer__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.steep-timer__segment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  background: var(--steep-soft);
+  padding: 6px;
+  border-radius: 999px;
+}
+
+.steep-timer__seg-btn {
+  border: none;
+  background: transparent;
+  color: var(--steep-ink);
+  font-family: var(--steep-sans);
+  font-size: 0.85rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.steep-timer__seg-btn:hover {
+  background: rgba(200, 129, 42, 0.15);
+}
+
+.steep-timer__seg-btn[aria-pressed="true"] {
+  background: var(--steep-accent);
+  color: #fff;
+}
+
+.steep-timer__seg-btn:focus-visible,
+.steep-timer__btn:focus-visible,
+.steep-timer__cup-select:focus-visible {
+  outline: 3px solid var(--steep-matcha);
+  outline-offset: 2px;
+}
+
+.steep-timer__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.steep-timer__chip {
+  background: #fff;
+  border: 1px solid var(--steep-soft);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  color: var(--steep-ink);
+  box-shadow: 0 2px 6px rgba(74, 44, 29, 0.06);
+}
+
+.steep-timer__cup-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.steep-timer__cup-label {
+  color: #7a5a44;
+}
+
+.steep-timer__cup-select {
+  font-family: var(--steep-sans);
+  font-size: 0.9rem;
+  color: var(--steep-ink);
+  background: #fff;
+  border: 1px solid var(--steep-soft);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.steep-timer__ring-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steep-timer__ring {
+  display: block;
+  width: 220px;
+  height: 220px;
+}
+
+.steep-timer__ring-track {
+  fill: none;
+  stroke: var(--steep-soft);
+  stroke-width: 12;
+}
+
+.steep-timer__ring-progress {
+  fill: none;
+  stroke: var(--steep-accent);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.25s linear;
+}
+
+.steep-timer__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.steep-timer__time {
+  font-family: var(--steep-serif);
+  font-size: 2.6rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--steep-ink);
+  line-height: 1;
+}
+
+.steep-timer__infusion {
+  font-size: 0.8rem;
+  color: #7a5a44;
+  margin-top: 6px;
+}
+
+.steep-timer__steam {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.steep-timer[data-state="steeping"] .steep-timer__steam {
+  opacity: 1;
+}
+
+.steep-timer__steam-path {
+  fill: none;
+  stroke: var(--steep-matcha);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0.55;
+  animation: steep-steam 3.2s ease-in-out infinite;
+}
+
+.steep-timer__steam-path--b {
+  animation-delay: 1.1s;
+  opacity: 0.4;
+}
+
+@keyframes steep-steam {
+  0% { transform: translateY(6px); opacity: 0; }
+  30% { opacity: 0.6; }
+  100% { transform: translateY(-10px); opacity: 0; }
+}
+
+.steep-timer__hint {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--steep-matcha);
+  font-style: italic;
+  text-align: center;
+  min-height: 1.4em;
+}
+
+.steep-timer__note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #7a5a44;
+  text-align: center;
+  max-width: 40ch;
+}
+
+.steep-timer__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.steep-timer__btn {
+  font-family: var(--steep-sans);
+  font-size: 0.95rem;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--steep-soft);
+  background: #fff;
+  color: var(--steep-ink);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.steep-timer__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(74, 44, 29, 0.12);
+}
+
+.steep-timer__btn:active {
+  transform: translateY(0);
+}
+
+.steep-timer__btn--primary {
+  background: var(--steep-accent);
+  border-color: var(--steep-accent);
+  color: #fff;
+  font-weight: 600;
+  min-width: 120px;
+}
+
+.steep-timer__btn--next {
+  background: var(--steep-matcha);
+  border-color: var(--steep-matcha);
+  color: #fff;
+}
+
+.steep-timer__status {
+  margin: 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--steep-ink);
+  min-height: 1.4em;
+}
+
+.steep-timer.is-ready {
+  animation: steep-ready-pulse 1.2s ease-in-out 2;
+}
+
+@keyframes steep-ready-pulse {
+  0%, 100% { box-shadow: var(--steep-shadow); }
+  50% { box-shadow: 0 0 0 6px rgba(122, 154, 90, 0.25), var(--steep-shadow); }
+}
+
+@media (max-width: 600px) {
+  .steep-timer {
+    padding: 18px;
+    border-radius: 14px;
+  }
+  .steep-timer__ring-wrap,
+  .steep-timer__ring {
+    width: 180px;
+    height: 180px;
+  }
+  .steep-timer__time {
+    font-size: 2.1rem;
+  }
+  .steep-timer__controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  .steep-timer__btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steep-timer__ring-progress {
+    transition: none;
+  }
+  .steep-timer__steam-path {
+    animation: none;
+    opacity: 0.35;
+  }
+  .steep-timer.is-ready {
+    animation: none;
+  }
+  .steep-timer__btn {
+    transition: none;
+  }
+}
