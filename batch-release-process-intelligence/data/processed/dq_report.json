@@ -1,0 +1,214 @@
+{
+ "rules": {
+  "R2_duplicates_collapsed": {
+   "total": 181,
+   "by_source": {
+    "MES_BATCH_RECORD": 55,
+    "MSEG": 20,
+    "QALS": 23,
+    "QAMR": 22,
+    "AFRU": 61
+   }
+  },
+  "R3_suspected_resends": {
+   "count": 3,
+   "examples": [
+    {
+     "case_id": "2200|MAT-100020|B26B00005",
+     "activity": "Batch Record Completed",
+     "ts_end": "2026-01-08 09:33:01",
+     "source_table": "MES_BATCH_RECORD",
+     "source_key": "MES0700028"
+    },
+    {
+     "case_id": "1100|MAT-100020|B26A00134",
+     "activity": "Batch Record Completed",
+     "ts_end": "2026-04-01 14:10:48",
+     "source_table": "MES_BATCH_RECORD",
+     "source_key": "MES0700702"
+    },
+    {
+     "case_id": "1100|MAT-100010|B26A00230",
+     "activity": "Batch Record Completed",
+     "ts_end": "2026-06-12 16:54:00",
+     "source_table": "MES_BATCH_RECORD",
+     "source_key": "MES0701177"
+    }
+   ]
+  },
+  "R4_lineage": {
+   "links": 62,
+   "splits": 40,
+   "merges": 22,
+   "inherited_events": 62,
+   "lineage_parents_excluded_from_release_kpis": 42
+  },
+  "R6_start_after_end_dropped": 0,
+  "R1_start_times": {
+   "QC Results Recorded": {
+    "events": 713,
+    "explicit": 584,
+    "status_log": 83,
+    "none": 46,
+    "coverage_pct": 93.5
+   },
+   "Batch Record Review": {
+    "events": 829,
+    "explicit": 780,
+    "status_log": 21,
+    "none": 28,
+    "coverage_pct": 96.6
+   },
+   "QA Disposition Review": {
+    "events": 726,
+    "explicit": 639,
+    "status_log": 32,
+    "none": 55,
+    "coverage_pct": 92.4
+   },
+   "Manufacturing Executed": {
+    "events": 736,
+    "explicit": 672,
+    "status_log": 32,
+    "none": 32,
+    "coverage_pct": 95.7
+   }
+  },
+  "R5_crosswalk": {
+   "distinct_source_ids": 1352,
+   "by_method": [
+    {
+     "source_system": "MES",
+     "method": "ambiguous (10 candidates)",
+     "ids": 1
+    },
+    {
+     "source_system": "MES",
+     "method": "ambiguous (21 candidates)",
+     "ids": 4
+    },
+    {
+     "source_system": "MES",
+     "method": "exact after normalisation",
+     "ids": 667
+    },
+    {
+     "source_system": "MES",
+     "method": "fuzzy (edit distance 1), resolved by timing among 10",
+     "ids": 1
+    },
+    {
+     "source_system": "MES",
+     "method": "fuzzy (edit distance 1), resolved by timing among 2",
+     "ids": 1
+    },
+    {
+     "source_system": "MES",
+     "method": "fuzzy (edit distance 1), resolved by timing among 20",
+     "ids": 1
+    },
+    {
+     "source_system": "MES",
+     "method": "fuzzy (edit distance 1), unique",
+     "ids": 4
+    },
+    {
+     "source_system": "MES",
+     "method": "unmatched",
+     "ids": 4
+    },
+    {
+     "source_system": "QMS",
+     "method": "ambiguous (19 candidates)",
+     "ids": 1
+    },
+    {
+     "source_system": "QMS",
+     "method": "ambiguous (21 candidates)",
+     "ids": 5
+    },
+    {
+     "source_system": "QMS",
+     "method": "ambiguous (22 candidates)",
+     "ids": 1
+    },
+    {
+     "source_system": "QMS",
+     "method": "exact after normalisation",
+     "ids": 662
+    }
+   ],
+   "included_min_conf": 0.8,
+   "rows_excluded": {
+    "MES": 25,
+    "QMS": 9
+   },
+   "unmatched_examples": [
+    {
+     "source_system": "MES",
+     "plant": "1100",
+     "source_id": "1100-b26a0015",
+     "method": "ambiguous (21 candidates)"
+    },
+    {
+     "source_system": "MES",
+     "plant": "1100",
+     "source_id": "1100-b26a0028",
+     "method": "ambiguous (21 candidates)"
+    },
+    {
+     "source_system": "MES",
+     "plant": "1100",
+     "source_id": "1100-b26a003o3",
+     "method": "ambiguous (10 candidates)"
+    },
+    {
+     "source_system": "MES",
+     "plant": "1100",
+     "source_id": "UNK-1869",
+     "method": "unmatched"
+    },
+    {
+     "source_system": "MES",
+     "plant": "1100",
+     "source_id": "UNK-9038",
+     "method": "unmatched"
+    },
+    {
+     "source_system": "MES",
+     "plant": "2200",
+     "source_id": "2200-b26b0011",
+     "method": "ambiguous (21 candidates)"
+    },
+    {
+     "source_system": "MES",
+     "plant": "2200",
+     "source_id": "2200-b26b0029",
+     "method": "ambiguous (21 candidates)"
+    },
+    {
+     "source_system": "MES",
+     "plant": "2200",
+     "source_id": "UNK-8868",
+     "method": "unmatched"
+    }
+   ]
+  }
+ },
+ "tables": {
+  "EXCEPTIONAL_EVENTS": 2,
+  "QAVE": 679,
+  "QALS": 744,
+  "MSEG": 703,
+  "AFRU": 2371,
+  "QMS_DISPOSITION": 799,
+  "MES_BATCH_RECORD": 1896,
+  "QAMR": 735,
+  "STATUS_LOG": 197,
+  "INTERVENTIONS": 1,
+  "LINEAGE": 62,
+  "QMEL": 163
+ },
+ "events": 6485,
+ "cases_in_log": 725
+}

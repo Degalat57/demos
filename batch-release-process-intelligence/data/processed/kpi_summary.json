@@ -1,0 +1,548 @@
+{
+ "overall": {
+  "n_cases": 683,
+  "n_closed": 668,
+  "n_open": 15,
+  "cycle_mean_d": 15.1594,
+  "cycle_median_d": 13.9928,
+  "cycle_p90_d": 23.9617,
+  "target_mean_d": 13.4251,
+  "ontime_pct": 35.6287,
+  "processing_mean_d": 8.3818,
+  "waiting_mean_d": 6.8354,
+  "waiting_share_pct": 44.9189,
+  "split_coverage_pct": 82.3353,
+  "qa_wait_mean_d": 3.0945,
+  "qa_wait_coverage_pct": 90.7186,
+  "qc_delay_mean_d": 9.7965,
+  "dev_res_mean_d": 9.4711,
+  "deviation_rate_pct": 22.6048,
+  "rework_pct": 31.1377,
+  "doc_rework_pct": 17.6647,
+  "qa_repeat_pct": 9.5808,
+  "rft_pct": 57.3353,
+  "handoffs_mean": 6.9371,
+  "conformance_pct": 55.5389,
+  "compliance_pct": 97.3054
+ },
+ "overall_complete_months": {
+  "n_cases": 637,
+  "n_closed": 637,
+  "n_open": 0,
+  "cycle_mean_d": 15.3134,
+  "cycle_median_d": 14.3687,
+  "cycle_p90_d": 24.0603,
+  "target_mean_d": 13.4772,
+  "ontime_pct": 34.5369,
+  "processing_mean_d": 8.4637,
+  "waiting_mean_d": 6.897,
+  "waiting_share_pct": 44.9004,
+  "split_coverage_pct": 82.1036,
+  "qa_wait_mean_d": 3.1147,
+  "qa_wait_coverage_pct": 90.5808,
+  "qc_delay_mean_d": 9.8905,
+  "dev_res_mean_d": 9.6372,
+  "deviation_rate_pct": 22.9199,
+  "rework_pct": 31.0832,
+  "doc_rework_pct": 17.7394,
+  "qa_repeat_pct": 9.2622,
+  "rft_pct": 57.4568,
+  "handoffs_mean": 6.9419,
+  "conformance_pct": 55.573,
+  "compliance_pct": 97.1743
+ },
+ "decomposition": {
+  "Documentation (incl. rework) binding": 0.8871,
+  "QC results binding": 8.1565,
+  "Deviation closure binding": 1.9154,
+  "QA queue + disposition review": 3.3249,
+  "Usage-decision approval wait": 1.0112,
+  "_cycle_mean_d": 15.295,
+  "_n": 630
+ },
+ "maturity_q1": {
+  "score": 55.3564,
+  "dims": {
+   "performance": 30.4348,
+   "predictability": 67.3299,
+   "quality": 56.5217,
+   "standardization": 55.336,
+   "efficiency": 50.461,
+   "compliance": 97.6285,
+   "improvement": 50.0
+  },
+  "contrib": {
+   "performance": 6.087,
+   "predictability": 10.0995,
+   "quality": 11.3043,
+   "standardization": 5.5336,
+   "efficiency": 7.5691,
+   "compliance": 9.7628,
+   "improvement": 5.0
+  },
+  "n": 253
+ },
+ "maturity_jun_aug": {
+  "score": 61.8323,
+  "dims": {
+   "performance": 38.1974,
+   "predictability": 63.0664,
+   "quality": 57.9399,
+   "standardization": 56.2232,
+   "efficiency": 67.0317,
+   "compliance": 97.4249,
+   "improvement": 77.2532
+  },
+  "contrib": {
+   "performance": 7.6395,
+   "predictability": 9.46,
+   "quality": 11.588,
+   "standardization": 5.6223,
+   "efficiency": 10.0548,
+   "compliance": 9.7425,
+   "improvement": 7.7253
+  },
+  "n": 233
+ },
+ "intervention": {
+  "intervention": {
+   "id": "INT-01",
+   "site": "1100",
+   "date": "2026-06-01",
+   "title": "Quality-documentation pre-check before QA batch record review",
+   "owner": "QA Operations lead, Site A (synthetic)",
+   "target_kpis": [
+    "doc_rework",
+    "qa_wait_d",
+    "cycle_d"
+   ],
+   "pre_window": [
+    "2026-03-01",
+    "2026-05-31"
+   ],
+   "post_window": [
+    "2026-06-01",
+    "2026-08-31"
+   ]
+  },
+  "exclude_exceptional": true,
+  "open_cases_in_post_window": 0,
+  "kpis": [
+   {
+    "kpi": "doc_rework",
+    "label": "Documentation rework",
+    "kind": "rate",
+    "n_pre": 114,
+    "n_post": 127,
+    "pre": 30.7018,
+    "post": 9.4488,
+    "test": "Fisher exact (two-sided)",
+    "p_value": 0.0,
+    "change": -21.2529,
+    "change_pct": -69.2238,
+    "ci95": [
+     -30.7225,
+     -12.0528
+    ],
+    "comparison_site_change": -0.1126,
+    "did_means": -21.1403,
+    "significant": true
+   },
+   {
+    "kpi": "qa_wait_d",
+    "label": "QA review waiting",
+    "kind": "cont",
+    "n_pre": 108,
+    "n_post": 121,
+    "pre": 3.068,
+    "post": 2.017,
+    "pre_mean": 3.9009,
+    "post_mean": 2.7449,
+    "test": "Mann-Whitney U (two-sided)",
+    "p_value": 0.0,
+    "change": -1.051,
+    "change_pct": -34.2577,
+    "ci95": [
+     -1.8696,
+     -0.5295
+    ],
+    "comparison_site_change": -0.1052,
+    "did_means": -1.0509,
+    "significant": true
+   },
+   {
+    "kpi": "cycle_d",
+    "label": "Release cycle time",
+    "kind": "cont",
+    "n_pre": 114,
+    "n_post": 127,
+    "pre": 12.051,
+    "post": 10.5108,
+    "pre_mean": 14.6217,
+    "post_mean": 13.1084,
+    "test": "Mann-Whitney U (two-sided)",
+    "p_value": 0.0385,
+    "change": -1.5402,
+    "change_pct": -12.7803,
+    "ci95": [
+     -3.7959,
+     0.0619
+    ],
+    "comparison_site_change": 0.6674,
+    "did_means": -2.1807,
+    "significant": false
+   },
+   {
+    "kpi": "rft",
+    "label": "Right first time",
+    "kind": "rate",
+    "n_pre": 114,
+    "n_post": 127,
+    "pre": 53.5088,
+    "post": 60.6299,
+    "test": "Fisher exact (two-sided)",
+    "p_value": 0.2976,
+    "change": 7.1211,
+    "change_pct": 13.3084,
+    "ci95": [
+     -4.9615,
+     20.3481
+    ],
+    "comparison_site_change": 1.9451,
+    "did_means": 5.176,
+    "significant": false
+   }
+  ],
+  "post_segments_share_pct": {
+   "Documentation (incl. rework) binding": 7.7483,
+   "QC results binding": 48.7933,
+   "Deviation closure binding": 12.8979,
+   "QA queue + disposition review": 22.469,
+   "Usage-decision approval wait": 8.0916
+  },
+  "sustained": true,
+  "sustained_detail": {
+   "last6w_doc_rework_pct": 10.9375,
+   "n_last6w": 64,
+   "p_value": 0.003
+  }
+ },
+ "intervention_incl_exceptional": {
+  "intervention": {
+   "id": "INT-01",
+   "site": "1100",
+   "date": "2026-06-01",
+   "title": "Quality-documentation pre-check before QA batch record review",
+   "owner": "QA Operations lead, Site A (synthetic)",
+   "target_kpis": [
+    "doc_rework",
+    "qa_wait_d",
+    "cycle_d"
+   ],
+   "pre_window": [
+    "2026-03-01",
+    "2026-05-31"
+   ],
+   "post_window": [
+    "2026-06-01",
+    "2026-08-31"
+   ]
+  },
+  "exclude_exceptional": false,
+  "open_cases_in_post_window": 0,
+  "kpis": [
+   {
+    "kpi": "doc_rework",
+    "label": "Documentation rework",
+    "kind": "rate",
+    "n_pre": 125,
+    "n_post": 127,
+    "pre": 30.4,
+    "post": 9.4488,
+    "test": "Fisher exact (two-sided)",
+    "p_value": 0.0,
+    "change": -20.9512,
+    "change_pct": -68.9184,
+    "ci95": [
+     -30.5011,
+     -12.1091
+    ],
+    "comparison_site_change": 2.4817,
+    "did_means": -23.4329,
+    "significant": true
+   },
+   {
+    "kpi": "qa_wait_d",
+    "label": "QA review waiting",
+    "kind": "cont",
+    "n_pre": 119,
+    "n_post": 121,
+    "pre": 3.4856,
+    "post": 2.017,
+    "pre_mean": 4.0937,
+    "post_mean": 2.7449,
+    "test": "Mann-Whitney U (two-sided)",
+    "p_value": 0.0,
+    "change": -1.4687,
+    "change_pct": -42.1351,
+    "ci95": [
+     -2.0365,
+     -0.6614
+    ],
+    "comparison_site_change": 0.1246,
+    "did_means": -1.4733,
+    "significant": true
+   },
+   {
+    "kpi": "cycle_d",
+    "label": "Release cycle time",
+    "kind": "cont",
+    "n_pre": 125,
+    "n_post": 127,
+    "pre": 12.7099,
+    "post": 10.5108,
+    "pre_mean": 14.925,
+    "post_mean": 13.1084,
+    "test": "Mann-Whitney U (two-sided)",
+    "p_value": 0.0117,
+    "change": -2.1991,
+    "change_pct": -17.302,
+    "ci95": [
+     -4.124,
+     -0.1726
+    ],
+    "comparison_site_change": 1.9756,
+    "did_means": -3.7922,
+    "significant": true
+   },
+   {
+    "kpi": "rft",
+    "label": "Right first time",
+    "kind": "rate",
+    "n_pre": 125,
+    "n_post": 127,
+    "pre": 48.8,
+    "post": 60.6299,
+    "test": "Fisher exact (two-sided)",
+    "p_value": 0.0762,
+    "change": 11.8299,
+    "change_pct": 24.2416,
+    "ci95": [
+     -0.7817,
+     24.5043
+    ],
+    "comparison_site_change": -9.247,
+    "did_means": 21.0769,
+    "significant": false
+   }
+  ],
+  "post_segments_share_pct": {
+   "Documentation (incl. rework) binding": 7.7483,
+   "QC results binding": 48.7933,
+   "Deviation closure binding": 12.8979,
+   "QA queue + disposition review": 22.469,
+   "Usage-decision approval wait": 8.0916
+  },
+  "sustained": true,
+  "sustained_detail": {
+   "last6w_doc_rework_pct": 10.9375,
+   "n_last6w": 64,
+   "p_value": 0.0035
+  }
+ },
+ "opportunities": [
+  {
+   "key": "qa_wait",
+   "title": "QA review waiting",
+   "current_d": 2.635,
+   "internal_best_d": 2.1375,
+   "impact_d": 0.4975,
+   "frequency": 0.5022,
+   "frequency_pct": 50.2165,
+   "confidence": 0.9134,
+   "effort": 2.0,
+   "score": 0.1141,
+   "recommendation": "Daily QA release stand-up with a visible queue and a review-ready trigger from QC/MES"
+  },
+  {
+   "key": "deviation",
+   "title": "Deviation closure on the critical path",
+   "current_d": 2.4205,
+   "internal_best_d": 0.8467,
+   "impact_d": 1.5738,
+   "frequency": 0.1429,
+   "frequency_pct": 14.2857,
+   "confidence": 1.0,
+   "effort": 3.0,
+   "score": 0.0749,
+   "recommendation": "Triage deviations at batch completion; fast lane for minor documentation deviations"
+  },
+  {
+   "key": "qc",
+   "title": "QC result availability (oral solid)",
+   "current_d": 4.5183,
+   "internal_best_d": 4.1739,
+   "impact_d": 0.3445,
+   "frequency": 0.3203,
+   "frequency_pct": 32.0346,
+   "confidence": 1.0,
+   "effort": 2.5,
+   "score": 0.0441,
+   "recommendation": "Prioritise QC test queue by release due date; review lab capacity at peaks"
+  },
+  {
+   "key": "approval",
+   "title": "Usage-decision approval wait",
+   "current_d": 1.0329,
+   "internal_best_d": 0.8606,
+   "impact_d": 0.1723,
+   "frequency": 0.2251,
+   "frequency_pct": 22.5108,
+   "confidence": 1.0,
+   "effort": 1.0,
+   "score": 0.0388,
+   "recommendation": "Release authorisations closer to QA review completion (e.g. extended QA release coverage)"
+  },
+  {
+   "key": "doc_rework",
+   "title": "Batch record documentation rework",
+   "current_d": 0.701,
+   "internal_best_d": 0.2705,
+   "impact_d": 0.4304,
+   "frequency": 0.1212,
+   "frequency_pct": 12.1212,
+   "confidence": 1.0,
+   "effort": 1.5,
+   "score": 0.0348,
+   "recommendation": "Right-first-time pre-check of batch records before QA review (replicate INT-01)"
+  }
+ ],
+ "fast_slow": {
+  "fast": {
+   "n": 160,
+   "cycle_mean_d": 8.1947,
+   "deviation_pct": 6.25,
+   "doc_rework_pct": 8.75,
+   "doc_loops2_pct": 0.0,
+   "qa_repeat_pct": 3.75,
+   "retest_pct": 0.0,
+   "qa_wait_mean_d": 1.9963,
+   "handoffs_mean": 6.275,
+   "conformance_pct": 80.625,
+   "site_a_share_pct": 53.125
+  },
+  "slow": {
+   "n": 160,
+   "cycle_mean_d": 19.7468,
+   "deviation_pct": 49.375,
+   "doc_rework_pct": 29.375,
+   "doc_loops2_pct": 11.25,
+   "qa_repeat_pct": 13.75,
+   "retest_pct": 21.875,
+   "qa_wait_mean_d": 4.7179,
+   "handoffs_mean": 8.0563,
+   "conformance_pct": 24.375,
+   "site_a_share_pct": 70.0
+  },
+  "fast_max_ratio": 0.9373,
+  "slow_min_ratio": 1.2589
+ },
+ "facts": {
+  "late_with_dev_pct": 31.1751,
+  "ontime_with_dev_pct": 7.2727,
+  "late5_with_dev_pct": 64.7059,
+  "n_late": 417,
+  "n_ontime": 220,
+  "n_late5": 102
+ },
+ "scenario_exc02_jun_aug": {
+  "events": [
+   "EXC-2026-02"
+  ],
+  "excluded_batches": 18,
+  "reported_cycle_mean_d": 15.384,
+  "adjusted_cycle_mean_d": 14.6203,
+  "target_mean_d": 13.2791,
+  "event_effect_d": 0.7637,
+  "gap_to_target_d": 1.3412,
+  "kpi_changes": {
+   "cycle_mean_d": {
+    "reported": 15.384,
+    "adjusted": 14.6203
+   },
+   "qa_wait_mean_d": {
+    "reported": 2.635,
+    "adjusted": 2.5584
+   },
+   "qc_delay_mean_d": {
+    "reported": 10.1066,
+    "adjusted": 9.6153
+   },
+   "dev_res_mean_d": {
+    "reported": 11.7625,
+    "adjusted": 9.6434
+   },
+   "doc_rework_pct": {
+    "reported": 12.0172,
+    "adjusted": 10.6977
+   },
+   "qa_repeat_pct": {
+    "reported": 10.7296,
+    "adjusted": 11.6279
+   },
+   "rft_pct": {
+    "reported": 57.9399,
+    "adjusted": 62.7907
+   },
+   "handoffs_mean": {
+    "reported": 6.8712,
+    "adjusted": 6.6837
+   },
+   "deviation_rate_pct": {
+    "reported": 24.4635,
+    "adjusted": 18.1395
+   },
+   "conformance_pct": {
+    "reported": 56.2232,
+    "adjusted": 60.9302
+   }
+  }
+ },
+ "variants_total": 98,
+ "loops": {
+  "Batch record returned and re-reviewed": 17.6647,
+  "Batch record returned twice or more": 4.9401,
+  "Repeated QA disposition review (query)": 9.5808,
+  "Second inspection lot (retest)": 5.3892,
+  "Deviation reopened": 1.9461,
+  "Usage decision changed": 1.6467,
+  "_n": 668
+ },
+ "conformance": {
+  "conformant_pct": 55.5389,
+  "issues": {
+   "extra: Deviation Raised": 151,
+   "extra: Deviation Closed": 151,
+   "repeated: Batch Record Review": 118,
+   "extra: Batch Record Returned": 118,
+   "extra: Batch Record Corrected": 118,
+   "repeated: QA Disposition Review": 64,
+   "extra: QA Query Raised": 64,
+   "repeated: Inspection Lot Created": 36,
+   "repeated: QC Results Recorded": 36,
+   "extra: Deviation Reopened": 13,
+   "repeated: Usage Decision": 11,
+   "missing: Batch Record Completed": 9
+  },
+  "_n": 668
+ },
+ "maturity_change": {
+  "performance": 1.5525,
+  "predictability": -0.6395,
+  "quality": 0.2836,
+  "standardization": 0.0887,
+  "efficiency": 2.4856,
+  "compliance": -0.0204,
+  "improvement": 2.7253
+ }
+}

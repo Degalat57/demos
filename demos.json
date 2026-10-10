@@ -1,4 +1,9 @@
 {
+ "batch-release-process-intelligence": {
+  "slug": "batch-release-process-intelligence",
+  "summary": "Process mining, deterministic KPIs and an auditable copilot for pharmaceutical batch review and release: an SAP-style extract (order confirmations, goods receipts, inspection lots, results, deviations, usage decisions) becomes an event log with a data-quality report, outcome-to-process KPI drivers, an explainable maturity score, an intervention pre/post test and traced copilot answers.",
+  "title": "Pharma Batch Review & Release \u2014 Process Intelligence demo"
+ },
  "burial-records-archive": {
   "slug": "burial-records-archive",
   "summary": "Searchable archive of historic ledger records: fuzzy name search, county/year filters, scan viewer, staff CSV import with validation.",

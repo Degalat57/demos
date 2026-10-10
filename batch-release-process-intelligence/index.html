@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Batch Release Process Intelligence</title>
+<meta name="description" content="Demo: process mining, deterministic KPIs and an auditable copilot for pharmaceutical batch review and release. All data is synthetic.">
+<link rel="stylesheet" href="assets/app.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js" defer></script>
+</head>
+<body>
+<div class="synth" role="note"><b>Synthetic data.</b> Every batch, site, product, role and event in this demo is generated. No real company or patient data. Framework mapping is a draft for SME sign-off.</div>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand"><div class="brand-mark">BR</div><div><h1>Batch Release Process Intelligence</h1><p>Process mining · deterministic KPIs · auditable copilot</p></div></div>
+    <div class="filters" id="filters">
+      <label>Site<select id="f-site"></select></label>
+      <label>Product<select id="f-mat"></select></label>
+      <label>From<select id="f-from"></select></label>
+      <label>To<select id="f-to"></select></label>
+      <label class="chk"><input type="checkbox" id="f-exc"> Exclude exceptional events</label>
+      <button class="theme-btn" id="theme" title="Toggle light/dark" aria-label="Toggle light or dark theme">Theme</button>
+    </div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Screens"><div class="tabs-inner" role="tablist" id="tabs"></div></nav>
+<main>
+  <section class="panel" id="p-framework"></section>
+  <section class="panel" id="p-cockpit"></section>
+  <section class="panel" id="p-explorer"></section>
+  <section class="panel" id="p-kpi"></section>
+  <section class="panel" id="p-quality"></section>
+  <section class="panel" id="p-improve"></section>
+  <section class="panel" id="p-copilot"></section>
+</main>
+<footer>Demo build on synthetic data. Decision support for Process Excellence and Quality; not a GxP system and never decides batch disposition. KPIs are computed deterministically in the browser from a precomputed event log.</footer>
+<button class="btn primary fab" id="fab">Ask Copilot</button>
+<aside class="drawer" id="drawer" aria-label="Copilot">
+  <div class="drawer-h"><b>Copilot</b><span class="pill">deterministic tools · no LLM in this demo</span><button class="theme-btn" id="drawer-x" style="margin-left:auto">✕</button></div>
+  <div class="drawer-b" id="chat"></div>
+  <div class="drawer-f"><input type="text" id="ask" placeholder="Ask about the current scope…" aria-label="Question"><button class="btn primary" id="ask-go">Ask</button></div>
+</aside>
+<div class="tip" id="tip"></div>
+<script src="assets/data.js"></script>
+<script src="assets/engine.js"></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

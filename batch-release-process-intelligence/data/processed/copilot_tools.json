@@ -1,0 +1,537 @@
+[
+ {
+  "name": "get_kpis",
+  "description": "Aggregate release KPIs over closed batches in scope, optionally versus a comparison scope.",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "filters"
+   ],
+   "properties": {
+    "filters": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    },
+    "compare_to": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "name": "decompose_cycle_time",
+  "description": "Split mean release cycle time into critical-path segments that sum exactly to it.",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "filters"
+   ],
+   "properties": {
+    "filters": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    },
+    "compare_to": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "name": "compare_sites_like_for_like",
+  "description": "Compare sites on materials produced at both sites, per material.",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "filters"
+   ],
+   "properties": {
+    "filters": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "name": "list_exceptional_events",
+  "description": "List registered exceptional events, optionally similar to one event (same category or site).",
+  "parameters": {
+   "type": "object",
+   "properties": {
+    "similar_to": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ {
+  "name": "scenario_exclude",
+  "description": "Recompute KPIs with the batches linked to the given exceptional events excluded.",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "event_ids",
+    "filters"
+   ],
+   "properties": {
+    "event_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "filters": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    },
+    "prior": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "name": "intervention_effect",
+  "description": "Pre/post test for a recorded intervention (Mann-Whitney / Fisher + bootstrap CI, difference-in-differences against the other site).",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "intervention_id"
+   ],
+   "properties": {
+    "intervention_id": {
+     "type": "string"
+    },
+    "exclude_exceptional": {
+     "type": "boolean",
+     "default": true
+    }
+   }
+  }
+ },
+ {
+  "name": "fast_vs_slow",
+  "description": "Profile fastest vs slowest quartile of batches (cycle time relative to product target).",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "filters"
+   ],
+   "properties": {
+    "filters": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "name": "rank_opportunities",
+  "description": "Rank improvement opportunities by impact x frequency x confidence / effort.",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "filters"
+   ],
+   "properties": {
+    "filters": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "name": "framework_assessment",
+  "description": "Evaluate the DRAFT framework mapping against the data.",
+  "parameters": {
+   "type": "object",
+   "required": [
+    "framework"
+   ],
+   "properties": {
+    "framework": {
+     "type": "string"
+    },
+    "filters": {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "site": {
+       "type": "string",
+       "enum": [
+        "all",
+        "1100",
+        "2200"
+       ],
+       "default": "all"
+      },
+      "material": {
+       "type": "string",
+       "enum": [
+        "all",
+        "MAT-100010",
+        "MAT-100020",
+        "MAT-200030",
+        "MAT-200040"
+       ],
+       "default": "all"
+      },
+      "month_from": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "month_to": {
+       "type": "string",
+       "pattern": "^\\d{4}-\\d{2}$"
+      },
+      "exclude_events": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "default": []
+      }
+     }
+    }
+   }
+  }
+ }
+]

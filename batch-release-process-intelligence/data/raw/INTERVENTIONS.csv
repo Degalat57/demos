@@ -1,0 +1,2 @@
+id,site,date,title,owner,target_kpis,pre_window,post_window
+INT-01,1100,2026-06-01,Quality-documentation pre-check before QA batch record review,"QA Operations lead, Site A (synthetic)","[""doc_rework"", ""qa_wait_d"", ""cycle_d""]","[""2026-03-01"", ""2026-05-31""]","[""2026-06-01"", ""2026-08-31""]"

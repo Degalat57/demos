@@ -1,0 +1,3 @@
+id,site,start,end,category,type,title,rule
+EXC-2026-01,1100,2026-03-09,2026-03-13,Material/supplier,Production disruption,Excipient lot quarantined by supplier notification,deviation notification (QMEL) referencing EXC-2026-01
+EXC-2026-02,2200,2026-08-10,2026-08-21,Environmental monitoring,Production disruption,HVAC excursion in Grade B filling area,deviation notification (QMEL) referencing EXC-2026-02

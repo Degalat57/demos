@@ -1,0 +1,1042 @@
+[
+ {
+  "question": "How is batch release performing this month?",
+  "intent": "performance",
+  "tool_calls": [
+   {
+    "tool": "get_kpis",
+    "args": {
+     "filters": {
+      "month_from": "2026-08",
+      "month_to": "2026-08"
+     },
+     "compare_to": {
+      "month_from": "2026-07",
+      "month_to": "2026-07"
+     }
+    },
+    "query": "SELECT AVG(cycle_d), AVG(rft), AVG(ontime), ... FROM cases WHERE closed AND month >= '2026-08' AND month <= '2026-08' ; SELECT same KPIs FROM cases WHERE closed AND month >= '2026-07' AND month <= '2026-07'",
+    "rows": 79,
+    "result": {
+     "scope": {
+      "n_cases": 79,
+      "n_closed": 79,
+      "n_open": 0,
+      "cycle_mean_d": 16.3873,
+      "cycle_median_d": 18.287,
+      "cycle_p90_d": 25.136,
+      "target_mean_d": 13.6582,
+      "ontime_pct": 25.3165,
+      "processing_mean_d": 8.737,
+      "waiting_mean_d": 7.0806,
+      "waiting_share_pct": 44.7641,
+      "split_coverage_pct": 84.8101,
+      "qa_wait_mean_d": 2.9191,
+      "qa_wait_coverage_pct": 92.4051,
+      "qc_delay_mean_d": 10.7574,
+      "dev_res_mean_d": 13.3263,
+      "deviation_rate_pct": 34.1772,
+      "rework_pct": 31.6456,
+      "doc_rework_pct": 16.4557,
+      "qa_repeat_pct": 7.5949,
+      "rft_pct": 49.3671,
+      "handoffs_mean": 7.2785,
+      "conformance_pct": 48.1013,
+      "compliance_pct": 97.4684
+     },
+     "compare": {
+      "n_cases": 88,
+      "n_closed": 88,
+      "n_open": 0,
+      "cycle_mean_d": 14.5111,
+      "cycle_median_d": 13.2622,
+      "cycle_p90_d": 22.6388,
+      "target_mean_d": 13.5227,
+      "ontime_pct": 43.1818,
+      "processing_mean_d": 8.2795,
+      "waiting_mean_d": 5.8966,
+      "waiting_share_pct": 41.5955,
+      "split_coverage_pct": 81.8182,
+      "qa_wait_mean_d": 2.4117,
+      "qa_wait_coverage_pct": 89.7727,
+      "qc_delay_mean_d": 9.9781,
+      "dev_res_mean_d": 8.2201,
+      "deviation_rate_pct": 14.7727,
+      "rework_pct": 28.4091,
+      "doc_rework_pct": 9.0909,
+      "qa_repeat_pct": 12.5,
+      "rft_pct": 65.9091,
+      "handoffs_mean": 6.5455,
+      "conformance_pct": 63.6364,
+      "compliance_pct": 96.5909
+     },
+     "diff": {
+      "cycle_mean_d": 1.8762,
+      "cycle_median_d": 5.0248,
+      "cycle_p90_d": 2.4973,
+      "target_mean_d": 0.1355,
+      "ontime_pct": -17.8654,
+      "processing_mean_d": 0.4575,
+      "waiting_mean_d": 1.184,
+      "waiting_share_pct": 3.1686,
+      "split_coverage_pct": 2.9919,
+      "qa_wait_mean_d": 0.5074,
+      "qa_wait_coverage_pct": 2.6323,
+      "qc_delay_mean_d": 0.7793,
+      "dev_res_mean_d": 5.1062,
+      "deviation_rate_pct": 19.4045,
+      "rework_pct": 3.2365,
+      "doc_rework_pct": 7.3648,
+      "qa_repeat_pct": -4.9051,
+      "rft_pct": -16.542,
+      "handoffs_mean": 0.733,
+      "conformance_pct": -15.5351,
+      "compliance_pct": 0.8774
+     }
+    }
+   },
+   {
+    "tool": "get_kpis",
+    "args": {
+     "filters": {
+      "month_from": "2026-09",
+      "month_to": "2026-09"
+     }
+    },
+    "query": "SELECT AVG(cycle_d), AVG(rft), AVG(ontime), ... FROM cases WHERE closed AND month >= '2026-09' AND month <= '2026-09'",
+    "rows": 31,
+    "result": {
+     "scope": {
+      "n_cases": 46,
+      "n_closed": 31,
+      "n_open": 15,
+      "cycle_mean_d": 11.9964,
+      "cycle_median_d": 9.8355,
+      "cycle_p90_d": 20.8392,
+      "target_mean_d": 12.3548,
+      "ontime_pct": 58.0645,
+      "processing_mean_d": 6.7967,
+      "waiting_mean_d": 5.6428,
+      "waiting_share_pct": 45.3622,
+      "split_coverage_pct": 87.0968,
+      "qa_wait_mean_d": 2.6928,
+      "qa_wait_coverage_pct": 93.5484,
+      "qc_delay_mean_d": 7.8646,
+      "dev_res_mean_d": 4.6202,
+      "deviation_rate_pct": 16.129,
+      "rework_pct": 32.2581,
+      "doc_rework_pct": 16.129,
+      "qa_repeat_pct": 16.129,
+      "rft_pct": 54.8387,
+      "handoffs_mean": 6.8387,
+      "conformance_pct": 54.8387,
+      "compliance_pct": 100.0
+     }
+    }
+   }
+  ],
+  "answer": [
+   {
+    "type": "fact",
+    "text": "Latest complete month (2026-08, 79 batches released): mean release cycle 16.4 d against a product-weighted target of 13.7 d; 25% released within target; right first time 49%."
+   },
+   {
+    "type": "fact",
+    "text": "Versus 2026-07 the mean cycle changed by +1.9 d and right first time by -16.5 points."
+   },
+   {
+    "type": "inference",
+    "text": "September is shown as provisional: 15 of 46 batches completed in 2026-09 have no usage decision yet, so its average is biased towards fast batches (right-censoring)."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Why did performance deteriorate in August?",
+  "intent": "deteriorate",
+  "tool_calls": [
+   {
+    "tool": "decompose_cycle_time",
+    "args": {
+     "filters": {
+      "month_from": "2026-08",
+      "month_to": "2026-08"
+     },
+     "compare_to": {
+      "month_from": "2026-07",
+      "month_to": "2026-07"
+     }
+    },
+    "query": "SELECT AVG(seg_documentation), AVG(seg_qc), AVG(seg_deviation), AVG(seg_qa_stage), AVG(seg_approval) FROM cases WHERE closed AND month >= '2026-08' AND month <= '2026-08' ; SELECT same segments FROM cases WHERE closed AND month >= '2026-07' AND month <= '2026-07'",
+    "rows": 79,
+    "result": {
+     "scope": {
+      "Documentation (incl. rework) binding": 0.7337,
+      "QC results binding": 8.6662,
+      "Deviation closure binding": 2.6419,
+      "QA queue + disposition review": 3.2255,
+      "Usage-decision approval wait": 1.12,
+      "_cycle_mean_d": 16.3873,
+      "_n": 79
+     },
+     "compare": {
+      "Documentation (incl. rework) binding": 0.6605,
+      "QC results binding": 8.9919,
+      "Deviation closure binding": 1.0696,
+      "QA queue + disposition review": 2.7808,
+      "Usage-decision approval wait": 0.9846,
+      "_cycle_mean_d": 14.4874,
+      "_n": 86
+     },
+     "diff": {
+      "Documentation (incl. rework) binding": 0.0732,
+      "QC results binding": -0.3257,
+      "Deviation closure binding": 1.5724,
+      "QA queue + disposition review": 0.4447,
+      "Usage-decision approval wait": 0.1354
+     }
+    }
+   },
+   {
+    "tool": "list_exceptional_events",
+    "args": {},
+    "query": "SELECT exc_event, COUNT(*), AVG(cycle_d) FROM cases WHERE closed AND exc_event <> '' GROUP BY exc_event",
+    "rows": 29,
+    "result": {
+     "count": 2,
+     "events": [
+      {
+       "id": "EXC-2026-01",
+       "site": "1100",
+       "start": "2026-03-09",
+       "end": "2026-03-13",
+       "category": "Material/supplier",
+       "type": "Production disruption",
+       "title": "Excipient lot quarantined by supplier notification",
+       "rule": "deviation notification (QMEL) referencing EXC-2026-01",
+       "linked_batches": 11,
+       "linked_cycle_mean_d": 18.0679,
+       "same_site_month_unaffected_cycle_mean_d": 13.2634
+      },
+      {
+       "id": "EXC-2026-02",
+       "site": "2200",
+       "start": "2026-08-10",
+       "end": "2026-08-21",
+       "category": "Environmental monitoring",
+       "type": "Production disruption",
+       "title": "HVAC excursion in Grade B filling area",
+       "rule": "deviation notification (QMEL) referencing EXC-2026-02",
+       "linked_batches": 18,
+       "linked_cycle_mean_d": 24.506,
+       "same_site_month_unaffected_cycle_mean_d": 14.8426
+      }
+     ]
+    }
+   }
+  ],
+  "answer": [
+   {
+    "type": "fact",
+    "text": "Mean cycle went from 14.5 d (July) to 16.4 d (August). The largest increase is in \"Deviation closure binding\": +1.6 d per batch."
+   },
+   {
+    "type": "fact",
+    "text": "18 batches at Site B are linked to exceptional event EXC-2026-02 (HVAC excursion in Grade B filling area); their mean cycle is 24.5 d versus 14.8 d for unaffected Site B batches of the same month."
+   },
+   {
+    "type": "hypothesis",
+    "text": "The August deterioration is mostly driven by the HVAC excursion through longer deviation closure. Test: exclude the event and recompute (next question)."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Exclude the batches affected by the HVAC excursion. Is our performance actually improving?",
+  "intent": "exclude",
+  "tool_calls": [
+   {
+    "tool": "scenario_exclude",
+    "args": {
+     "event_ids": [
+      "EXC-2026-02"
+     ],
+     "filters": {
+      "month_from": "2026-06",
+      "month_to": "2026-08"
+     },
+     "prior": {
+      "month_from": "2026-03",
+      "month_to": "2026-05"
+     }
+    },
+    "query": "SELECT AVG(cycle_d) FROM cases WHERE closed AND month >= '2026-06' AND month <= '2026-08' ; SELECT AVG(cycle_d) FROM cases WHERE closed AND month >= '2026-06' AND month <= '2026-08' AND exc_event NOT IN ('EXC-2026-02')",
+    "rows": 233,
+    "result": {
+     "events": [
+      "EXC-2026-02"
+     ],
+     "excluded_batches": 18,
+     "reported_cycle_mean_d": 15.384,
+     "adjusted_cycle_mean_d": 14.6203,
+     "target_mean_d": 13.2791,
+     "event_effect_d": 0.7637,
+     "gap_to_target_d": 1.3412,
+     "kpi_changes": {
+      "cycle_mean_d": {
+       "reported": 15.384,
+       "adjusted": 14.6203
+      },
+      "qa_wait_mean_d": {
+       "reported": 2.635,
+       "adjusted": 2.5584
+      },
+      "qc_delay_mean_d": {
+       "reported": 10.1066,
+       "adjusted": 9.6153
+      },
+      "dev_res_mean_d": {
+       "reported": 11.7625,
+       "adjusted": 9.6434
+      },
+      "doc_rework_pct": {
+       "reported": 12.0172,
+       "adjusted": 10.6977
+      },
+      "qa_repeat_pct": {
+       "reported": 10.7296,
+       "adjusted": 11.6279
+      },
+      "rft_pct": {
+       "reported": 57.9399,
+       "adjusted": 62.7907
+      },
+      "handoffs_mean": {
+       "reported": 6.8712,
+       "adjusted": 6.6837
+      },
+      "deviation_rate_pct": {
+       "reported": 24.4635,
+       "adjusted": 18.1395
+      },
+      "conformance_pct": {
+       "reported": 56.2232,
+       "adjusted": 60.9302
+      }
+     },
+     "prior_cycle_mean_d": 15.494,
+     "prior_target_mean_d": 13.7627,
+     "improvement_vs_prior_d": 0.8737,
+     "prior_gap_to_target_d": 1.7313,
+     "gap_improvement_d": 0.3901,
+     "largest_relative_change": "deviation_rate_pct",
+     "largest_change_value": -6.324
+    }
+   }
+  ],
+  "answer": [
+   {
+    "type": "fact",
+    "text": "Jun-Aug reported mean cycle 15.4 d; excluding the 18 affected batches it is 14.6 d, so the event added about 0.8 d to the reported average."
+   },
+   {
+    "type": "fact",
+    "text": "Underlying performance improved versus Mar-May (15.5 d, exceptional events excluded) by 0.9 d, but remains 1.3 d above the product-weighted target of 13.3 d."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Show me all similar exceptional events and exclude them from the last six months. Which KPI changed most?",
+  "intent": "similar_events",
+  "tool_calls": [
+   {
+    "tool": "list_exceptional_events",
+    "args": {
+     "similar_to": "EXC-2026-02"
+    },
+    "query": "SELECT exc_event, COUNT(*), AVG(cycle_d) FROM cases WHERE closed AND exc_event <> '' GROUP BY exc_event",
+    "rows": 29,
+    "result": {
+     "count": 2,
+     "events": [
+      {
+       "id": "EXC-2026-01",
+       "site": "1100",
+       "start": "2026-03-09",
+       "end": "2026-03-13",
+       "category": "Material/supplier",
+       "type": "Production disruption",
+       "title": "Excipient lot quarantined by supplier notification",
+       "rule": "deviation notification (QMEL) referencing EXC-2026-01",
+       "linked_batches": 11,
+       "linked_cycle_mean_d": 18.0679,
+       "same_site_month_unaffected_cycle_mean_d": 13.2634
+      },
+      {
+       "id": "EXC-2026-02",
+       "site": "2200",
+       "start": "2026-08-10",
+       "end": "2026-08-21",
+       "category": "Environmental monitoring",
+       "type": "Production disruption",
+       "title": "HVAC excursion in Grade B filling area",
+       "rule": "deviation notification (QMEL) referencing EXC-2026-02",
+       "linked_batches": 18,
+       "linked_cycle_mean_d": 24.506,
+       "same_site_month_unaffected_cycle_mean_d": 14.8426
+      }
+     ]
+    }
+   },
+   {
+    "tool": "scenario_exclude",
+    "args": {
+     "event_ids": [
+      "EXC-2026-01",
+      "EXC-2026-02"
+     ],
+     "filters": {
+      "month_from": "2026-03",
+      "month_to": "2026-08"
+     }
+    },
+    "query": "SELECT AVG(cycle_d) FROM cases WHERE closed AND month >= '2026-03' AND month <= '2026-08' ; SELECT AVG(cycle_d) FROM cases WHERE closed AND month >= '2026-03' AND month <= '2026-08' AND exc_event NOT IN ('EXC-2026-01', 'EXC-2026-02')",
+    "rows": 469,
+    "result": {
+     "events": [
+      "EXC-2026-01",
+      "EXC-2026-02"
+     ],
+     "excluded_batches": 29,
+     "reported_cycle_mean_d": 15.4394,
+     "adjusted_cycle_mean_d": 15.0028,
+     "target_mean_d": 13.5773,
+     "event_effect_d": 0.4366,
+     "gap_to_target_d": 1.4255,
+     "kpi_changes": {
+      "cycle_mean_d": {
+       "reported": 15.4394,
+       "adjusted": 15.0028
+      },
+      "qa_wait_mean_d": {
+       "reported": 2.9869,
+       "adjusted": 2.8791
+      },
+      "qc_delay_mean_d": {
+       "reported": 10.1113,
+       "adjusted": 9.926
+      },
+      "dev_res_mean_d": {
+       "reported": 10.2425,
+       "adjusted": 9.0223
+      },
+      "doc_rework_pct": {
+       "reported": 17.0576,
+       "adjusted": 16.3636
+      },
+      "qa_repeat_pct": {
+       "reported": 10.2345,
+       "adjusted": 10.4545
+      },
+      "rft_pct": {
+       "reported": 56.9296,
+       "adjusted": 60.6818
+      },
+      "handoffs_mean": {
+       "reported": 6.9424,
+       "adjusted": 6.8091
+      },
+      "deviation_rate_pct": {
+       "reported": 23.4542,
+       "adjusted": 18.4091
+      },
+      "conformance_pct": {
+       "reported": 55.0107,
+       "adjusted": 58.6364
+      }
+     },
+     "largest_relative_change": "deviation_rate_pct",
+     "largest_change_value": -5.0451
+    }
+   }
+  ],
+  "answer": [
+   {
+    "type": "fact",
+    "text": "The register holds 2 exceptional events: EXC-2026-01 Excipient lot quarantined by supplier notification at Site A (11 batches, mean cycle 18.1 d); EXC-2026-02 HVAC excursion in Grade B filling area at Site B (18 batches, mean cycle 24.5 d)."
+   },
+   {
+    "type": "fact",
+    "text": "Excluding both from Mar-Aug removes 29 batches: mean cycle 15.4 d -> 15.0 d. The KPI that changed most (relative) is share of batches with a deviation: 23.5 -> 18.4."
+   },
+   {
+    "type": "inference",
+    "text": "Events are matched by an explicit reference on the deviation notification, not by text similarity; unlinked batches are never excluded silently."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Why is Site A slower than Site B on the same products?",
+  "intent": "compare_sites",
+  "tool_calls": [
+   {
+    "tool": "compare_sites_like_for_like",
+    "args": {
+     "filters": {
+      "month_from": "2026-01",
+      "month_to": "2026-05",
+      "exclude_events": [
+       "EXC-2026-01",
+       "EXC-2026-02"
+      ]
+     }
+    },
+    "query": "SELECT material, site, AVG(...) FROM cases WHERE closed AND month >= '2026-01' AND month <= '2026-05' AND exc_event NOT IN ('EXC-2026-01', 'EXC-2026-02') AND material IN (made at both sites) GROUP BY material, site",
+    "rows": 280,
+    "result": [
+     {
+      "product": "Capsule 25 mg",
+      "site": "Site A",
+      "n_closed": 74,
+      "cycle_mean_d": 11.1229,
+      "qa_wait_mean_d": 4.2036,
+      "doc_rework_pct": 22.973,
+      "rft_pct": 62.1622,
+      "segments": {
+       "Documentation (incl. rework) binding": 2.1436,
+       "QC results binding": 2.2272,
+       "Deviation closure binding": 1.2684,
+       "QA queue + disposition review": 4.4153,
+       "Usage-decision approval wait": 1.0943
+      }
+     },
+     {
+      "product": "Capsule 25 mg",
+      "site": "Site B",
+      "n_closed": 66,
+      "cycle_mean_d": 8.9028,
+      "qa_wait_mean_d": 2.2684,
+      "doc_rework_pct": 7.5758,
+      "rft_pct": 71.2121,
+      "segments": {
+       "Documentation (incl. rework) binding": 0.8207,
+       "QC results binding": 2.8064,
+       "Deviation closure binding": 1.8879,
+       "QA queue + disposition review": 2.5299,
+       "Usage-decision approval wait": 0.858
+      }
+     },
+     {
+      "product": "Injection 5 mL",
+      "site": "Site A",
+      "n_closed": 55,
+      "cycle_mean_d": 23.2095,
+      "qa_wait_mean_d": 3.9904,
+      "doc_rework_pct": 38.1818,
+      "rft_pct": 41.8182,
+      "segments": {
+       "Documentation (incl. rework) binding": 0.0,
+       "QC results binding": 15.4561,
+       "Deviation closure binding": 2.4803,
+       "QA queue + disposition review": 4.197,
+       "Usage-decision approval wait": 1.0849
+      }
+     },
+     {
+      "product": "Injection 5 mL",
+      "site": "Site B",
+      "n_closed": 85,
+      "cycle_mean_d": 20.6684,
+      "qa_wait_mean_d": 2.1851,
+      "doc_rework_pct": 14.1176,
+      "rft_pct": 60.0,
+      "segments": {
+       "Documentation (incl. rework) binding": 0.0,
+       "QC results binding": 16.0115,
+       "Deviation closure binding": 1.2791,
+       "QA queue + disposition review": 2.3845,
+       "Usage-decision approval wait": 0.9456
+      }
+     }
+    ]
+   }
+  ],
+  "answer": [
+   {
+    "type": "fact",
+    "text": "Like-for-like, Jan-May, exceptional events excluded. Capsule 25 mg: Site A 11.1 d vs Site B 8.9 d (QA stage 4.4 vs 2.5 d; documentation rework 23% vs 8%); Injection 5 mL: Site A 23.2 d vs Site B 20.7 d (QA stage 4.2 vs 2.4 d; documentation rework 38% vs 14%)."
+   },
+   {
+    "type": "inference",
+    "text": "Comparing only materials made at both sites removes the product-mix effect (Site B makes more sterile product with a 14-day sterility test)."
+   },
+   {
+    "type": "hypothesis",
+    "text": "Site A is slower mainly because batches queue longer for QA disposition review, and documentation is sent back more often. Both are addressable process drivers."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "We introduced a quality-documentation pre-check at Site A on 1 June. Is it working?",
+  "intent": "intervention",
+  "tool_calls": [
+   {
+    "tool": "intervention_effect",
+    "args": {
+     "intervention_id": "INT-01",
+     "exclude_exceptional": true
+    },
+    "query": "SELECT kpi FROM cases WHERE closed AND site = '1100' AND mfg_complete BETWEEN '2026-03-01' AND '2026-05-31' (pre) / BETWEEN '2026-06-01' AND '2026-08-31' (post) AND exc_event = '' ; same for the other site (difference-in-differences)",
+    "rows": 241,
+    "result": {
+     "intervention": {
+      "id": "INT-01",
+      "site": "1100",
+      "date": "2026-06-01",
+      "title": "Quality-documentation pre-check before QA batch record review",
+      "owner": "QA Operations lead, Site A (synthetic)",
+      "target_kpis": [
+       "doc_rework",
+       "qa_wait_d",
+       "cycle_d"
+      ],
+      "pre_window": [
+       "2026-03-01",
+       "2026-05-31"
+      ],
+      "post_window": [
+       "2026-06-01",
+       "2026-08-31"
+      ]
+     },
+     "exclude_exceptional": true,
+     "open_cases_in_post_window": 0,
+     "kpis": [
+      {
+       "kpi": "doc_rework",
+       "label": "Documentation rework",
+       "kind": "rate",
+       "n_pre": 114,
+       "n_post": 127,
+       "pre": 30.7018,
+       "post": 9.4488,
+       "test": "Fisher exact (two-sided)",
+       "p_value": 0.0,
+       "change": -21.2529,
+       "change_pct": -69.2238,
+       "ci95": [
+        -30.7225,
+        -12.0528
+       ],
+       "comparison_site_change": -0.1126,
+       "did_means": -21.1403,
+       "significant": true
+      },
+      {
+       "kpi": "qa_wait_d",
+       "label": "QA review waiting",
+       "kind": "cont",
+       "n_pre": 108,
+       "n_post": 121,
+       "pre": 3.068,
+       "post": 2.017,
+       "pre_mean": 3.9009,
+       "post_mean": 2.7449,
+       "test": "Mann-Whitney U (two-sided)",
+       "p_value": 0.0,
+       "change": -1.051,
+       "change_pct": -34.2577,
+       "ci95": [
+        -1.8696,
+        -0.5295
+       ],
+       "comparison_site_change": -0.1052,
+       "did_means": -1.0509,
+       "significant": true
+      },
+      {
+       "kpi": "cycle_d",
+       "label": "Release cycle time",
+       "kind": "cont",
+       "n_pre": 114,
+       "n_post": 127,
+       "pre": 12.051,
+       "post": 10.5108,
+       "pre_mean": 14.6217,
+       "post_mean": 13.1084,
+       "test": "Mann-Whitney U (two-sided)",
+       "p_value": 0.0385,
+       "change": -1.5402,
+       "change_pct": -12.7803,
+       "ci95": [
+        -3.7959,
+        0.0619
+       ],
+       "comparison_site_change": 0.6674,
+       "did_means": -2.1807,
+       "significant": false
+      },
+      {
+       "kpi": "rft",
+       "label": "Right first time",
+       "kind": "rate",
+       "n_pre": 114,
+       "n_post": 127,
+       "pre": 53.5088,
+       "post": 60.6299,
+       "test": "Fisher exact (two-sided)",
+       "p_value": 0.2976,
+       "change": 7.1211,
+       "change_pct": 13.3084,
+       "ci95": [
+        -4.9615,
+        20.3481
+       ],
+       "comparison_site_change": 1.9451,
+       "did_means": 5.176,
+       "significant": false
+      }
+     ],
+     "post_segments_share_pct": {
+      "Documentation (incl. rework) binding": 7.7483,
+      "QC results binding": 48.7933,
+      "Deviation closure binding": 12.8979,
+      "QA queue + disposition review": 22.469,
+      "Usage-decision approval wait": 8.0916
+     },
+     "sustained": true,
+     "sustained_detail": {
+      "last6w_doc_rework_pct": 10.9375,
+      "n_last6w": 64,
+      "p_value": 0.003
+     }
+    }
+   }
+  ],
+  "answer": [
+   {
+    "type": "fact",
+    "text": "Documentation rework at Site A: 30.7% before -> 9.4% after (-21.3 points; 95% CI -30.7 to -12.1; Fisher p < 0.001; n = 114 / 127)."
+   },
+   {
+    "type": "fact",
+    "text": "Median QA review waiting 3.1 d -> 2.0 d (Mann-Whitney p < 0.001); median release cycle 12.1 d -> 10.5 d (p = 0.038)."
+   },
+   {
+    "type": "fact",
+    "text": "Over the same windows Site B (no pre-check) changed by -0.1 points in documentation rework; the difference-in-differences is -21.1 points."
+   },
+   {
+    "type": "fact",
+    "text": "After the intervention, 49% of the remaining Site A cycle sits in \"QC results binding\"."
+   },
+   {
+    "type": "hypothesis",
+    "text": "The pre-check caused the reduction in documentation rework. The comparison site makes a common seasonal cause unlikely, but staffing or SOP changes in the same window would need to be ruled out by the process owner."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "What do fast-release batches do differently?",
+  "intent": "fast_slow",
+  "tool_calls": [
+   {
+    "tool": "fast_vs_slow",
+    "args": {
+     "filters": {
+      "month_from": "2026-01",
+      "month_to": "2026-08"
+     }
+    },
+    "query": "SELECT cycle_d / target_d AS ratio, ... FROM cases WHERE closed AND month >= '2026-01' AND month <= '2026-08' ; quartiles of ratio",
+    "rows": 637,
+    "result": {
+     "fast": {
+      "n": 160,
+      "cycle_mean_d": 8.1947,
+      "deviation_pct": 6.25,
+      "doc_rework_pct": 8.75,
+      "doc_loops2_pct": 0.0,
+      "qa_repeat_pct": 3.75,
+      "retest_pct": 0.0,
+      "qa_wait_mean_d": 1.9963,
+      "handoffs_mean": 6.275,
+      "conformance_pct": 80.625,
+      "site_a_share_pct": 53.125
+     },
+     "slow": {
+      "n": 160,
+      "cycle_mean_d": 19.7468,
+      "deviation_pct": 49.375,
+      "doc_rework_pct": 29.375,
+      "doc_loops2_pct": 11.25,
+      "qa_repeat_pct": 13.75,
+      "retest_pct": 21.875,
+      "qa_wait_mean_d": 4.7179,
+      "handoffs_mean": 8.0563,
+      "conformance_pct": 24.375,
+      "site_a_share_pct": 70.0
+     },
+     "fast_max_ratio": 0.9373,
+     "slow_min_ratio": 1.2589,
+     "facts": {
+      "late_with_dev_pct": 31.1751,
+      "ontime_with_dev_pct": 7.2727,
+      "late5_with_dev_pct": 64.7059,
+      "n_late": 417,
+      "n_ontime": 220,
+      "n_late5": 102
+     }
+    }
+   }
+  ],
+  "answer": [
+   {
+    "type": "fact",
+    "text": "Fastest quartile (cycle <= 0.9 x target, n = 160) vs slowest quartile (>= 1.3 x target, n = 160): deviation 6% vs 49%; documentation rework 9% vs 29%; mean QA waiting 2.0 d vs 4.7 d; hand-offs 6.3 vs 8.1; expected-path conformance 81% vs 24%."
+   },
+   {
+    "type": "fact",
+    "text": "11% of slow batches went through two or more extra documentation-review cycles. Of batches more than 5 days over target, 65% had a deviation (vs 7% of batches released on time)."
+   },
+   {
+    "type": "hypothesis",
+    "text": "Deviation-closure latency and QA queueing appear to be the main contributors to slow release; association, not proven causation."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Which three issues should I address first?",
+  "intent": "opportunities",
+  "tool_calls": [
+   {
+    "tool": "rank_opportunities",
+    "args": {
+     "filters": {
+      "month_from": "2026-06",
+      "month_to": "2026-08"
+     }
+    },
+    "query": "SELECT segment means FROM cases WHERE closed AND month >= '2026-06' AND month <= '2026-08' ; internal best = min over site-quarter groups (n >= 15)",
+    "rows": 233,
+    "result": [
+     {
+      "key": "qa_wait",
+      "title": "QA review waiting",
+      "current_d": 2.635,
+      "internal_best_d": 2.1375,
+      "impact_d": 0.4975,
+      "frequency": 0.5022,
+      "frequency_pct": 50.2165,
+      "confidence": 0.9134,
+      "effort": 2.0,
+      "score": 0.1141,
+      "recommendation": "Daily QA release stand-up with a visible queue and a review-ready trigger from QC/MES"
+     },
+     {
+      "key": "deviation",
+      "title": "Deviation closure on the critical path",
+      "current_d": 2.4205,
+      "internal_best_d": 0.8467,
+      "impact_d": 1.5738,
+      "frequency": 0.1429,
+      "frequency_pct": 14.2857,
+      "confidence": 1.0,
+      "effort": 3.0,
+      "score": 0.0749,
+      "recommendation": "Triage deviations at batch completion; fast lane for minor documentation deviations"
+     },
+     {
+      "key": "qc",
+      "title": "QC result availability (oral solid)",
+      "current_d": 4.5183,
+      "internal_best_d": 4.1739,
+      "impact_d": 0.3445,
+      "frequency": 0.3203,
+      "frequency_pct": 32.0346,
+      "confidence": 1.0,
+      "effort": 2.5,
+      "score": 0.0441,
+      "recommendation": "Prioritise QC test queue by release due date; review lab capacity at peaks"
+     },
+     {
+      "key": "approval",
+      "title": "Usage-decision approval wait",
+      "current_d": 1.0329,
+      "internal_best_d": 0.8606,
+      "impact_d": 0.1723,
+      "frequency": 0.2251,
+      "frequency_pct": 22.5108,
+      "confidence": 1.0,
+      "effort": 1.0,
+      "score": 0.0388,
+      "recommendation": "Release authorisations closer to QA review completion (e.g. extended QA release coverage)"
+     },
+     {
+      "key": "doc_rework",
+      "title": "Batch record documentation rework",
+      "current_d": 0.701,
+      "internal_best_d": 0.2705,
+      "impact_d": 0.4304,
+      "frequency": 0.1212,
+      "frequency_pct": 12.1212,
+      "confidence": 1.0,
+      "effort": 1.5,
+      "score": 0.0348,
+      "recommendation": "Right-first-time pre-check of batch records before QA review (replicate INT-01)"
+     }
+    ]
+   }
+  ],
+  "answer": [
+   {
+    "type": "inference",
+    "text": "Ranked by impact x frequency x confidence / effort (Jun-Aug, both sites): 1) QA review waiting: 0.5 d/batch above internal best (2.6 d vs 2.1 d), affects 50% of batches, score 0.11; 2) Deviation closure on the critical path: 1.6 d/batch above internal best (2.4 d vs 0.8 d), affects 14% of batches, score 0.07; 3) QC result availability (oral solid): 0.3 d/batch above internal best (4.5 d vs 4.2 d), affects 32% of batches, score 0.04."
+   },
+   {
+    "type": "inference",
+    "text": "Recommendations: Daily QA release stand-up with a visible queue and a review-ready trigger from QC/MES | Triage deviations at batch completion; fast lane for minor documentation deviations | Prioritise QC test queue by release due date; review lab capacity at peaks. Effort/risk weights are SME assumptions and should be confirmed with the process owner."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Analyze this process against GMP.",
+  "intent": "framework",
+  "tool_calls": [
+   {
+    "tool": "framework_assessment",
+    "args": {
+     "framework": "EU GMP Annex 16",
+     "filters": {
+      "month_from": "2026-01",
+      "month_to": "2026-08"
+     }
+    },
+    "query": "SELECT control checks per mapping row FROM cases WHERE closed AND month >= '2026-01' AND month <= '2026-08'",
+    "rows": 637,
+    "result": [
+     {
+      "framework": "EU GMP Annex 16",
+      "ref": "QP certification and batch release",
+      "expectation": "Before certification, all required testing is complete and results are available.",
+      "area": "QA disposition & release",
+      "check": "ud_after_qc",
+      "evidence": "% of usage decisions recorded after the last QC result",
+      "aligned_if": "== 100%",
+      "value": 100.0,
+      "evidence_value": "100.0% of 637 batches",
+      "status": "aligned"
+     },
+     {
+      "framework": "EU GMP Annex 16",
+      "ref": "QP certification and batch release",
+      "expectation": "Deviations affecting the batch are assessed and closed (or justified) before certification.",
+      "area": "Deviation management",
+      "check": "ud_after_dev",
+      "evidence": "% of batches with deviations whose usage decision follows deviation closure",
+      "aligned_if": "== 100%",
+      "value": 100.0,
+      "evidence_value": "100.0% of 146 batches",
+      "status": "aligned"
+     },
+     {
+      "framework": "EU GMP Annex 16",
+      "ref": "QP certification and batch release",
+      "expectation": "QA disposition review is based on a complete batch record and closed exceptions.",
+      "area": "QA disposition & release",
+      "check": "seq_exception",
+      "evidence": "% of batches where QA disposition review started before deviation closure",
+      "aligned_if": "== 0%",
+      "value": 1.3699,
+      "evidence_value": "1.4% of 146 batches with deviations",
+      "status": "investigate"
+     }
+    ]
+   }
+  ],
+  "answer": [
+   {
+    "type": "framework",
+    "text": "Reference (EU GMP Annex 16, QP certification and batch release): Before certification, all required testing is complete and results are available."
+   },
+   {
+    "type": "fact",
+    "text": "Evidence: 100.0% of 637 batches."
+   },
+   {
+    "type": "inference",
+    "text": "Status: aligned."
+   },
+   {
+    "type": "framework",
+    "text": "Reference (EU GMP Annex 16, QP certification and batch release): Deviations affecting the batch are assessed and closed (or justified) before certification."
+   },
+   {
+    "type": "fact",
+    "text": "Evidence: 100.0% of 146 batches."
+   },
+   {
+    "type": "inference",
+    "text": "Status: aligned."
+   },
+   {
+    "type": "framework",
+    "text": "Reference (EU GMP Annex 16, QP certification and batch release): QA disposition review is based on a complete batch record and closed exceptions."
+   },
+   {
+    "type": "fact",
+    "text": "Evidence: 1.4% of 146 batches with deviations."
+   },
+   {
+    "type": "inference",
+    "text": "Status: investigate."
+   },
+   {
+    "type": "inference",
+    "text": "The mapping is a DRAFT for SME sign-off; the system supports, and does not replace, QP / QA judgement."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Which operator causes the most deviations?",
+  "intent": "unsupported_actor",
+  "tool_calls": [],
+  "answer": [
+   {
+    "type": "unsupported",
+    "text": "Not supported by the data. The extract carries organisational roles only (actors are anonymised), so per-person attribution is neither possible nor intended."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ },
+ {
+  "question": "Predict next month's release cycle time.",
+  "intent": "unsupported_forecast",
+  "tool_calls": [],
+  "answer": [
+   {
+    "type": "unsupported",
+    "text": "Not supported by the data. No validated forecasting model is part of this PoC; the copilot only reports measured history and recorded scenarios."
+   }
+  ],
+  "grounded": true,
+  "ungrounded_numbers": []
+ }
+]

@@ -1,0 +1,12 @@
+[project]
+name = "brpi"
+version = "0.1.0"
+description = "Batch review & release process intelligence demo (synthetic data)"
+requires-python = ">=3.10"
+dependencies = ["pandas>=2.2", "numpy>=1.26", "scipy>=1.11"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
