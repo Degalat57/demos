@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artist booking — Artist Booking (Demo)</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">Skip to content</a>
+  <div class="demo-banner" role="note">Interactive demo · Fictional artists · All payments are simulated</div>
+  <header class="app-header">
+    <a class="brand" href="#search" aria-label="Artist booking home">Artist booking <span class="tag">Demo</span></a>
+    <nav class="app-nav" aria-label="Main">
+      <a href="#search" data-view="search" aria-current="page">Find artists</a>
+      <a href="#booking" data-view="booking">Booking</a>
+      <a href="#artist" data-view="artist">Artist view</a>
+      <a href="#admin" data-view="admin">Admin view</a>
+    </nav>
+    <button id="reset-demo" type="button" class="secondary">Reset demo</button>
+  </header>
+  <main id="app" class="app-main" tabindex="-1">
+    <p id="app-status" role="status" aria-live="polite"></p>
+    <section id="view-search" class="view" aria-labelledby="h-search">
+      <div class="search-hero"><div><p class="eyebrow">THE SOUND OF YOUR NEXT OCCASION</p><h1 id="h-search">Make it a night<br>to remember.</h1><p class="hero-description">Find your sound, meet your artist, and bring your next celebration to life.</p></div><div class="hero-mark" aria-hidden="true"><span>♪</span><i></i><b>GOOD MUSIC.<br>GREAT MOMENTS.</b></div></div>
+      <div class="section-heading"><h2>Discover your next favourite</h2><p>Four distinctive sounds. One unforgettable occasion.</p></div>
+      <form id="filters" class="filters" role="search">
+        <label>Search <input id="q" type="search" placeholder="Name or genre"></label>
+        <label>Genre <select id="genre"><option value="">All</option></select></label>
+        <label>City <select id="city"><option value="">All</option></select></label>
+      </form>
+      <div id="artist-list" class="grid" aria-live="polite"></div>
+    </section>
+    <section id="view-profile" class="view" hidden aria-label="Artist profile"></section>
+    <section id="view-booking" class="view" hidden aria-labelledby="h-booking">
+      <h1 id="h-booking">Book a slot</h1>
+      <div id="booking-panel" class="card"></div>
+      <p class="note">Advance of 20% is simulated (Demo: simulated payments).</p>
+    </section>
+    <section id="view-artist" class="view" hidden aria-labelledby="h-artist">
+      <h1 id="h-artist">Artist view</h1>
+      <p class="note">Demo: simulated payments.</p>
+      <label>Choose artist <select id="dashboard-artist-select"></select></label>
+      <div id="artist-root" class="dashboard-scroll" role="region" aria-label="Artist bookings and simulated totals" tabindex="0"></div>
+    </section>
+    <section id="view-admin" class="view" hidden aria-labelledby="h-admin">
+      <h1 id="h-admin">Admin view</h1>
+      <p class="note">Demo: simulated payments.</p>
+      <div id="admin-root" class="dashboard-scroll" role="region" aria-label="Demo administration bookings and simulated totals" tabindex="0"></div>
+    </section>
+  </main>
+  <footer class="app-footer">Artist booking synthetic demo · Demo: simulated payments</footer>
+</body>
+</html>

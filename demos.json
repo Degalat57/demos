@@ -1,4 +1,9 @@
 {
+ "artist-booking-prototype": {
+  "slug": "artist-booking-prototype",
+  "summary": "Browse fictional artists, choose a package and time, and inspect a simulated booking in customer, artist and admin views. No real payment or reservation.",
+  "title": "Artist booking interactive prototype"
+ },
  "batch-release-process-intelligence": {
   "slug": "batch-release-process-intelligence",
   "summary": "Process mining, deterministic KPIs and an auditable copilot for pharmaceutical batch review and release: an SAP-style extract (order confirmations, goods receipts, inspection lots, results, deviations, usage decisions) becomes an event log with a data-quality report, outcome-to-process KPI drivers, an explainable maturity score, an intervention pre/post test and traced copilot answers.",
