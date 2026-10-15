@@ -2,7 +2,7 @@
 
 A starter design kit for a one-page website: it pulls colour and type cues from a logo into Figma-ready style tokens and draws two distinct low-fidelity wireframe layouts (desktop and mobile). It was built from the public job post on synthetic data (a generated placeholder logo), not on client data.
 
-**Live demo:** https://degalat57.github.io/demos/web-demo-44/
+**Live demo:** https://degalat57.github.io/demos/web-demo-10/
 
 ## Data
 

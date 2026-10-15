@@ -1,8 +1,8 @@
 # Web demo
 
-A starter for a custom responsive website, built from the public job post on synthetic data, not on client data. A sample brand spec becomes a written page list and component map, a REST API layer (Flask routes), and one responsive home page built from React-style components.
+A one-page story website draft with five chronological chapters (early life, career, challenges, achievements, company growth) in an alternating photo/text timeline. It was built from the public job post on synthetic placeholder text, not on client data, and also exports WordPress block markup.
 
-**Live demo:** https://degalat57.github.io/demos/web-demo-20/
+**Live demo:** https://degalat57.github.io/demos/web-demo-6/
 
 ## Data
 

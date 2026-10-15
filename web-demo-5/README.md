@@ -1,8 +1,8 @@
 # Web demo
 
-A one-page story website draft with five chronological chapters (early life, career, challenges, achievements, company growth) in an alternating photo/text timeline. It was built from the public job post on synthetic placeholder text, not on client data, and also exports WordPress block markup.
+A working core for a mobile-first rental marketplace: four categories, five roles, listings, price/location filters, inquiries and an admin moderation queue. It was built from the public job post on synthetic data, not on client data. It also writes the MVP user stories and a role permissions matrix.
 
-**Live demo:** https://degalat57.github.io/demos/web-demo-29/
+**Live demo:** https://degalat57.github.io/demos/web-demo-5/
 
 ## Data
 

@@ -2,7 +2,7 @@
 
 A minimal local Python web app: a form page sends input to a POST /api/process endpoint, which validates it and returns a JSON summary or structured JSON errors. It was built from the public job post on synthetic data, not on client data. It uses only the Python standard library (a Flask + Pydantic version is a direct port).
 
-**Live demo:** https://degalat57.github.io/demos/web-demo-12/
+**Live demo:** https://degalat57.github.io/demos/web-demo-11/
 
 ## Data
 

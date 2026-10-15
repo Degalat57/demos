@@ -1,8 +1,8 @@
 # Web demo
 
-A working core for a mobile-first rental marketplace: four categories, five roles, listings, price/location filters, inquiries and an admin moderation queue. It was built from the public job post on synthetic data, not on client data. It also writes the MVP user stories and a role permissions matrix.
+A starter for a custom responsive website, built from the public job post on synthetic data, not on client data. A sample brand spec becomes a written page list and component map, a REST API layer (Flask routes), and one responsive home page built from React-style components.
 
-**Live demo:** https://degalat57.github.io/demos/web-demo-27/
+**Live demo:** https://degalat57.github.io/demos/web-demo/
 
 ## Data
 
