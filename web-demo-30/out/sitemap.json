@@ -1,0 +1,104 @@
+[
+  {
+    "title": "Home",
+    "path": "/",
+    "parent": null,
+    "post_type": "page"
+  },
+  {
+    "title": "Services",
+    "path": "/services/",
+    "parent": null,
+    "post_type": "page"
+  },
+  {
+    "title": "General Checkup",
+    "path": "/services/general-checkup/",
+    "parent": "services",
+    "post_type": "service"
+  },
+  {
+    "title": "Pediatrics",
+    "path": "/services/pediatrics/",
+    "parent": "services",
+    "post_type": "service"
+  },
+  {
+    "title": "Dermatology",
+    "path": "/services/dermatology/",
+    "parent": "services",
+    "post_type": "service"
+  },
+  {
+    "title": "Cardiology",
+    "path": "/services/cardiology/",
+    "parent": "services",
+    "post_type": "service"
+  },
+  {
+    "title": "Physiotherapy",
+    "path": "/services/physiotherapy/",
+    "parent": "services",
+    "post_type": "service"
+  },
+  {
+    "title": "Our Doctors",
+    "path": "/doctors/",
+    "parent": null,
+    "post_type": "page"
+  },
+  {
+    "title": "Dr. Alex Rowe",
+    "path": "/doctors/dr-alex-rowe/",
+    "parent": "doctors",
+    "post_type": "doctor"
+  },
+  {
+    "title": "Dr. Sam Lind",
+    "path": "/doctors/dr-sam-lind/",
+    "parent": "doctors",
+    "post_type": "doctor"
+  },
+  {
+    "title": "Dr. Jordan Hart",
+    "path": "/doctors/dr-jordan-hart/",
+    "parent": "doctors",
+    "post_type": "doctor"
+  },
+  {
+    "title": "Dr. Riley Vale",
+    "path": "/doctors/dr-riley-vale/",
+    "parent": "doctors",
+    "post_type": "doctor"
+  },
+  {
+    "title": "Dr. Casey Moss",
+    "path": "/doctors/dr-casey-moss/",
+    "parent": "doctors",
+    "post_type": "doctor"
+  },
+  {
+    "title": "Dr. Morgan Reed",
+    "path": "/doctors/dr-morgan-reed/",
+    "parent": "doctors",
+    "post_type": "doctor"
+  },
+  {
+    "title": "Request an Appointment",
+    "path": "/appointments/",
+    "parent": null,
+    "post_type": "page"
+  },
+  {
+    "title": "Contact",
+    "path": "/contact/",
+    "parent": null,
+    "post_type": "page"
+  },
+  {
+    "title": "Privacy Policy",
+    "path": "/privacy-policy/",
+    "parent": null,
+    "post_type": "page"
+  }
+]

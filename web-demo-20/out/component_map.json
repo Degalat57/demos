@@ -1,0 +1,30 @@
+{
+  "CallToAction": [
+    "home"
+  ],
+  "ContactForm": [
+    "contact"
+  ],
+  "FeatureGrid": [
+    "home",
+    "services"
+  ],
+  "Footer": [
+    "home",
+    "about",
+    "services",
+    "contact"
+  ],
+  "Hero": [
+    "home"
+  ],
+  "NavBar": [
+    "home",
+    "about",
+    "services",
+    "contact"
+  ],
+  "TextBlock": [
+    "about"
+  ]
+}

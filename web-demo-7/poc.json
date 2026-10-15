@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Scan-to-BIM/CAD site map and LOD homepage draft",
+"what": "Site map for a B2B scan-to-BIM/CAD service site plus a static responsive homepage with copy organised by level of detail.",
+"shows": "Eleven-page site map in JSON and XML, a homepage with LOD 100-400 table, process steps and quote calls to action, and an offline page-weight budget.",
+"how_to_get": "attached to the proposal",
+"files": ["out/index.html", "out/sitemap.json", "out/sitemap.xml", "out/perf_budget.json"],
+"checks": ["sitemap XML matches page tree, no duplicates", "homepage links all resolve to sitemap pages", "no external assets and HTML under size budget"],
+"done": ["Eleven-page site map in JSON and XML", "Responsive homepage with LOD table and quote CTAs", "SEO title, description and single h1 checks", "Offline page weight budget"],
+"remaining": ["Confirm offered LOD tiers and deliverables", "Inner pages and working quote form", "Branding, hosting and deployment", "Lighthouse mobile run on deployed site"],
+"limits": "Synthetic placeholder copy; LOD wording unconfirmed. No inner pages, no form backend, no real Lighthouse score, no marketing results shown.",
+"synthetic": true, "answers": ""}

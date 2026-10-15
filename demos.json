@@ -24,6 +24,16 @@
   "summary": "An offline, mobile-first concept raffle with illustrated vehicle slider, editable pricing, live countdown and simulated checkout.",
   "title": "Car raffle landing page demo (sample data)"
  },
+ "property-development-site-wireframe": {
+  "slug": "property-development-site-wireframe",
+  "summary": "A clickable homepage wireframe with linked Location, Homes and Enquiry pages, showing a buyer journey for a property development site. It was built from the public job post on synthetic data, not on client data. It also produces a WordPress page plan and a lead-routing sample.",
+  "title": "Property development site wireframe"
+ },
+ "sample-business-website-with-seo-checks": {
+  "slug": "sample-business-website-with-seo-checks",
+  "summary": "A four-page business website sample (Home, About, Services, Contact) with a page map, mobile-friendly HTML templates and an SEO audit. It was built from the public job post on synthetic data, not on client data.",
+  "title": "Sample business website with SEO checks"
+ },
  "small-business-website": {
   "slug": "small-business-website",
   "summary": "Fast, accessible, SEO-ready static site (home, about, services, contact, blog) rebranded from one JSON file.",
@@ -38,5 +48,60 @@
   "slug": "tire-inspection-app",
   "summary": "Phone/tablet web app for a tire and auto shop: jobs board, work orders, tire/brake/TPMS inspection with photos, and a customer report link.",
   "title": "Tire Shop Digital Vehicle Inspection"
+ },
+ "web-demo-12": {
+  "slug": "web-demo-12",
+  "summary": "A minimal local Python web app: a form page sends input to a POST /api/process endpoint, which validates it and returns a JSON summary or structured JSON errors. It was built from the public job post on synthetic data, not on client data. It uses only the Python standard library (a Flask + Pydantic version is a direct port).",
+  "title": "Web demo"
+ },
+ "web-demo-2": {
+  "slug": "web-demo-2",
+  "summary": "A mobile-first HTML5 page with CSS grid components (header, nav, card grid, footer), built from the public job post on synthetic placeholder content, not on client data. It stands in for a first design screen until the real designs are shared.",
+  "title": "Web demo"
+ },
+ "web-demo-20": {
+  "slug": "web-demo-20",
+  "summary": "A starter for a custom responsive website, built from the public job post on synthetic data, not on client data. A sample brand spec becomes a written page list and component map, a REST API layer (Flask routes), and one responsive home page built from React-style components.",
+  "title": "Web demo"
+ },
+ "web-demo-27": {
+  "slug": "web-demo-27",
+  "summary": "A working core for a mobile-first rental marketplace: four categories, five roles, listings, price/location filters, inquiries and an admin moderation queue. It was built from the public job post on synthetic data, not on client data. It also writes the MVP user stories and a role permissions matrix.",
+  "title": "Web demo"
+ },
+ "web-demo-29": {
+  "slug": "web-demo-29",
+  "summary": "A one-page story website draft with five chronological chapters (early life, career, challenges, achievements, company growth) in an alternating photo/text timeline. It was built from the public job post on synthetic placeholder text, not on client data, and also exports WordPress block markup.",
+  "title": "Web demo"
+ },
+ "web-demo-3": {
+  "slug": "web-demo-3",
+  "summary": "A static, dependency-free PCB company website demo with five sections (product, information, news, industry, culture) plus a China-access dependency checklist. It was built from the public job post on synthetic data, not on client data.",
+  "title": "Web demo"
+ },
+ "web-demo-30": {
+  "slug": "web-demo-30",
+  "summary": "A prototype of the navigation and appointment flow for a healthcare WordPress site: a page tree (sitemap) for services, doctor profiles and appointment pages, (site domain set at deploy) plus a responsive sample page with an appointment request form. It was built from the public job post on synthetic data, not on client data.",
+  "title": "Web demo"
+ },
+ "web-demo-35": {
+  "slug": "web-demo-35",
+  "summary": "A static, Lighthouse-style responsive audit of a homepage at 375, 768 and 1440px plus a rebuilt, keyboard-accessible navigation section. It was built from the public job post on synthetic data, not on client data.",
+  "title": "Web demo"
+ },
+ "web-demo-4": {
+  "slug": "web-demo-4",
+  "summary": "A static three-page website (Home, About Us, Contact) generated from a design-token file, with a photo carousel built on CSS scroll-snap. It was built from the public job post on synthetic data (placeholder tokens, images and text), not on client data.",
+  "title": "Web demo"
+ },
+ "web-demo-44": {
+  "slug": "web-demo-44",
+  "summary": "A starter design kit for a one-page website: it pulls colour and type cues from a logo into Figma-ready style tokens and draws two distinct low-fidelity wireframe layouts (desktop and mobile). It was built from the public job post on synthetic data (a generated placeholder logo), not on client data.",
+  "title": "Web demo"
+ },
+ "web-demo-7": {
+  "slug": "web-demo-7",
+  "summary": "A site map and homepage copy draft for a B2B scan-to-BIM/CAD service website, positioned by level of detail (LOD). It was built from the public job post on synthetic data, not on client data; LOD wording is placeholder until confirmed.",
+  "title": "Web demo"
  }
 }

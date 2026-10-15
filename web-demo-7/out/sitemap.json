@@ -1,0 +1,69 @@
+[
+  {
+    "slug": "home",
+    "path": "/",
+    "title": "Home",
+    "children": []
+  },
+  {
+    "slug": "services",
+    "path": "/services/",
+    "title": "Services",
+    "children": [
+      {
+        "slug": "scan-to-bim",
+        "path": "/services/scan-to-bim/",
+        "title": "Scan to BIM",
+        "children": []
+      },
+      {
+        "slug": "scan-to-cad",
+        "path": "/services/scan-to-cad/",
+        "title": "Scan to CAD (2D drawings)",
+        "children": []
+      }
+    ]
+  },
+  {
+    "slug": "lod",
+    "path": "/levels-of-detail/",
+    "title": "Levels of detail",
+    "children": []
+  },
+  {
+    "slug": "process",
+    "path": "/process/",
+    "title": "How it works",
+    "children": []
+  },
+  {
+    "slug": "formats",
+    "path": "/file-formats/",
+    "title": "Inputs and file formats",
+    "children": []
+  },
+  {
+    "slug": "sectors",
+    "path": "/sectors/",
+    "title": "Who it is for",
+    "children": []
+  },
+  {
+    "slug": "quote",
+    "path": "/request-a-quote/",
+    "title": "Request a quote",
+    "children": []
+  },
+  {
+    "slug": "faq",
+    "path": "/faq/",
+    "title": "FAQ",
+    "children": []
+  },
+  {
+    "slug": "privacy",
+    "path": "/privacy/",
+    "title": "Privacy",
+    "children": []
+  }
+]

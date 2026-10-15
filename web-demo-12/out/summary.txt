@@ -1,0 +1,5 @@
+valid           HTTP 200
+empty_body      HTTP 400
+malformed_json  HTTP 400
+missing_fields  HTTP 422
+bad_types       HTTP 422

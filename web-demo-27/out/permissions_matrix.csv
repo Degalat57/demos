@@ -1,0 +1,6 @@
+role,browse,inquire,create_listing,edit_own_listing,report,moderate,manage_users,categories
+renter,yes,yes,no,no,yes,no,no,
+owner,yes,no,yes,yes,yes,no,no,student|residential|commercial
+agent,yes,no,yes,yes,yes,no,no,student|residential|commercial
+provider,yes,no,yes,yes,yes,no,no,services
+admin,yes,yes,yes,yes,yes,yes,yes,student|residential|commercial|services

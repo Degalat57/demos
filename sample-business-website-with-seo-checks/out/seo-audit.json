@@ -1,0 +1,62 @@
+{
+  "/": {
+    "checks": {
+      "canonical": true,
+      "heading_order": true,
+      "img_alt": true,
+      "indexable": true,
+      "lang": true,
+      "meta_description_50_160": true,
+      "nav_links_resolve": true,
+      "single_h1": true,
+      "title_10_60": true,
+      "viewport": true
+    },
+    "score": 100
+  },
+  "/about/": {
+    "checks": {
+      "canonical": true,
+      "heading_order": true,
+      "img_alt": true,
+      "indexable": true,
+      "lang": true,
+      "meta_description_50_160": true,
+      "nav_links_resolve": true,
+      "single_h1": true,
+      "title_10_60": true,
+      "viewport": true
+    },
+    "score": 100
+  },
+  "/contact/": {
+    "checks": {
+      "canonical": true,
+      "heading_order": true,
+      "img_alt": true,
+      "indexable": true,
+      "lang": true,
+      "meta_description_50_160": true,
+      "nav_links_resolve": true,
+      "single_h1": true,
+      "title_10_60": true,
+      "viewport": true
+    },
+    "score": 100
+  },
+  "/services/": {
+    "checks": {
+      "canonical": true,
+      "heading_order": true,
+      "img_alt": true,
+      "indexable": true,
+      "lang": true,
+      "meta_description_50_160": true,
+      "nav_links_resolve": true,
+      "single_h1": true,
+      "title_10_60": true,
+      "viewport": true
+    },
+    "score": 100
+  }
+}

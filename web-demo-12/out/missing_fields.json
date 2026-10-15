@@ -1,0 +1,13 @@
+{
+  "errors": [
+    {
+      "error": "required non-empty text",
+      "field": "label"
+    },
+    {
+      "error": "required non-empty list of numbers",
+      "field": "values"
+    }
+  ],
+  "ok": false
+}

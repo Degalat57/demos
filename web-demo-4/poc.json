@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Three-page responsive site with token CSS and scroll-snap carousel",
+"what": "Static Home, About Us and Contact pages generated from a design-token file, with CSS variables, responsive layout, a scroll-snap photo carousel and a validated contact form.",
+"shows": "Design tokens become CSS variables; carousel snaps, wraps and shows dots; nav marks current page; form validates; checked in headless Chromium.",
+"how_to_get": "attached to the proposal",
+"files": ["out/design-tokens.json", "out/site/styles.css", "out/site/site.js", "out/site/index.html", "out/site/about.html", "out/site/contact.html", "out/site/img/slide1.png"],
+"checks": ["every design token appears as a CSS variable with same value", "carousel uses scroll-snap and all slide images exist", "nav links resolve and mark current page on all pages", "contact form fields are required"],
+"done": ["Design tokens mapped to CSS variables", "Scroll-snap photo carousel with arrows and dots", "Three responsive pages with shared navigation", "Contact form front-end validation"],
+"remaining": ["Apply values from the provided designs", "Real photos, copy and branding", "Contact form delivery on the host", "Deployment to the hosting and revisions"],
+"limits": "Synthetic tokens, images and text; does not show the provided designs, form sending or live deployment.",
+"synthetic": true, "answers": ""}

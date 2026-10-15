@@ -1,0 +1,5 @@
+name,intent,valid,route
+Test A,viewing,yes,sales-viewings
+Test B,details,yes,sales-family
+Test C,details,yes,sales-general
+(blank),x,no:name|contact|intent,-

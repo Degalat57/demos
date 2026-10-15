@@ -1,0 +1,41 @@
+:root {
+  --color-bg: #0e0f13;
+  --color-surface: #181a21;
+  --color-text: #f2f2f4;
+  --color-muted: #9aa0ad;
+  --color-accent: #c9a86a;
+  --color-accent-ink: #14120d;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: Inter, system-ui, -apple-system, sans-serif;
+  --size-base: 16px;
+  --size-h1: clamp(2.2rem, 5vw, 4rem);
+  --size-h2: clamp(1.5rem, 3vw, 2.2rem);
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+  --radius-card: 14px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-text);font:var(--size-base)/1.6 var(--font-body)}
+h1,h2{font-family:var(--font-display);line-height:1.15}h1{font-size:var(--size-h1)}h2{font-size:var(--size-h2)}
+header{display:flex;justify-content:space-between;align-items:center;padding:var(--space-md) var(--space-lg);
+position:sticky;top:0;background:var(--color-bg)}
+nav a{color:var(--color-muted);margin-left:var(--space-md);text-decoration:none}nav a[aria-current]{color:var(--color-accent)}
+main{max-width:1100px;margin:0 auto;padding:var(--space-lg)}
+.carousel{position:relative}
+.track{display:flex;gap:var(--space-md);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+padding-bottom:var(--space-sm)}
+.slide{flex:0 0 100%;scroll-snap-align:center;border-radius:var(--radius-card);overflow:hidden;margin:0}
+.slide img{width:100%;height:auto;display:block}
+.ctrl{position:absolute;top:45%;background:var(--color-accent);color:var(--color-accent-ink);border:0;
+border-radius:50%;width:44px;height:44px;font-size:20px;cursor:pointer}.prev{left:var(--space-sm)}.next{right:var(--space-sm)}
+.dots{display:flex;justify-content:center;gap:var(--space-sm);margin-top:var(--space-sm)}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:var(--color-muted);padding:0}
+.dots button[aria-current=true]{background:var(--color-accent)}
+form{display:grid;gap:var(--space-md);max-width:520px}
+input,textarea{padding:var(--space-sm);border-radius:8px;border:1px solid var(--color-muted);background:var(--color-surface);color:var(--color-text)}
+.btn{background:var(--color-accent);color:var(--color-accent-ink);border:0;padding:var(--space-sm) var(--space-md);border-radius:8px}
+#status{color:var(--color-accent)}
+@media (max-width:640px){header{flex-direction:column}main{padding:var(--space-md)}nav a{margin:0 var(--space-sm)}}

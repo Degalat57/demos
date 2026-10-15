@@ -1,0 +1,9 @@
+role,category,story
+renter,student,As a renter I filter student rooms by price and area so I find one near campus.
+renter,residential,As a renter I send an inquiry on a flat so the owner can contact me.
+owner,residential,"As an owner I post a listing with photos, price and location."
+owner,commercial,As an owner I edit or deactivate my commercial listing.
+agent,residential,As an agent I manage listings for several owners from one dashboard (Phase 2).
+provider,services,As a service provider I list my repair service with a price from.
+admin,all,As an admin I review reported listings and hide or restore them.
+renter,commercial,As a renter I report a suspicious commercial listing.

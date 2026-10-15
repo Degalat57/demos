@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Healthcare WordPress sitemap and appointment request flow prototype",
+"what": "Generates a WordPress page tree and XML sitemap for services, doctor profiles and appointments, plus a responsive sample page with a validated appointment request form.",
+"shows": "Patient-friendly navigation structure, doctor-to-service mapping, appointment validation and double-booking protection, verified by tests and a headless browser.",
+"how_to_get": "attached to the proposal",
+"files": ["out/sitemap.json", "out/sitemap.xml", "out/index.html"],
+"checks": ["page count and unique paths", "every parent page exists and XML matches tree", "double booking rejected and invalid input rejected"],
+"done": ["Page tree for services, doctors, appointments", "XML sitemap", "Responsive sample page with request form", "Validation and double-booking protection"],
+"remaining": ["Custom block theme and post types", "Production content and branding", "Analytics, Search Console, deployment"],
+"limits": "Synthetic doctors and services; static prototype, not yet a WordPress theme; no real email delivery or persistent storage.",
+"synthetic": true, "answers": ""}

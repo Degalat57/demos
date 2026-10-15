@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Local Python web app with validated JSON API and UI",
+"what": "Stdlib Python web app: a form page posts input to /api/process, which validates it and returns a JSON summary or structured JSON errors.",
+"shows": "Input validation, 200/400/422 JSON responses, a page rendering the returned JSON, and saved responses for valid, empty and malformed input.",
+"how_to_get": "attached to the proposal",
+"files": ["out/valid.json", "out/empty_body.json", "out/malformed_json.json", "out/missing_fields.json", "out/bad_types.json", "out/index.html", "out/summary.txt"],
+"checks": ["valid input sum and mean match independent calculation", "empty and malformed bodies return 400 JSON errors", "invalid fields return 422 with per-field errors"],
+"done": ["Validated POST /api/process endpoint", "Structured JSON errors with status codes", "Page rendering returned JSON", "Six automated checks"],
+"remaining": ["Real input fields and output shape", "Optional Flask and Pydantic port", "Styling and branding", "Headless browser screenshot check"],
+"limits": "Synthetic sample input only; stdlib server, not Flask; no browser screenshot was taken in this sandbox; no deployment.",
+"synthetic": true, "answers": ""}

@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "result": {
+    "count": 3,
+    "label": "sample batch",
+    "max": 10,
+    "mean": 5.833333,
+    "min": 3,
+    "sum": 17.5
+  }
+}

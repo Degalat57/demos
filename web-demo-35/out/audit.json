@@ -1,0 +1,45 @@
+{
+ "after": {
+  "global": [],
+  "scores": {
+   "375": 100,
+   "768": 100,
+   "1440": 100
+  },
+  "viewports": {
+   "375": [],
+   "768": [],
+   "1440": []
+  }
+ },
+ "before": {
+  "global": [
+   "missing viewport meta",
+   "img without alt: logo.png",
+   "img without width/height (layout shift): logo.png",
+   "img without width/height (layout shift): hero.jpg",
+   "html lang missing",
+   "no <nav> landmark",
+   "click handler on non-focusable <span>",
+   "click handler on non-focusable <span>",
+   "click handler on non-focusable <span>",
+   "click handler on non-focusable <span>"
+  ],
+  "scores": {
+   "375": 40,
+   "768": 40,
+   "1440": 70
+  },
+  "viewports": {
+   "375": [
+    "fixed width 1200px overflows 375px viewport",
+    "fixed width 800px overflows 375px viewport"
+   ],
+   "768": [
+    "fixed width 1200px overflows 768px viewport",
+    "fixed width 800px overflows 768px viewport"
+   ],
+   "1440": []
+  }
+ }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home</title>
+<style>
+:root{--p:#1f4e79;--a:#f2a541;--t:#1b1b1b;--bg:#fafafa}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui, sans-serif;color:var(--t);background:var(--bg)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem;background:var(--p);color:#fff;flex-wrap:wrap}
+nav a{color:#fff;margin-left:1rem;text-decoration:none}
+.hero{padding:3rem 1rem;text-align:center}.hero h1{font-size:clamp(1.6rem,5vw,3rem);margin:0 0 .5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;padding:1rem;max-width:1100px;margin:auto}
+.card{background:#fff;border-radius:8px;padding:1rem;box-shadow:0 1px 4px #0002}
+.cta{text-align:center;padding:2rem}button{background:var(--a);border:0;padding:.8rem 1.4rem;border-radius:6px;font-size:1rem;cursor:pointer}
+#msg{margin-top:1rem;font-weight:bold}footer{text-align:center;padding:1rem;font-size:.9rem;color:#555}
+</style></head><body><div id="root"></div>
+<script>
+const DATA = {"brand": {"colors": {"accent": "#f2a541", "bg": "#fafafa", "primary": "#1f4e79", "text": "#1b1b1b"}, "font": "system-ui, sans-serif", "name": "Northwind Studio (synthetic)", "tagline": "Calm, useful products for small teams."}, "features": [{"body": "Sample text 51 for the fast block.", "id": 1, "title": "Fast"}, {"body": "Sample text 29 for the accessible block.", "id": 2, "title": "Accessible"}, {"body": "Sample text 60 for the responsive block.", "id": 3, "title": "Responsive"}, {"body": "Sample text 93 for the tested block.", "id": 4, "title": "Tested"}], "pages": [{"components": ["NavBar", "Hero", "FeatureGrid", "CallToAction", "Footer"], "path": "/", "slug": "home"}, {"components": ["NavBar", "TextBlock", "Footer"], "path": "/about", "slug": "about"}, {"components": ["NavBar", "FeatureGrid", "Footer"], "path": "/services", "slug": "services"}, {"components": ["NavBar", "ContactForm", "Footer"], "path": "/contact", "slug": "contact"}]};
+const h = (tag, props, ...kids) => { const e = document.createElement(tag); Object.assign(e, props || {});
+  kids.flat().forEach(k => e.append(k)); return e; };
+const NavBar = () => h('nav', null, h('strong', null, DATA.brand.name),
+  h('div', null, DATA.pages.map(p => h('a', {href: '#' + p.slug}, p.slug))));
+const Hero = () => h('section', {className: 'hero'}, h('h1', null, DATA.brand.name), h('p', null, DATA.brand.tagline));
+const FeatureGrid = () => h('section', {className: 'grid'},
+  DATA.features.map(f => h('div', {className: 'card'}, h('h3', null, f.title), h('p', null, f.body))));
+const CallToAction = () => { const m = h('div', {id: 'msg'});
+  return h('section', {className: 'cta'}, h('button', {id: 'cta', onclick: () => { m.textContent = 'Thanks - we will be in touch.'; }}, 'Get started'), m); };
+const Footer = () => h('footer', null, 'Synthetic sample page');
+const C = {NavBar, Hero, FeatureGrid, CallToAction, Footer};
+const home = DATA.pages.find(p => p.slug === 'home');
+document.getElementById('root').append(...home.components.map(n => C[n]()));
+</script></body></html>

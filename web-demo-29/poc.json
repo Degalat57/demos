@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Five-chapter success story timeline page with WordPress blocks",
+"what": "Generates a responsive one-page timeline of five story chapters with photo slots and placeholder text, plus WordPress block markup.",
+"shows": "Alternating photo/text timeline, sticky chapter navigation, mobile layout, and pasteable Gutenberg blocks for the same chapters.",
+"how_to_get": "attached to the proposal",
+"files": ["out/index.html", "out/wordpress-blocks.html", "out/chapters.json"],
+"checks": ["five chapters render in chronological order", "nav links match section anchors", "WordPress blocks are balanced", "text is HTML-escaped"],
+"done": ["Responsive five-chapter timeline page", "WordPress block markup export", "Placeholder content in one data list"],
+"remaining": ["Real story text and photos", "Branding and design review", "Install on the WordPress site"],
+"limits": "Synthetic placeholder text and grey photo boxes; does not show real story, branding or hosting setup.",
+"synthetic": true, "answers": ""}

@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Property development homepage wireframe with location, homes and enquiry pages",
+"what": "Clickable HTML wireframe of a property development site: homepage buyer journey linking location, homes and enquiry pages, plus a WordPress page plan and lead-routing rules.",
+"shows": "Homepage calls to action prefill the enquiry form; homes table filters by availability; form validates and shows a routing result; WordPress page tree and fields as JSON.",
+"how_to_get": "attached to the proposal",
+"files": ["out/index.html", "out/location.html", "out/homes.html", "out/enquiry.html", "out/wp-page-plan.json", "out/lead-routing.csv"],
+"checks": ["all internal links resolve to generated pages", "available homes counted two ways match", "lead validation and routing give expected results"],
+"done": ["Homepage wireframe with two calls to action", "Linked location, homes and enquiry pages", "Enquiry form validation and demo routing", "WordPress page plan as JSON"],
+"remaining": ["Branding, imagery and copy from production materials", "WordPress theme build and hosting install", "Real form delivery and agreed lead routing", "Choose primary call to action"],
+"limits": "Synthetic plots and placeholder content; grey-box wireframe, not a styled WordPress theme; forms send nothing.",
+"synthetic": true, "answers": ""}

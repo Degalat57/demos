@@ -1,0 +1,11 @@
+from flask import Flask, jsonify, request
+import poc
+
+app = Flask(__name__, static_folder="out", static_url_path="")
+api = poc.Api()
+
+
+@app.route("/api/<path:p>", methods=["GET", "POST"])
+def route(p):
+    status, data = api.handle(request.method, "/api/" + p, request.get_json(silent=True))
+    return jsonify(data), status

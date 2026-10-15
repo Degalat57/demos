@@ -1,0 +1,35 @@
+{
+  "home": "index.html",
+  "sections": [
+    {
+      "id": "product",
+      "title": "Products",
+      "page": "product.html",
+      "items": 6
+    },
+    {
+      "id": "information",
+      "title": "Company Information",
+      "page": "information.html",
+      "items": 2
+    },
+    {
+      "id": "news",
+      "title": "News",
+      "page": "news.html",
+      "items": 4
+    },
+    {
+      "id": "industry",
+      "title": "Industry",
+      "page": "industry.html",
+      "items": 3
+    },
+    {
+      "id": "culture",
+      "title": "Culture",
+      "page": "culture.html",
+      "items": 3
+    }
+  ]
+}

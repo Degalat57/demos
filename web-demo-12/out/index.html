@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Process input</title>
+<style>body{font-family:sans-serif;max-width:640px;margin:2em auto}pre{background:#f4f4f4;padding:1em}.err{color:#b00}</style>
+</head><body>
+<h1>Process input</h1>
+<form id="f">
+<label>Label <input id="label" value="sample batch"></label><br><br>
+<label>Values (comma separated) <input id="values" value="3, 4.5, 10"></label><br><br>
+<button id="go" type="submit">Process</button>
+</form>
+<p id="status"></p>
+<pre id="out"></pre>
+<script>
+document.getElementById('f').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var raw = document.getElementById('values').value.trim();
+  var values = raw === '' ? [] : raw.split(',').map(function (s) { var t = s.trim(); var n = Number(t); return t !== '' && !isNaN(n) ? n : t; });
+  var res = await fetch('/api/process', {method: 'POST', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({label: document.getElementById('label').value, values: values})});
+  var data = await res.json();
+  var st = document.getElementById('status');
+  st.textContent = 'HTTP ' + res.status + (data.ok ? ' - success' : ' - validation error');
+  st.className = data.ok ? '' : 'err';
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+});
+</script>
+</body></html>

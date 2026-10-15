@@ -1,0 +1,57 @@
+{
+  "theme": "block theme (to be chosen)",
+  "pages": [
+    {
+      "slug": "home",
+      "title": "Home",
+      "parent": null,
+      "buyer_question": "What is this development and why should I care?",
+      "template": "front-page"
+    },
+    {
+      "slug": "location",
+      "title": "Location",
+      "parent": "home",
+      "buyer_question": "Where is it and what is nearby?",
+      "template": "page-location"
+    },
+    {
+      "slug": "homes",
+      "title": "Homes",
+      "parent": "home",
+      "buyer_question": "Which home types exist and are they available?",
+      "template": "page-homes"
+    },
+    {
+      "slug": "enquiry",
+      "title": "Enquire",
+      "parent": "home",
+      "buyer_question": "How do I request details or book a viewing?",
+      "template": "page-enquiry"
+    }
+  ],
+  "custom_post_types": [
+    {
+      "name": "home_unit",
+      "fields": [
+        "plot",
+        "type",
+        "beds",
+        "area_m2",
+        "price",
+        "status"
+      ]
+    }
+  ],
+  "forms": [
+    {
+      "name": "enquiry",
+      "fields": [
+        "name",
+        "contact",
+        "intent",
+        "plot"
+      ]
+    }
+  ]
+}

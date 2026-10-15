@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "error": "empty body",
+      "field": ""
+    }
+  ],
+  "ok": false
+}

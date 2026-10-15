@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Rental marketplace slice: listings, filters, inquiries, moderation",
+"what": "Stdlib Python and SQLite core of a four-category rental marketplace with role permissions, listing posting, price and location filters, inquiries, reports and an admin moderation queue, plus a mobile-first demo page.",
+"shows": "User stories, permissions matrix, end-to-end flow output and a phone-sized page where you post a listing, filter it and send an inquiry.",
+"how_to_get": "attached to the proposal",
+"files": ["out/user_stories.csv", "out/permissions_matrix.csv", "out/flow.json", "out/index.html"],
+"checks": ["SQL filter equals plain Python filter", "row counts preserved across categories", "role permissions and edit-own enforced", "validation edge cases rejected", "moderation hides listing and blocks inquiries"],
+"done": ["User stories and permissions matrix", "Listing posting with validation", "Price, location and category filters", "Inquiries, owner inbox, reports, moderation", "Mobile-first demo page checked in browser"],
+"remaining": ["Django/PostgreSQL port with real authentication", "Real photo uploads and storage", "Agent and provider dashboards, reviews", "Branding, production data and deployment"],
+"limits": "Synthetic data only; in-memory database, no real login, uploads or hosting; demo page keeps posts in the browser only.",
+"synthetic": true, "answers": ""}

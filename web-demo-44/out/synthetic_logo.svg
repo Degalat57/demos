@@ -1,0 +1,6 @@
+<svg width="240" height="80" viewBox="0 0 240 80">
+<rect x="0" y="0" width="80" height="80" rx="16" fill="#1F4E79"/>
+<circle cx="40" cy="40" r="20" fill="#F2A541"/>
+<text x="96" y="50" font-family="Montserrat" font-weight="700" font-size="28" fill="#1F4E79">Acme</text>
+<text x="96" y="70" font-family="Source Sans 3" font-size="12" fill="#5B6770">sample brand</text>
+</svg>

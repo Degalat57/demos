@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Logo-derived Figma style tokens and two one-page wireframe layouts",
+ "what": "Extracts colours and fonts from a synthetic SVG logo into Figma-ready style tokens, then renders two distinct one-page wireframe layouts as desktop and mobile SVG frames with an HTML preview.",
+ "shows": "Palette and type scale derived from a logo, WCAG contrast checked, and two layouts (hero-first vs story-scroll) with tradeoff notes, ready for the page-goal discussion.",
+ "how_to_get": "attached to the proposal",
+ "files": ["out/figma_tokens.json", "out/index.html", "out/synthetic_logo.svg", "out/wireframe_A_hero_first_desktop.svg", "out/wireframe_A_hero_first_mobile.svg", "out/wireframe_B_story_scroll_desktop.svg", "out/wireframe_B_story_scroll_mobile.svg"],
+ "checks": ["palette and fonts match the known logo values", "contrast of white on black equals 21 and token pairs pass AA", "layouts differ and frame heights equal section sums; SVGs parse"],
+ "done": ["Logo colour and font extraction", "Figma tokens: colours, type scale, spacing", "Two wireframe layouts, desktop and mobile", "HTML preview checked in headless browser"],
+ "remaining": ["Apply to the real logo files", "Pick page goal and layout", "High-fidelity Figma frames with real copy", "Feedback rounds and polish"],
+ "limits": "Synthetic placeholder logo; wireframes are low-fidelity SVGs, not native Figma files; no real copy, imagery or high-fidelity visual design yet.",
+ "synthetic": true, "answers": ""}

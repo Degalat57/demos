@@ -1,0 +1,28 @@
+{
+  "filter_student_le400_riverside": [
+    [
+      41,
+      "student",
+      "Bright room near campus",
+      350,
+      "Riverside"
+    ]
+  ],
+  "inquiry_id": 1,
+  "listing5_status": "hidden",
+  "owner_inbox": [
+    [
+      1,
+      "Bright room near campus",
+      "Is it free next month?"
+    ]
+  ],
+  "posted_listing": 41,
+  "queue_before": [
+    [
+      1,
+      5,
+      "duplicate listing"
+    ]
+  ]
+}

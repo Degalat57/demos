@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "early-life",
+    "title": "Early Life",
+    "era": "1960s",
+    "body": "Placeholder: childhood, family and the place where the story begins."
+  },
+  {
+    "slug": "career",
+    "title": "Career Journey",
+    "era": "1980s",
+    "body": "Placeholder: first jobs, mentors and the skills learned on the way."
+  },
+  {
+    "slug": "challenges",
+    "title": "Challenges",
+    "era": "1990s",
+    "body": "Placeholder: the setbacks faced and how they were overcome."
+  },
+  {
+    "slug": "achievements",
+    "title": "Achievements",
+    "era": "2000s",
+    "body": "Placeholder: key milestones, recognition and turning points."
+  },
+  {
+    "slug": "growth",
+    "title": "Company Growth",
+    "era": "2010s",
+    "body": "Placeholder: founding the company and how it grew over time."
+  }
+]

@@ -1,0 +1,10 @@
+{"kind": "half_job", "scope": "half", "title": "Four-page business site with WordPress import and SEO audit",
+ "what": "Synthetic four-page business website: page map, responsive HTML templates, WordPress page import file, sitemap, robots file and a per-page SEO audit.",
+ "shows": "Pages generated from one page map, importable into WordPress staging, each passing ten SEO checks: titles, descriptions, viewport, indexing, canonical, headings, alt text, links.",
+ "how_to_get": "attached to the proposal",
+ "files": ["out/site/index.html", "out/site/about/index.html", "out/site/services/index.html", "out/site/contact/index.html", "out/sitemap.xml", "out/robots.txt", "out/wordpress-pages.xml", "out/seo-audit.json"],
+ "checks": ["every page scores 100 on the SEO audit", "audit flags a deliberately broken page", "sitemap and WordPress import match the page map"],
+ "done": ["Page map and responsive HTML templates", "WordPress WXR page import file", "Sitemap and robots file", "Per-page SEO audit with tests"],
+ "remaining": ["Brand logo, colours and copy", "WordPress theme and plugins on staging", "Working contact form delivery", "Domain, hosting and deployment"],
+ "limits": "Synthetic brand and copy; static HTML, not a live WordPress theme; audit is a stdlib check, not a full Lighthouse run.",
+ "synthetic": true, "answers": ""}

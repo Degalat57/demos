@@ -1,0 +1,21 @@
+{
+  "errors": [
+    {
+      "error": "required non-empty text",
+      "field": "label"
+    },
+    {
+      "error": "must be a number",
+      "field": "values[1]"
+    },
+    {
+      "error": "must be a number",
+      "field": "values[2]"
+    },
+    {
+      "error": "unknown field",
+      "field": "extra"
+    }
+  ],
+  "ok": false
+}
