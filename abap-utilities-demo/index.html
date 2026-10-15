@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Synthetic utilities ABAP source and authored unit tests. Verified on the open-source abaplint/transpiler stack; no SAP system.">
+<title>Utilities ABAP demo — source and verification record</title>
+<style>
+:root{color-scheme:light;--ink:#152c3a;--muted:#536574;--border:#cbd8dc;--accent:#00665e}
+*{box-sizing:border-box}body{margin:0;background:#f6f8f8;color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+header,main,footer{max-width:1120px;margin:auto;padding:26px clamp(18px,4vw,48px)}
+.notice{background:#fff0cc;border-bottom:1px solid #d8b65e;padding:10px 20px;text-align:center;font-weight:600}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:750}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin:14px 0;max-width:850px}h2{line-height:1.25;margin-top:1.6em}
+.lead{font-size:19px;max-width:800px;color:var(--muted)}a{color:var(--accent);text-underline-offset:3px}
+nav{display:flex;flex-wrap:wrap;gap:10px 24px;margin:24px 0}nav a{font-weight:650}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.card{background:white;border:1px solid var(--border);border-radius:10px;padding:18px}
+.card strong{font-size:32px;display:block}.card span{color:var(--muted)}
+section{background:white;border:1px solid var(--border);border-radius:12px;margin:0 0 24px;padding:24px clamp(16px,3vw,32px);scroll-margin-top:20px}
+section>h2:first-child{margin-top:0}.expected{border-left:4px solid var(--accent);padding-left:18px}
+pre{overflow:auto;max-height:620px;background:#122b38;color:#eff5f7;border-radius:8px;padding:18px;font:13px/1.6 ui-monospace,monospace;tab-size:2}
+:not(pre)>code{background:#edf2f4;padding:2px 4px;border-radius:3px;font-size:.9em}
+table{border-collapse:collapse;display:block;overflow:auto}th,td{padding:8px 12px;border:1px solid var(--border);text-align:left;vertical-align:top}
+.source{border-top:1px solid var(--border);padding:13px 0}.source summary{cursor:pointer;font-weight:650;overflow-wrap:anywhere}
+small{font-weight:400;color:var(--muted);display:inline-block;margin-left:12px}
+input{width:100%;font:inherit;padding:12px;border:1px solid #9bafb7;border-radius:6px;margin:8px 0 18px}
+footer{color:var(--muted);font-size:14px;padding-bottom:48px}li{margin-bottom:8px}
+@media(max-width:620px){.cards{grid-template-columns:1fr}.card strong{font-size:26px}section{padding:18px}main{padding-top:0}}
+</style></head><body>
+<div class="notice" role="note">Synthetic sample data · No SAP system · Verified on open-source tooling</div>
+<header><div class="eyebrow">Energy &amp; Utilities / ABAP source demonstration</div>
+<h1>Meter readings, estimates and a traceable worklist.</h1>
+<p class="lead">A small AI-assisted implementation with explicit business rules, decimal billing calculations and reviewable tests. Run on the open-source abaplint/transpiler stack: 77 of 77 unit methods executed, 0 lint issues; not run on a real SAP system.</p>
+<nav aria-label="Demo sections"><a href="#verification">Verification record</a><a href="#source">Browse ABAP</a><a href="#scope">Delivery scope</a><a href="README.md">Technical contract</a></nav>
+<div class="cards"><div class="card"><strong>77</strong><span>ABAP Unit methods authored</span></div>
+<div class="card"><strong>0</strong><span>ABAP tests executed</span></div>
+<div class="card"><strong>77 / 77</strong><span>ABAP Unit methods executed, 0 lint issues</span></div></div>
+<p class="expected"><b>Expected example, calculated by hand:</b> 120 kWh → 36.00 EUR net + 6.84 tax = <b>42.84 EUR gross</b>. This is an expectation, not an executed result.</p></header>
+<main><section id="verification"><h1>Demo and verification record</h1>
+<p>Synthetic sample data; no SAP system. Built with an AI-assisted workflow on 2026-10-15.</p>
+<p><strong>Status: VERIFIED on the open-source stack (no SAP kernel).</strong> 77 of 77 ABAP Unit methods executed on the abaplint transpiler runtime and ran to completion without a failed assertion; abaplint reports 0 issues in 17 files. One real defect was found and fixed by running the tests: see the section below. This does not prove behaviour on a real SAP system (authorisations, database access, locks, transports, performance on real volumes, BAdI registration).</p>
+<h2>What is reviewable</h2>
+<p>The six global objects, four test includes and abapGit metadata form a small reading-validation and billing example. The report-like wrapper expects 120 kWh and 42.84 EUR gross, calculated by hand in README.md. It calls the validator through ZIF_READING_CHECK. Estimated readings remain unaccepted and need worklist review before billing.</p>
+<p>The authored tests comprise 23 validator methods, 42 estimator/billing methods, 11 worklist methods and 1 wrapper method (77 total). They assert concrete quantities, money and reason codes, including explicit and disallowed rollover, tolerance equality, missing/empty history, last-N ordering, duplicate history, negative tiers, tier order, single-day and leap-year proration, invalid Gregorian dates, commercial rounding and duplicate identity boundaries. All 77 were executed on 15 Oct 2026 (see below).</p>
+<h2>Actual command transcript</h2>
+<p>Commands, from the demo root (Node 22.14.0, 15 Oct 2026; packages <code>@abaplint/cli</code> 2.113.200, <code>@abaplint/transpiler-cli</code> and <code>@abaplint/runtime</code> 2.14.7; open-abap-core commit 94c853b6257f85403a4f44181875e5042bb01ba6):</p>
+<pre><code class="language-sh">npm install --ignore-scripts --no-audit --no-fund
+npx abaplint abaplint.json        # abaplint: 0 issue(s) found, 17 file(s) analyzed
+npx abap_transpile                # 641 output files, libs from open-abap-core
+node output/index.mjs             # exit 0; 77 test methods run (evidence-unit-run.txt)
+</code></pre>
+<p>Results: <strong>abaplint 0 issues; 77 of 77 ABAP Unit methods executed, exit code 0.</strong> The full run output is in <code>evidence-unit-run.txt</code>. Notes: (1) the first full run stopped at an assertion failure in <code>ZCL_METER_READING_VALIDATOR=&gt;jump_falls_back</code>: the estimate <code>100 / 30 * 30</code> with <code>decfloat34</code> gave 99.99999999999999999999999999999999, not 100. Real ABAP decfloat34 arithmetic behaves the same way, so this was a genuine bug in the estimator. It is fixed by rounding the estimate to 3 decimals (<code>round( val = ... dec = 3 )</code> in <code>ZCL_BILLING_ESTIMATOR=&gt;estimate</code>), after which all 77 methods ran clean. (2) The transpiler runs the tests on JavaScript with an ABAP runtime, so it does not reproduce SAP kernel details (ABAP date/time and rounding edge cases, database access, authorisations, locks, enqueue, BAdI framework). (3) The earlier pinned <code>@abaplint/runtime</code> 2.11.91 failed on the current open-abap-core with an unknown-type error in an unrelated library class; the newer 2.14.x pair works but needs Node 22.12 or newer.</p>
+<h2>Checks that actually ran</h2>
+<p><code>python3 tools/static_inventory.py</code> exited <strong>0</strong>. Its eight inventory checks validated the three JSON configuration files, eight XML files, metadata/source pairs, declaration/implementation correspondence for all 77 test methods, enabled lint settings, presence of the requested ABAP constructs, and selected source hygiene constraints. <code>verification-inventory.json</code> records the complete inventory and source hashes. <strong>This is a lexical/file check, not abaplint static analysis or an ABAP compiler. Lint cleanliness is unconfirmed.</strong></p>
+<p>The static browser page embeds this record and code; it makes no network requests. Its monetary example is labeled as an expected calculation.</p>
+<h2>What would still need a real system</h2>
+<p>Activate the classes in a sandbox package (abapGit import), run the 77 ABAP Unit methods on a real kernel, then test authorisation checks, database-backed data selection, locks, performance on production-like volumes, and registration as a real enhancement spot or BAdI. A trial or sandbox system from the client would be needed for that.</p>
+</section>
+<section id="source"><h2>ABAP source and test cases</h2><p>The browser displays source only. It does not execute ABAP or simulate SAP.</p>
+<label for="filter">Filter filenames or source text</label><input id="filter" type="search" placeholder="Try rollover, leap_year or worklist">
+<p id="matches" aria-live="polite"></p><details class="source"><summary>zcl_billing_estimator.clas.abap <small>Production source</small></summary><p><a href="src/zcl_billing_estimator.clas.abap" download>Download source</a></p><pre><code>CLASS zcl_billing_estimator DEFINITION PUBLIC FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    TYPES ty_money TYPE p LENGTH 16 DECIMALS 2.
+    TYPES: BEGIN OF ty_tier,
+             upper_limit TYPE decfloat34,
+             price       TYPE decfloat34,
+           END OF ty_tier,
+           ty_tiers TYPE STANDARD TABLE OF ty_tier WITH EMPTY KEY.
+    TYPES: BEGIN OF ty_bill,
+             consumption TYPE decfloat34,
+             period_days TYPE i,
+             fraction    TYPE decfloat34,
+             net         TYPE ty_money,
+             tax         TYPE ty_money,
+             gross       TYPE ty_money,
+             currency    TYPE c LENGTH 3,
+             reason      TYPE string,
+           END OF ty_bill.
+    METHODS estimate
+      IMPORTING history TYPE zif_reading_check=&gt;ty_history
+                last_n TYPE i DEFAULT 3
+                days TYPE i DEFAULT 30
+                seasonal_factor TYPE decfloat34 DEFAULT 1
+      RETURNING VALUE(consumption) TYPE decfloat34
+      RAISING zcx_utilities_input.
+    METHODS bill
+      IMPORTING consumption TYPE decfloat34
+                date_from TYPE d date_to TYPE d full_days TYPE i
+                tiers TYPE ty_tiers base_fee TYPE decfloat34
+                tax_rate TYPE decfloat34
+                estimated TYPE abap_bool DEFAULT abap_false
+      RETURNING VALUE(result) TYPE ty_bill
+      RAISING zcx_utilities_input.
+  PRIVATE SECTION.
+    CLASS-METHODS valid_date IMPORTING date TYPE d
+      RETURNING VALUE(valid) TYPE abap_bool.
+ENDCLASS.
+
+CLASS zcl_billing_estimator IMPLEMENTATION.
+  METHOD valid_date.
+    IF date CN &#x27;0123456789&#x27;.
+      RETURN.
+    ENDIF.
+    DATA(year) = CONV i( date(4) ).
+    DATA(month) = CONV i( date+4(2) ).
+    DATA(day) = CONV i( date+6(2) ).
+    IF year &lt; 1 OR month &lt; 1 OR month &gt; 12 OR day &lt; 1.
+      RETURN.
+    ENDIF.
+    DATA(max_day) = COND i( WHEN month = 2 THEN 28
+      WHEN month = 4 OR month = 6 OR month = 9 OR month = 11 THEN 30 ELSE 31 ).
+    IF month = 2 AND ( year MOD 400 = 0 OR ( year MOD 4 = 0 AND year MOD 100 &lt;&gt; 0 ) ).
+      max_day = 29.
+    ENDIF.
+    valid = xsdbool( day &lt;= max_day ).
+  ENDMETHOD.
+
+  METHOD estimate.
+    IF last_n &lt;= 0 OR days &lt;= 0 OR seasonal_factor &lt;= 0 OR history IS INITIAL.
+      RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;INVALID_ESTIMATE_INPUT&#x27;.
+    ENDIF.
+    DATA(sorted) = history.
+    SORT sorted BY end_date DESCENDING.
+    DATA selected TYPE zif_reading_check=&gt;ty_history.
+    DATA(count) = 0.
+    DATA(previous_date) = CONV d( &#x27;00000000&#x27; ).
+    LOOP AT sorted INTO DATA(period).
+      IF period-days &lt;= 0 OR period-consumption &lt; 0
+          OR valid_date( period-end_date ) = abap_false
+          OR period-end_date = previous_date.
+        RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;INVALID_HISTORY&#x27;.
+      ENDIF.
+      previous_date = period-end_date.
+      IF count &lt; last_n.
+        APPEND period TO selected.
+        count = count + 1.
+      ENDIF.
+    ENDLOOP.
+    &quot; Equal weight per period after daily normalisation; newest N only.
+    DATA(total) = REDUCE decfloat34( INIT sum = CONV decfloat34( 0 )
+      FOR sample IN selected NEXT sum = sum + sample-consumption / sample-days ).
+    &quot; decfloat34 division is inexact (100/30*30 = 99.999...): round the estimate to 3 decimals of the unit.
+    consumption = round( val = total / count * days * seasonal_factor dec = 3 ).
+  ENDMETHOD.
+
+  METHOD bill.
+    IF consumption &lt; 0 OR base_fee &lt; 0 OR tax_rate &lt; 0 OR tax_rate &gt; 1
+        OR full_days &lt;= 0 OR valid_date( date_from ) = abap_false
+        OR valid_date( date_to ) = abap_false
+        OR date_to &lt; date_from OR tiers IS INITIAL.
+      RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;INVALID_BILLING_INPUT&#x27;.
+    ENDIF.
+    DATA(actual_days) = date_to - date_from + 1.
+    IF actual_days &gt; full_days.
+      RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;PERIOD_TOO_LONG&#x27;.
+    ENDIF.
+    &quot; Consumption already belongs to this interval: only fee and limits scale.
+    DATA(fraction) = CONV decfloat34( actual_days ) / full_days.
+    DATA(lower) = CONV decfloat34( 0 ).
+    DATA(energy) = CONV decfloat34( 0 ).
+    DATA(unlimited) = abap_false.
+    LOOP AT tiers INTO DATA(tier).
+      IF unlimited = abap_true OR tier-price &lt; 0 OR tier-upper_limit &lt; 0.
+        RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;INVALID_TIER&#x27;.
+      ENDIF.
+      IF tier-upper_limit = 0.
+        unlimited = abap_true.
+        DATA(quantity) = nmax( val1 = consumption - lower val2 = 0 ).
+      ELSE.
+        DATA(upper) = tier-upper_limit * fraction.
+        IF upper &lt;= lower.
+          RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;NON_INCREASING_TIER&#x27;.
+        ENDIF.
+        quantity = nmax( val1 = nmin( val1 = consumption val2 = upper ) - lower
+                         val2 = 0 ).
+        lower = upper.
+      ENDIF.
+      energy = energy + quantity * tier-price.
+    ENDLOOP.
+    IF unlimited = abap_false.
+      RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;MISSING_FINAL_TIER&#x27;.
+    ENDIF.
+    result = VALUE #( consumption = consumption period_days = actual_days
+                      fraction = fraction currency = &#x27;EUR&#x27;
+                      reason = COND #( WHEN estimated = abap_true
+                                       THEN &#x27;ESTIMATED&#x27; ELSE &#x27;ACTUAL&#x27; ) ).
+    &quot; Synthetic invoice policy: round net first, then calculate tax on that net.
+    result-net = round( val = base_fee * fraction + energy dec = 2 ).
+    result-tax = round( val = CONV decfloat34( result-net ) * tax_rate dec = 2 ).
+    result-gross = result-net + result-tax.
+  ENDMETHOD.
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcl_billing_estimator.clas.testclasses.abap <small>Unit tests</small></summary><p><a href="src/zcl_billing_estimator.clas.testclasses.abap" download>Download source</a></p><pre><code>CLASS ltcl_test DEFINITION FINAL FOR TESTING
+  DURATION SHORT RISK LEVEL HARMLESS.
+  PRIVATE SECTION.
+    METHODS invalid_february FOR TESTING RAISING zcx_utilities_input.
+    METHODS invalid_april FOR TESTING RAISING zcx_utilities_input.
+    METHODS century_not_leap FOR TESTING RAISING zcx_utilities_input.
+    METHODS invalid_month FOR TESTING RAISING zcx_utilities_input.
+
+    METHODS mean_consumption FOR TESTING RAISING zcx_utilities_input.
+    METHODS last_one_latest FOR TESTING RAISING zcx_utilities_input.
+    METHODS sorts_input FOR TESTING RAISING zcx_utilities_input.
+    METHODS daily_normalisation FOR TESTING RAISING zcx_utilities_input.
+    METHODS seasonal_adjustment FOR TESTING RAISING zcx_utilities_input.
+    METHODS short_estimate FOR TESTING RAISING zcx_utilities_input.
+    METHODS more_n_than_history FOR TESTING RAISING zcx_utilities_input.
+    METHODS zero_history_valid FOR TESTING RAISING zcx_utilities_input.
+    METHODS empty_history FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_history FOR TESTING RAISING zcx_utilities_input.
+    METHODS zero_history_days FOR TESTING RAISING zcx_utilities_input.
+    METHODS duplicate_periods FOR TESTING RAISING zcx_utilities_input.
+    METHODS invalid_n FOR TESTING RAISING zcx_utilities_input.
+    METHODS invalid_season FOR TESTING RAISING zcx_utilities_input.
+    METHODS two_tier_invoice FOR TESTING RAISING zcx_utilities_input.
+    METHODS zero_usage_base_only FOR TESTING RAISING zcx_utilities_input.
+    METHODS exact_tier_boundary FOR TESTING RAISING zcx_utilities_input.
+    METHODS partial_period FOR TESTING RAISING zcx_utilities_input.
+    METHODS leap_year_full FOR TESTING RAISING zcx_utilities_input.
+    METHODS leap_year_partial FOR TESTING RAISING zcx_utilities_input.
+    METHODS non_leap_february FOR TESTING RAISING zcx_utilities_input.
+    METHODS single_day_proration FOR TESTING RAISING zcx_utilities_input.
+    METHODS money_rounding FOR TESTING RAISING zcx_utilities_input.
+    METHODS estimate_reason FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_consumption FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_base FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_tax FOR TESTING RAISING zcx_utilities_input.
+    METHODS tax_over_one FOR TESTING RAISING zcx_utilities_input.
+    METHODS reverse_dates FOR TESTING RAISING zcx_utilities_input.
+    METHODS zero_full_days FOR TESTING RAISING zcx_utilities_input.
+    METHODS period_exceeds_full FOR TESTING RAISING zcx_utilities_input.
+    METHODS empty_tiers FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_tier_price FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_tier_limit FOR TESTING RAISING zcx_utilities_input.
+    METHODS descending_tiers FOR TESTING RAISING zcx_utilities_input.
+    METHODS no_unlimited_tier FOR TESTING RAISING zcx_utilities_input.
+    METHODS unlimited_not_last FOR TESTING RAISING zcx_utilities_input.
+    METHODS duplicate_tier_limits FOR TESTING RAISING zcx_utilities_input.
+
+ENDCLASS.
+
+CLASS ltcl_test IMPLEMENTATION.
+  METHOD mean_consumption.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;1&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;90&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD last_one_latest.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ) last_n = 1 days = 30 seasonal_factor = &#x27;1&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;120&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD sorts_input.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ) last_n = 1 days = 30 seasonal_factor = &#x27;1&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;120&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD daily_normalisation.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 62 days = 31 ) ( end_date = &#x27;20260228&#x27; consumption = 56 days = 28 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;1&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;60&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD seasonal_adjustment.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;1.5&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;135&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD short_estimate.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ) last_n = 3 days = 15 seasonal_factor = &#x27;1&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;45&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD more_n_than_history.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ) last_n = 20 days = 30 seasonal_factor = &#x27;1&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;90&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD zero_history_valid.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;estimate(
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 0 days = 31 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;1&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual exp = CONV decfloat34( &#x27;0&#x27; ) ).
+  ENDMETHOD.
+
+  METHOD empty_history.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;estimate(
+          history = VALUE #( ) last_n = 3 days = 30 seasonal_factor = &#x27;1&#x27; ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid history accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD negative_history.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;estimate(
+          history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = -1 days = 30 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;1&#x27; ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid history accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD zero_history_days.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;estimate(
+          history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 1 days = 0 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;1&#x27; ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid history accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD duplicate_periods.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;estimate(
+          history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 1 days = 30 ) ( end_date = &#x27;20260131&#x27; consumption = 2 days = 30 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;1&#x27; ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid history accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD invalid_n.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;estimate(
+          history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ) last_n = 0 days = 30 seasonal_factor = &#x27;1&#x27; ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid history accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD invalid_season.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;estimate(
+          history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 60 days = 30 ) ( end_date = &#x27;20260228&#x27; consumption = 120 days = 30 ) ) last_n = 3 days = 30 seasonal_factor = &#x27;0&#x27; ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid history accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD two_tier_invoice.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;45&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;8.55&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;53.55&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD zero_usage_base_only.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;0&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;10&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;1.90&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;11.90&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD exact_tier_boundary.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;100&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;30&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;5.70&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;35.70&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD partial_period.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;75&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260415&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;22.50&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;4.28&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;26.78&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD leap_year_full.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;100&#x27; date_from = &#x27;20240201&#x27; date_to = &#x27;20240229&#x27; full_days = 29
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;30&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;5.70&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;35.70&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD leap_year_partial.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;100&#x27; date_from = &#x27;20240215&#x27; date_to = &#x27;20240229&#x27; full_days = 29
+          tiers = VALUE #( ( upper_limit = 0 price = &#x27;0.20&#x27; ) ) base_fee = &#x27;29&#x27; tax_rate = &#x27;0&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;35&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;0&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;35&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD non_leap_february.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;100&#x27; date_from = &#x27;20230201&#x27; date_to = &#x27;20230228&#x27; full_days = 28
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;30&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;5.70&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;35.70&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD single_day_proration.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;1&#x27; date_from = &#x27;20260430&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = &#x27;0.20&#x27; ) ) base_fee = &#x27;30&#x27; tax_rate = &#x27;0&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;1.20&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;0&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;1.20&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD money_rounding.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;3&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = &#x27;0.335&#x27; ) ) base_fee = &#x27;0&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;1.01&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;0.19&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;1.20&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ACTUAL&#x27; ).
+  ENDMETHOD.
+
+  METHOD estimate_reason.
+    DATA(actual) = NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-net exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;45&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-tax exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;8.55&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;53.55&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reason exp = &#x27;ESTIMATED&#x27; ).
+  ENDMETHOD.
+
+  METHOD negative_consumption.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;-1&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD negative_base.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;-1&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD negative_tax.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;-1&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD tax_over_one.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;2&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD reverse_dates.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260501&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD zero_full_days.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 0
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD period_exceeds_full.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 29
+          tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; ) ( upper_limit = 0 price = &#x27;0.30&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD empty_tiers.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD negative_tier_price.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = &#x27;-0.1&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD negative_tier_limit.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = -1 price = &#x27;0.1&#x27; ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD descending_tiers.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = 1 ) ( upper_limit = 50 price = 1 ) ( upper_limit = 0 price = 1 ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD no_unlimited_tier.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = 1 ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD unlimited_not_last.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = 1 ) ( upper_limit = 100 price = 1 ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD duplicate_tier_limits.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = &#x27;150&#x27; date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 100 price = 1 ) ( upper_limit = 100 price = 2 ) ( upper_limit = 0 price = 3 ) ) base_fee = &#x27;10&#x27; tax_rate = &#x27;0.19&#x27; estimated = abap_false ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid billing input accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD invalid_february.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = 1 date_from = &#x27;20230229&#x27; date_to = &#x27;20230229&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = 1 ) ) base_fee = 0 tax_rate = 0 ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid calendar date accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD invalid_april.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = 1 date_from = &#x27;20260431&#x27; date_to = &#x27;20260431&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = 1 ) ) base_fee = 0 tax_rate = 0 ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid calendar date accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD century_not_leap.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = 1 date_from = &#x27;19000229&#x27; date_to = &#x27;19000229&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = 1 ) ) base_fee = 0 tax_rate = 0 ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid calendar date accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD invalid_month.
+    TRY.
+        NEW zcl_billing_estimator( )-&gt;bill(
+          consumption = 1 date_from = &#x27;20261301&#x27; date_to = &#x27;20261301&#x27; full_days = 30
+          tiers = VALUE #( ( upper_limit = 0 price = 1 ) ) base_fee = 0 tax_rate = 0 ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid calendar date accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcl_error_report.clas.abap <small>Production source</small></summary><p><a href="src/zcl_error_report.clas.abap" download>Download source</a></p><pre><code>CLASS zcl_error_report DEFINITION PUBLIC FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    TYPES: BEGIN OF ty_reading,
+             installation TYPE c LENGTH 10,
+             device       TYPE c LENGTH 18,
+             expected_device TYPE c LENGTH 18,
+             register_id  TYPE c LENGTH 3,
+             reading_date TYPE d,
+             missing      TYPE abap_bool,
+           END OF ty_reading,
+           ty_readings TYPE STANDARD TABLE OF ty_reading WITH EMPTY KEY.
+    TYPES: BEGIN OF ty_item,
+             row_number   TYPE i,
+             installation TYPE c LENGTH 10,
+             device       TYPE c LENGTH 18,
+             register_id  TYPE c LENGTH 3,
+             reading_date TYPE d,
+             reason       TYPE string,
+             priority     TYPE i,
+           END OF ty_item,
+           ty_worklist TYPE STANDARD TABLE OF ty_item WITH EMPTY KEY.
+    METHODS build IMPORTING readings TYPE ty_readings
+                  RETURNING VALUE(worklist) TYPE ty_worklist.
+ENDCLASS.
+
+CLASS zcl_error_report IMPLEMENTATION.
+  METHOD build.
+    TYPES: BEGIN OF ty_key,
+             installation TYPE c LENGTH 10,
+             device TYPE c LENGTH 18,
+             register_id TYPE c LENGTH 3,
+             reading_date TYPE d,
+           END OF ty_key.
+    DATA seen TYPE HASHED TABLE OF ty_key
+      WITH UNIQUE KEY installation device register_id reading_date.
+    LOOP AT readings INTO DATA(reading).
+      DATA(row_number) = sy-tabix.
+      DATA(item) = CORRESPONDING ty_item( reading ).
+      item-row_number = row_number.
+      item-priority = 1.
+      IF reading-missing = abap_true.
+        item-reason = &#x27;READING_MISSING&#x27;.
+        APPEND item TO worklist.
+      ENDIF.
+      IF reading-device &lt;&gt; reading-expected_device.
+        item-reason = &#x27;DEVICE_MISMATCH&#x27;.
+        APPEND item TO worklist.
+      ENDIF.
+      DATA(key) = CORRESPONDING ty_key( reading ).
+      INSERT key INTO TABLE seen.
+      IF sy-subrc &lt;&gt; 0.
+        item-reason = &#x27;DUPLICATE_READING&#x27;.
+        item-priority = 2.
+        APPEND item TO worklist.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcl_error_report.clas.testclasses.abap <small>Unit tests</small></summary><p><a href="src/zcl_error_report.clas.testclasses.abap" download>Download source</a></p><pre><code>CLASS ltcl_test DEFINITION FINAL FOR TESTING
+  DURATION SHORT RISK LEVEL HARMLESS.
+  PRIVATE SECTION.
+    METHODS empty_worklist FOR TESTING RAISING zcx_utilities_input.
+    METHODS clean_reading FOR TESTING RAISING zcx_utilities_input.
+    METHODS missing_reading FOR TESTING RAISING zcx_utilities_input.
+    METHODS mismatched_device FOR TESTING RAISING zcx_utilities_input.
+    METHODS duplicate_reading FOR TESTING RAISING zcx_utilities_input.
+    METHODS three_duplicates FOR TESTING RAISING zcx_utilities_input.
+    METHODS different_registers FOR TESTING RAISING zcx_utilities_input.
+    METHODS different_dates FOR TESTING RAISING zcx_utilities_input.
+    METHODS different_installations FOR TESTING RAISING zcx_utilities_input.
+    METHODS multiple_reasons FOR TESTING RAISING zcx_utilities_input.
+    METHODS preserves_source_row FOR TESTING RAISING zcx_utilities_input.
+
+ENDCLASS.
+
+CLASS ltcl_test IMPLEMENTATION.
+  METHOD empty_worklist.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #(  ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 0 ).
+  ENDMETHOD.
+
+  METHOD clean_reading.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 0 ).
+  ENDMETHOD.
+
+  METHOD missing_reading.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; missing = abap_true ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 1 ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 1 ]-reason exp = &#x27;READING_MISSING&#x27; ).
+  ENDMETHOD.
+
+  METHOD mismatched_device.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D2&#x27; expected_device = &#x27;D1&#x27; ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 1 ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 1 ]-reason exp = &#x27;DEVICE_MISMATCH&#x27; ).
+  ENDMETHOD.
+
+  METHOD duplicate_reading.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 1 ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 1 ]-reason exp = &#x27;DUPLICATE_READING&#x27; ).
+  ENDMETHOD.
+
+  METHOD three_duplicates.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 2 ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 1 ]-reason exp = &#x27;DUPLICATE_READING&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 2 ]-reason exp = &#x27;DUPLICATE_READING&#x27; ).
+  ENDMETHOD.
+
+  METHOD different_registers.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;002&#x27; reading_date = &#x27;20260430&#x27; ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 0 ).
+  ENDMETHOD.
+
+  METHOD different_dates.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260531&#x27; ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 0 ).
+  ENDMETHOD.
+
+  METHOD different_installations.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I2&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 0 ).
+  ENDMETHOD.
+
+  METHOD multiple_reasons.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build( readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I1&#x27; device = &#x27;D2&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; missing = abap_true ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = lines( actual ) exp = 2 ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 1 ]-reason exp = &#x27;READING_MISSING&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 2 ]-reason exp = &#x27;DEVICE_MISMATCH&#x27; ).
+  ENDMETHOD.
+
+  METHOD preserves_source_row.
+    DATA(actual) = NEW zcl_error_report( )-&gt;build(
+      readings = VALUE #( ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; ) ( installation = &#x27;I1&#x27; device = &#x27;D1&#x27; expected_device = &#x27;D1&#x27; register_id = &#x27;001&#x27; reading_date = &#x27;20260430&#x27; missing = abap_true ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 1 ]-row_number exp = 2 ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 2 ]-priority exp = 2 ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual[ 2 ]-installation exp = &#x27;I1&#x27; ).
+  ENDMETHOD.
+
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcl_meter_reading_validator.clas.abap <small>Production source</small></summary><p><a href="src/zcl_meter_reading_validator.clas.abap" download>Download source</a></p><pre><code>CLASS zcl_meter_reading_validator DEFINITION PUBLIC FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    INTERFACES zif_reading_check.
+ENDCLASS.
+
+CLASS zcl_meter_reading_validator IMPLEMENTATION.
+  METHOD zif_reading_check~check.
+    IF request-register_digits &lt; 1 OR request-register_digits &gt; 12
+        OR request-days &lt;= 0 OR request-tolerance &lt; 1
+        OR request-previous &lt; 0 OR request-current &lt; 0
+        OR ( request-missing &lt;&gt; abap_true AND request-missing &lt;&gt; abap_false )
+        OR ( request-allow_rollover &lt;&gt; abap_true AND request-allow_rollover &lt;&gt; abap_false ).
+      RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;INVALID_READING_INPUT&#x27;.
+    ENDIF.
+    DATA(modulus) = CONV decfloat34( 10 ) ** request-register_digits.
+    IF request-previous &gt;= modulus OR request-current &gt;= modulus.
+      RAISE EXCEPTION TYPE zcx_utilities_input EXPORTING code = &#x27;REGISTER_OVERFLOW&#x27;.
+    ENDIF.
+    DATA(estimator) = NEW zcl_billing_estimator( ).
+    DATA(baseline) = CONV decfloat34( 0 ).
+    IF history IS NOT INITIAL.
+      baseline = estimator-&gt;estimate( history = history days = request-days ).
+    ENDIF.
+    result = VALUE #( consumption = request-current - request-previous
+                      accepted = abap_true reason = &#x27;ACTUAL&#x27; ).
+    IF request-missing = abap_true.
+      result-reason = &#x27;MISSING&#x27;.
+    ELSEIF result-consumption &lt; 0.
+      &quot; Caller must confirm one physical wrap; never infer device exchange.
+      IF request-allow_rollover = abap_true.
+        result-consumption = result-consumption + modulus.
+        result-reason = &#x27;ROLLOVER&#x27;.
+      ELSE.
+        result-reason = &#x27;NEGATIVE&#x27;.
+      ENDIF.
+    ENDIF.
+    IF ( result-reason = &#x27;ACTUAL&#x27; OR result-reason = &#x27;ROLLOVER&#x27; )
+        AND history IS NOT INITIAL
+        AND result-consumption &gt; baseline * request-tolerance.
+      result-reason = &#x27;JUMP&#x27;.
+    ENDIF.
+    IF result-reason = &#x27;MISSING&#x27; OR result-reason = &#x27;NEGATIVE&#x27; OR result-reason = &#x27;JUMP&#x27;.
+      &quot; Fallback quantity is a review candidate, never automatic acceptance.
+      result-accepted = abap_false.
+      result-consumption = 0.
+      IF history IS NOT INITIAL.
+        result-consumption = baseline.
+        result-estimated = abap_true.
+      ENDIF.
+    ENDIF.
+  ENDMETHOD.
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcl_meter_reading_validator.clas.testclasses.abap <small>Unit tests</small></summary><p><a href="src/zcl_meter_reading_validator.clas.testclasses.abap" download>Download source</a></p><pre><code>CLASS ltcl_test DEFINITION FINAL FOR TESTING
+  DURATION SHORT RISK LEVEL HARMLESS.
+  PRIVATE SECTION.
+    METHODS normal_reading FOR TESTING RAISING zcx_utilities_input.
+    METHODS zero_consumption FOR TESTING RAISING zcx_utilities_input.
+    METHODS tolerance_boundary FOR TESTING RAISING zcx_utilities_input.
+    METHODS jump_falls_back FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_falls_back FOR TESTING RAISING zcx_utilities_input.
+    METHODS missing_falls_back FOR TESTING RAISING zcx_utilities_input.
+    METHODS missing_no_history FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_no_history FOR TESTING RAISING zcx_utilities_input.
+    METHODS first_history_absent FOR TESTING RAISING zcx_utilities_input.
+    METHODS rollover_one_unit FOR TESTING RAISING zcx_utilities_input.
+    METHODS rollover_twenty_units FOR TESTING RAISING zcx_utilities_input.
+    METHODS rollover_jump FOR TESTING RAISING zcx_utilities_input.
+    METHODS rollover_not_assumed FOR TESTING RAISING zcx_utilities_input.
+    METHODS fractional_reading FOR TESTING RAISING zcx_utilities_input.
+    METHODS zero_history_jump FOR TESTING RAISING zcx_utilities_input.
+    METHODS daily_baseline FOR TESTING RAISING zcx_utilities_input.
+    METHODS negative_register FOR TESTING RAISING zcx_utilities_input.
+    METHODS previous_overflow FOR TESTING RAISING zcx_utilities_input.
+    METHODS current_overflow FOR TESTING RAISING zcx_utilities_input.
+    METHODS digits_zero FOR TESTING RAISING zcx_utilities_input.
+    METHODS digits_too_large FOR TESTING RAISING zcx_utilities_input.
+    METHODS invalid_tolerance FOR TESTING RAISING zcx_utilities_input.
+    METHODS zero_interval FOR TESTING RAISING zcx_utilities_input.
+
+ENDCLASS.
+
+CLASS ltcl_test IMPLEMENTATION.
+  METHOD normal_reading.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;ACTUAL&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD zero_consumption.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = 100.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;0&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;ACTUAL&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD tolerance_boundary.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = 300.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;200&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;ACTUAL&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD jump_falls_back.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = 301.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;JUMP&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_true ).
+  ENDMETHOD.
+
+  METHOD negative_falls_back.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = 99.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;NEGATIVE&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_true ).
+  ENDMETHOD.
+
+  METHOD missing_falls_back.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-missing = abap_true.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;MISSING&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_true ).
+  ENDMETHOD.
+
+  METHOD missing_no_history.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-missing = abap_true.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;0&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;MISSING&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD negative_no_history.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = 99.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;0&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;NEGATIVE&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD first_history_absent.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;ACTUAL&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD rollover_one_unit.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-previous = 99999.
+    request-current = 0.
+    request-allow_rollover = abap_true.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;1&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;ROLLOVER&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD rollover_twenty_units.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-previous = 99990.
+    request-current = 10.
+    request-allow_rollover = abap_true.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;20&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;ROLLOVER&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD rollover_jump.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-previous = 99000.
+    request-current = 1000.
+    request-allow_rollover = abap_true.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;JUMP&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_true ).
+  ENDMETHOD.
+
+  METHOD rollover_not_assumed.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-previous = 99990.
+    request-current = 10.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;NEGATIVE&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_true ).
+  ENDMETHOD.
+
+  METHOD fractional_reading.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = &#x27;200.125&#x27;.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;100.125&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;ACTUAL&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_true ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_false ).
+  ENDMETHOD.
+
+  METHOD zero_history_jump.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 0 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;0&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;JUMP&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_true ).
+  ENDMETHOD.
+
+  METHOD daily_baseline.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-days = 15.
+    request-missing = abap_true.
+    DATA(result) = NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+      request = request history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 30 ) ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-consumption exp = CONV decfloat34( &#x27;50&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-reason exp = &#x27;MISSING&#x27; ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-accepted exp = abap_false ).
+    cl_abap_unit_assert=&gt;assert_equals( act = result-estimated exp = abap_true ).
+  ENDMETHOD.
+
+  METHOD negative_register.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = -1.
+    TRY.
+        NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+          request = request history = VALUE #( ) ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid reading configuration accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD previous_overflow.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-previous = 100000.
+    TRY.
+        NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+          request = request history = VALUE #( ) ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid reading configuration accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD current_overflow.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-current = 100000.
+    TRY.
+        NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+          request = request history = VALUE #( ) ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid reading configuration accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD digits_zero.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-register_digits = 0.
+    TRY.
+        NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+          request = request history = VALUE #( ) ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid reading configuration accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD digits_too_large.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-register_digits = 13.
+    TRY.
+        NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+          request = request history = VALUE #( ) ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid reading configuration accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD invalid_tolerance.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-tolerance = &#x27;0.5&#x27;.
+    TRY.
+        NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+          request = request history = VALUE #( ) ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid reading configuration accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+  METHOD zero_interval.
+    DATA(request) = VALUE zif_reading_check=&gt;ty_request(
+      previous = 100 current = 200 register_digits = 5 days = 30 tolerance = 2 ).
+    request-days = 0.
+    TRY.
+        NEW zcl_meter_reading_validator( )-&gt;zif_reading_check~check(
+          request = request history = VALUE #( ) ).
+        cl_abap_unit_assert=&gt;fail( msg = &#x27;Invalid reading configuration accepted&#x27; ).
+      CATCH zcx_utilities_input.
+        RETURN.
+    ENDTRY.
+  ENDMETHOD.
+
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcl_utilities_demo.clas.abap <small>Production source</small></summary><p><a href="src/zcl_utilities_demo.clas.abap" download>Download source</a></p><pre><code>CLASS zcl_utilities_demo DEFINITION PUBLIC FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    TYPES: BEGIN OF ty_output,
+             reading TYPE zif_reading_check=&gt;ty_result,
+             bill TYPE zcl_billing_estimator=&gt;ty_bill,
+             ready_for_billing TYPE abap_bool,
+           END OF ty_output.
+    CLASS-METHODS run RETURNING VALUE(output) TYPE ty_output
+      RAISING zcx_utilities_input.
+ENDCLASS.
+
+CLASS zcl_utilities_demo IMPLEMENTATION.
+  METHOD run.
+    DATA checker TYPE REF TO zif_reading_check.
+    checker = NEW zcl_meter_reading_validator( ).
+    output-reading = checker-&gt;check(
+      request = VALUE #( previous = 12300 current = 12420 register_digits = 5
+                         days = 30 tolerance = 2 )
+      history = VALUE #( ( end_date = &#x27;20260131&#x27; consumption = 100 days = 31 )
+                         ( end_date = &#x27;20260228&#x27; consumption = 110 days = 28 ) ) ).
+    IF output-reading-accepted = abap_true.
+      output-bill = NEW zcl_billing_estimator( )-&gt;bill(
+        consumption = output-reading-consumption
+        date_from = &#x27;20260401&#x27; date_to = &#x27;20260430&#x27; full_days = 30
+        tiers = VALUE #( ( upper_limit = 100 price = &#x27;0.20&#x27; )
+                         ( upper_limit = 0 price = &#x27;0.30&#x27; ) )
+        base_fee = 10 tax_rate = &#x27;0.19&#x27; ).
+      output-ready_for_billing = abap_true.
+    ENDIF.
+  ENDMETHOD.
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcl_utilities_demo.clas.testclasses.abap <small>Unit tests</small></summary><p><a href="src/zcl_utilities_demo.clas.testclasses.abap" download>Download source</a></p><pre><code>CLASS ltcl_test DEFINITION FINAL FOR TESTING
+  DURATION SHORT RISK LEVEL HARMLESS.
+  PRIVATE SECTION.
+    METHODS report_example FOR TESTING RAISING zcx_utilities_input.
+
+ENDCLASS.
+
+CLASS ltcl_test IMPLEMENTATION.
+  METHOD report_example.
+    DATA(actual) = zcl_utilities_demo=&gt;run( ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-reading-consumption exp = CONV decfloat34( 120 ) ).
+    cl_abap_unit_assert=&gt;assert_equals( act = actual-bill-gross exp = CONV zcl_billing_estimator=&gt;ty_money( &#x27;42.84&#x27; ) ).
+    cl_abap_unit_assert=&gt;assert_true( act = actual-ready_for_billing ).
+  ENDMETHOD.
+
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zcx_utilities_input.clas.abap <small>Production source</small></summary><p><a href="src/zcx_utilities_input.clas.abap" download>Download source</a></p><pre><code>CLASS zcx_utilities_input DEFINITION PUBLIC INHERITING FROM cx_static_check
+  FINAL CREATE PUBLIC.
+  PUBLIC SECTION.
+    METHODS constructor IMPORTING code TYPE string DEFAULT &#x27;INVALID_INPUT&#x27;.
+    METHODS get_code RETURNING VALUE(code) TYPE string.
+  PRIVATE SECTION.
+    DATA reason_code TYPE string.
+ENDCLASS.
+
+CLASS zcx_utilities_input IMPLEMENTATION.
+  METHOD constructor.
+    super-&gt;constructor( ).
+    reason_code = code.
+  ENDMETHOD.
+
+  METHOD get_code.
+    code = reason_code.
+  ENDMETHOD.
+ENDCLASS.
+</code></pre></details>
+<details class="source"><summary>zif_reading_check.intf.abap <small>Production source</small></summary><p><a href="src/zif_reading_check.intf.abap" download>Download source</a></p><pre><code>INTERFACE zif_reading_check PUBLIC.
+  TYPES ty_quantity TYPE decfloat34.
+  TYPES: BEGIN OF ty_period,
+           end_date    TYPE d,
+           consumption TYPE ty_quantity,
+           days        TYPE i,
+         END OF ty_period,
+         ty_history TYPE STANDARD TABLE OF ty_period WITH EMPTY KEY.
+  TYPES: BEGIN OF ty_request,
+           previous       TYPE ty_quantity,
+           current        TYPE ty_quantity,
+           register_digits TYPE i,
+           days           TYPE i,
+           tolerance      TYPE ty_quantity,
+           allow_rollover TYPE abap_bool,
+           missing        TYPE abap_bool,
+         END OF ty_request.
+  TYPES: BEGIN OF ty_result,
+           consumption TYPE ty_quantity,
+           accepted    TYPE abap_bool,
+           estimated   TYPE abap_bool,
+           reason      TYPE string,
+         END OF ty_result.
+  METHODS check
+    IMPORTING request TYPE ty_request history TYPE ty_history
+    RETURNING VALUE(result) TYPE ty_result
+    RAISING zcx_utilities_input.
+ENDINTERFACE.
+</code></pre></details></section>
+<section id="scope"><h1>ABAP delivery scope</h1>
+<p>This sample shows the scope we can take on for ABAP work: isolate a business rule, define its inputs and outputs, write readable classes and tests, and provide a reviewable change with evidence. The example covers utilities meter plausibility, consumption estimation, a small tariff calculation and a reconciliation worklist. It uses synthetic data. It is not an installed IS-U extension and does not claim prior client projects or production experience.</p>
+<p>The workflow is AI-assisted. AI helps draft and revise code, tests and documentation. Delivery quality depends on the review and verification gates, not on who typed the source. We can work on custom reports, validation rules, estimation logic, reconciliation tools and adapters to an agreed SAP process. The exact release, enhancement mechanism, coding standards and business rules must be established with the client.</p>
+<p>For every proposed change, we turn agreed examples and failure cases into assertions, run static checks, run ABAP Unit on the open-source abaplint/transpiler stack, inspect the diff and keep the command output with the change. We report failures and missing checks explicitly. Before accepting SAP behavior, we also run the client's checks on their system. A tool being unavailable is a blocked gate, never evidence that a test passed.</p>
+<p>This delivery has 77 ABAP Unit methods; all 77 were executed on the open-source abaplint/transpiler stack and ran without a failed assertion, and abaplint reports 0 issues (15 Oct 2026). Running the tests found one real defect in the billing estimate (decfloat34 division gave 99.999... instead of 100), which is fixed. No SAP system was used, so authorisations, database access, locks, transports, BAdI registration and performance on real volumes are not covered; those need a sandbox or trial system from you.</p>
+<p>Even after an open-source run passes, we cannot verify SAP activation, authorizations, database mappings, locks, actual BAdI invocation, EMMA integration, performance on real volumes or transport behavior without the client's landscape. Decimal/date behavior and the billing and tax rules also need confirmation there. The transpiler is useful evidence for isolated logic; it does not emulate every SAP behavior.</p>
+<p>To start, we need a sandbox or trial system on the target release, or an abapGit repository for an initial source-only review; the package and transport conventions; a named technical and business reviewer; sanitized input examples and expected outputs; register/rollover and estimation policies; tariff, calendar, currency and rounding rules; and the relevant interface/DDIC definitions. Repository access alone permits source review and isolated checks, not SAP integration verification. Access should use the client's approved method and least necessary permissions.</p>
+<p>The first acceptance milestone is a small agreed change with clean lint, recorded test output and a sandbox demonstration. Production release remains within the client's normal approval and transport process.</p>
+</section></main>
+<footer>Local static documentation. No analytics, remote assets or source uploads. No SAP kernel was used.</footer>
+<script>
+const filter=document.querySelector('#filter');const entries=[...document.querySelectorAll('.source')];
+function refresh(){const query=filter.value.trim().toLowerCase();let shown=0;entries.forEach(entry=>{const match=entry.textContent.toLowerCase().includes(query);entry.hidden=!match;if(match)shown++;});document.querySelector('#matches').textContent=shown+' of '+entries.length+' source files shown';}
+filter.addEventListener("input",refresh);refresh();
+</script><div role="note" style="position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#1f2937;color:#fff;font:13px/1.4 system-ui,sans-serif;padding:6px 12px;text-align:center">Demo build &middot; all names and data shown are synthetic sample data</div>
+</body></html>

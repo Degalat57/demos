@@ -1,0 +1,15 @@
+# ABAP delivery scope
+
+This sample shows the scope we can take on for ABAP work: isolate a business rule, define its inputs and outputs, write readable classes and tests, and provide a reviewable change with evidence. The example covers utilities meter plausibility, consumption estimation, a small tariff calculation and a reconciliation worklist. It uses synthetic data. It is not an installed IS-U extension and does not claim prior client projects or production experience.
+
+The workflow is AI-assisted. AI helps draft and revise code, tests and documentation. Delivery quality depends on the review and verification gates, not on who typed the source. We can work on custom reports, validation rules, estimation logic, reconciliation tools and adapters to an agreed SAP process. The exact release, enhancement mechanism, coding standards and business rules must be established with the client.
+
+For every proposed change, we turn agreed examples and failure cases into assertions, run static checks, run ABAP Unit on the open-source abaplint/transpiler stack, inspect the diff and keep the command output with the change. We report failures and missing checks explicitly. Before accepting SAP behavior, we also run the client's checks on their system. A tool being unavailable is a blocked gate, never evidence that a test passed.
+
+This delivery has 77 ABAP Unit methods; all 77 were executed on the open-source abaplint/transpiler stack and ran without a failed assertion, and abaplint reports 0 issues (15 Oct 2026). Running the tests found one real defect in the billing estimate (decfloat34 division gave 99.999... instead of 100), which is fixed. No SAP system was used, so authorisations, database access, locks, transports, BAdI registration and performance on real volumes are not covered; those need a sandbox or trial system from you.
+
+Even after an open-source run passes, we cannot verify SAP activation, authorizations, database mappings, locks, actual BAdI invocation, EMMA integration, performance on real volumes or transport behavior without the client's landscape. Decimal/date behavior and the billing and tax rules also need confirmation there. The transpiler is useful evidence for isolated logic; it does not emulate every SAP behavior.
+
+To start, we need a sandbox or trial system on the target release, or an abapGit repository for an initial source-only review; the package and transport conventions; a named technical and business reviewer; sanitized input examples and expected outputs; register/rollover and estimation policies; tariff, calendar, currency and rounding rules; and the relevant interface/DDIC definitions. Repository access alone permits source review and isolated checks, not SAP integration verification. Access should use the client's approved method and least necessary permissions.
+
+The first acceptance milestone is a small agreed change with clean lint, recorded test output and a sandbox demonstration. Production release remains within the client's normal approval and transport process.

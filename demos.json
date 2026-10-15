@@ -1,4 +1,9 @@
 {
+ "abap-utilities-demo": {
+  "slug": "abap-utilities-demo",
+  "summary": "Synthetic ABAP source for utilities meter-reading validation and billing estimation, with 77 ABAP Unit methods executed on the open-source abaplint/transpiler stack (all ran without a failed assertion, 0 lint issues). No SAP system was used.",
+  "title": "ABAP utilities demo: meter reading validation and billing estimate (tested on abaplint/transpiler)"
+ },
  "artist-booking-prototype": {
   "slug": "artist-booking-prototype",
   "summary": "Browse fictional artists, choose a package and time, and inspect a simulated booking in customer, artist and admin views. No real payment or reservation.",
@@ -13,6 +18,11 @@
   "slug": "burial-records-archive",
   "summary": "Searchable archive of historic ledger records: fuzzy name search, county/year filters, scan viewer, staff CSV import with validation.",
   "title": "Historic Burial Records Archive"
+ },
+ "car-raffle-landing-demo": {
+  "slug": "car-raffle-landing-demo",
+  "summary": "An offline, mobile-first concept raffle with illustrated vehicle slider, editable pricing, live countdown and simulated checkout.",
+  "title": "Car raffle landing page demo (sample data)"
  },
  "small-business-website": {
   "slug": "small-business-website",

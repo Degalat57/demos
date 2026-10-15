@@ -1,0 +1,45 @@
+{
+  "global": {
+    "files": "/src/**/*.*",
+    "skipGeneratedGatewayClasses": false,
+    "skipGeneratedPersistentClasses": false
+  },
+  "dependencies": [
+    {
+      "url": "https://github.com/open-abap/open-abap-core",
+      "folder": "/deps/open-abap-core",
+      "files": "/src/**/*.*"
+    }
+  ],
+  "syntax": {
+    "version": "v754",
+    "errorNamespace": "^(Z|Y|LCL_|LTCL_|LIF_)"
+  },
+  "rules": {
+    "parser_error": true,
+    "check_syntax": true,
+    "unknown_types": true,
+    "uncaught_exception": true,
+    "method_implemented_twice": true,
+    "implement_methods": true,
+    "begin_end_names": true,
+    "check_subrc": true,
+    "use_class_based_exceptions": true,
+    "obsolete_statement": true,
+    "dangerous_statement": true,
+    "db_operation_in_loop": true,
+    "select_add_order_by": true,
+    "select_single_full_key": true,
+    "strict_sql": true,
+    "unsecure_fae": true,
+    "contains_tab": true,
+    "whitespace_end": true,
+    "empty_statement": true,
+    "no_chained_assignment": true,
+    "no_macros": true,
+    "try_without_catch": true,
+    "superclass_final": true,
+    "xml_consistency": true,
+    "forbidden_void_type": true
+  }
+}

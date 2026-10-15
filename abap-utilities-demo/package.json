@@ -1,0 +1,17 @@
+{
+  "name": "abap-utilities-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Synthetic utilities ABAP example; SAP verification pending",
+  "scripts": {
+    "lint": "abaplint abaplint.json",
+    "unit": "abap_transpile && node output/index.mjs",
+    "test": "npm run lint && npm run unit",
+    "inventory": "python3 tools/static_inventory.py"
+  },
+  "devDependencies": {
+    "@abaplint/cli": "2.113.200",
+    "@abaplint/runtime": "^2.14.7",
+    "@abaplint/transpiler-cli": "^2.14.7"
+  }
+}
